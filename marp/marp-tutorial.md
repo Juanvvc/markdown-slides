@@ -3,7 +3,7 @@ marp: true
 paginate: true
 title: Píldoras INCIDE - Intróducción a MARP
 theme: marp-incide
-# headingDivider: 2
+headingDivider: 2
 ---
 
 <style>
@@ -12,16 +12,15 @@ theme: marp-incide
     the YAML header: section: | */
 </style>
 
+
 # Píldoras INCIDE
 <!-- _class: first-slide -->
 
-## Presentaciones en Markdown con MARP
+**Presentaciones en Markdown con MARP**
 
 Juan Vera
 
 jvera@incide.es
-
----
 
 ## Hoy hablamos de...
 
@@ -36,12 +35,8 @@ Desgraciadamente, este índice no parece que pueda construirse automáticamente.
 Por cierto, esto es una nota de orador
 -->
 
----
-
 # Introducción a MARP
 <!-- _class: lead -->
-
----
 
 ## Marp Next
 
@@ -59,15 +54,11 @@ Presentación final en HTML, PDF o PPTX
 El Marp original era una aplicación con editor incluido. Ya no está soportado, en favor de usar VSCode como editor.
 -->
 
----
-
 ## Edición en VSCode
 
 Plugin: Marp for VS Code
 
 ![width:27em center](images/vscode-marp.png)
-
----
 
 ## Separación entre transparencias
 
@@ -75,7 +66,7 @@ Por defecto, la separación se hace con una línea de tres guiones `---`
 
 Si se añade `headingDivider: 2` en la cabecera YAML, pueden usarse cabeceras niveles 1 y 2 para separar transparencias
 
----
+Si necesitas una trasparencia sin título siempre puedes usar las tres líneas `---`
 
 ## Listas
 
@@ -89,8 +80,6 @@ Las listas con asteriscos `*` son dinámicas, pero solo en el HTML
 * Uno
 * Dos
 
----
-
 ## Modo presentación
 
 Pulsa `p` para entrar en el modo presentación y ver los comentarios, hora, siguiente transparencia...
@@ -102,8 +91,6 @@ Además, desde línea de comandos, `--bespoke.progress true` añade una muy úti
 <!--
 Esto es un comentario visible en el modo presentación
 -->
-
----
 
 ## Imágenes en el interior
 
@@ -119,8 +106,6 @@ Esto es un comentario visible en el modo presentación
 
 Tamaños: pixeles y em, pero **no** porcentajes
 
----
-
 ## Imágenes en el fondo
 
 ![bg brightness:1.5 saturate:0.5](https://picsum.photos/720?image=29)
@@ -131,13 +116,9 @@ Tamaños: pixeles y em, pero **no** porcentajes
 También se puede hacer con directivas, como se verá más adelante.
 ```
 
----
-
 ## Imágenes en el fondo: izquierda
 
 ![bg left left:30%](themes/incide/lead-2.jpg)
-
----
 
 ## Imágenes en el fondo: múltiples
 
@@ -148,23 +129,20 @@ También se puede hacer con directivas, como se verá más adelante.
 ![bg right](https://picsum.photos/720?image=3)
 ![bg right](https://picsum.photos/720?image=20)
 ```
----
 
-## Imágenes en el fondo
+---
 
 ![bg](http://i.giphy.com/90F8aUepslB84.gif)
 
 GIFs, videos...
 
----
+Esta transparencia también es un ejemplo de nueva transparencia sin título
 
 # Jugar con los estilos
 <!--
 _class: lead
 _backgroundImage: url('https://cdn.shopify.com/s/files/1/0200/7466/articles/shopify-new-features_1000x.jpeg')
  -->
-
----
 
 ## Uso de directivas
 <!--
@@ -189,8 +167,6 @@ backgroundImage: url('themes/back-starline.jpg')
 
 > Background: [Designed by starline / Freepik](http://www.freepik.com).
 
----
-
 ## <!-- fit --> Otros ejemplos
 <!--
 _header: '![width:5em grayscale invert brightness:2](https://www.incide.es/images/incide_logo.png)'
@@ -212,8 +188,6 @@ _color: red
 ```
 
 El título ocupa toda la línea, muchos colores, pie y cabecera...
-
----
 
 ## Si quieres personalización total...
 
@@ -248,6 +222,7 @@ Esto es un párrafo <span class="mycustomspan">y esto unas cuantas palabras</spa
 Para que funcione el `span` se tiene que activar `--html` en las opciones del compilador Marp o en la sección Marp de VSCode. Es un riesgo si abres presentaciones de atacantes, porque pueden incluir cualquier script
 
 ---
+
 <style scoped>
     li { list-style-type: none}
 </style>
@@ -257,14 +232,10 @@ Para que funcione el `span` se tiene que activar `--html` en las opciones del co
 * ...paso a paso
 * pero no se me ocurre cómo animar imágenes
 
----
-
 # Tema INCIDE
 <!--
 _class: lead
 -->
-
----
 
 ## Tema personalizado INCIDE
 <!-- _class: smaller-font -->
@@ -283,8 +254,6 @@ _class: lead
 
 > Utiliza *blockquote* para "notas a pie de página"
 
----
-
 ## two-columns
 <!-- _class: two-columns -->
 
@@ -299,8 +268,6 @@ Uno|Dos|Tres|Cuatro|Cinco
 
 El siguiente elemento único va después de todo y se extiende hasta el final de la transparencia.
 
----
-
 ## two-columns-33
 <!--
 _class: two-columns-33 with-header
@@ -314,8 +281,6 @@ Lo mismo que `two-columns`, pero la izquierda es más estrecha
 
 Si tienes un header, añade la clase `with-header` como en este ejemplo
 
----
-
 ## <!-- fit --> smallest-font
 <!-- _class: smallest-font center with-info -->
 
@@ -324,8 +289,6 @@ Si tienes un header, añade la clase `with-header` como en este ejemplo
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce vel quam lobortis, egestas ex eu, dictum nisi. Nullam accumsan magna augue, vitae tempor arcu porttitor quis. Nam sit amet turpis sit amet tellus lacinia convallis. Nam suscipit sollicitudin orci, quis vehicula velit. Pellentesque viverra lacus nec velit fermentum suscipit sit amet eu erat. Mauris finibus massa eu eros luctus, nec congue velit lobortis. Quisque rhoncus velit porta tristique consectetur. Praesent sagittis facilisis ex in facilisis. Curabitur vel vulputate libero. Sed leo metus, maximus non lectus non, vestibulum scelerisque ipsum. Nunc convallis, felis vitae commodo iaculis, tellus nisl sollicitudin ligula, quis consectetur sem tellus vitae lorem. Duis rhoncus tristique volutpat. Nunc erat ante, pellentesque non ligula id, gravida vehicula lacus.
 
 Tambien está la clase `smaller-font`, que es un poco más grande.
-
----
 
 ## Cajas: *success*
 <!-- _class: with-success -->
@@ -347,8 +310,6 @@ $$
 
 Por supuesto, puedes añadir fórmulas matemáticas: $2 \times 2 = 4$
 
----
-
 ## Cajas: *warning*
 <!-- _class: with-warning -->
 
@@ -360,8 +321,6 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce vel quam lobortis
 
 Solo puede haber una caja *warning*, *info* o *success* por transparencia. Solo el último párrafo se mete en una caja.
 
----
-
 # En el día a día
 <!--
 _class: lead
@@ -370,8 +329,6 @@ _backgroundImage: url('https://cdn.shopify.com/s/files/1/0200/7466/files/shopify
  -->
 
  Sí, puedes añadir fondos personalizados a los inicios de secciones
-
----
 
 ## Comparando con RevealJS
 <!-- _class: with-info -->
@@ -389,8 +346,6 @@ _backgroundImage: url('https://cdn.shopify.com/s/files/1/0200/7466/files/shopify
 Las animaciones entre trasparencias las tiene que ofrecer "una librería de alto nivel" que use Marp: https://github.com/marp-team/marp-core/issues/110 
 -->
 
----
-
 ## Convertir de RevealJS a Marp y viceversa
 <!-- _class: two-columns -->
 
@@ -399,8 +354,6 @@ Las animaciones entre trasparencias las tiene que ofrecer "una librería de alto
 - Las transparencias que utilicen cosas específicas como animaciones tendrán que repensarse
 
 ![width:15em](https://i.kym-cdn.com/photos/images/original/000/058/092/wololooooooooooooooooooooo20110724-22047-dccquj.gif)
-
----
 
 ## Ejemplos de conversiones
 

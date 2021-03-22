@@ -63,7 +63,7 @@ img[alt~="center"] {
 
 /* Block quote: use only as the last element of a slide, for cites! */
 section blockquote {
-    border-top: 0.1em dashed var(--extra-back-color);
+    border-top: 0.1em dashed gray;
     font-size: 60%;
     margin-top: auto;
 }
@@ -198,7 +198,7 @@ section.two-columns-33.with-header :nth-child(5) {
 /* extra-slide class
 Use: <!-- _class: extra-slide --> */
 section.extra-slide {
-    background-color: #aaa;
+    background-color: var(--extra-back-color);
 }
 
 /******************* with-info,success and warning *****************************/

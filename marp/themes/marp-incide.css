@@ -78,7 +78,7 @@ section blockquote {
 
 /* lead class: first slide in a section. Use h1 as header.
 Use: <!-- _class: lead --> */
-.lead {
+section.lead {
     background-color: var(--main-color);
     text-align: left;
     color: white;
