@@ -21,7 +21,7 @@ all: $(OBJS)
 	$(MARP) "$<" -o "$@" --no-config --theme $(THEME) --theme-set "$(THEME_SET)" --pdf --allow-local-files
 
 %.html: %.md
-	$(MARP) "$<" -o "$@" --no-config --theme $(THEME) --theme-set "$(THEME_SET)" --bespoke.progress true
+	$(MARP) "$<" -o "$@" --no-config --theme $(THEME) --theme-set "$(THEME_SET)" --bespoke.progress true --html
 
 clean:
 	/bin/rm -rf *.html *.pdf

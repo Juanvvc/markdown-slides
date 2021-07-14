@@ -374,3 +374,5 @@ Marp:
 
 ![width:20em](imagen.jpg){}
 ```
+
+<script src="whiteboard.js"></script>
