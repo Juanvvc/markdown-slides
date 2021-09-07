@@ -25,16 +25,15 @@ jvera@incide.es
 ## Hoy hablamos de...
 
 - [Introducción a MARP](#3)
-- [Jugar con los estilos](#14)
-- [Tema INCIDE](#18)
-- [En el día a día](#25)
+- [Jugar con los estilos](#16)
+- [Tema INCIDE](#21)
+- [En el día a día](#28)
+- [Notas adicionales](#32)
 
 Esta misma presentación sirve también como ejemplo de Marp
 
-Esto es un índice, por cierto
-
 <!--
-Desgraciadamente, este índice no parece que pueda construirse automáticamente...
+Desgraciadamente, este índice no parece que pueda construirse automáticamente
 
 Por cierto, esto es una nota de orador
 -->
@@ -42,7 +41,7 @@ Por cierto, esto es una nota de orador
 # Introducción a MARP
 <!-- _class: lead -->
 
-## Escribe transparencias en Markdown
+## Escribe presentaciones en Markdown
 
 ```markdown
 ## Marp Next
@@ -62,6 +61,10 @@ El Marp original era una aplicación con editor incluido.
 Marp Next uriliza VSCode con un plugin como editor.
 -->
 ```
+
+<!--
+MARP se utiliza para crear presentaciones en Common Markdown, el dialecto con mayor compatibilidad y por tanto menos características de Markdown
+-->
 
 ## Marp Next
 
@@ -84,6 +87,13 @@ Marp Next uriliza VSCode con un plugin como editor.
 Plugin: "*Marp for VS Code*". Previsualización con `CMD+k+v`
 
 ![width:27em center](images/vscode-marp.png)
+
+<!--
+El plugin permite:
+
+- Previsualización instantánea
+- Compilación a PDF, HTML o PPTX
+-->
 
 ## Compilación desde línea de comandos
 
@@ -137,6 +147,10 @@ Las listas con asteriscos `*` son dinámicas, pero solo en el HTML
 * Uno
 * Dos
 
+<!--
+Es decir, los asteriscos no mostrarán los items de la lista uno a uno ni en la previsualización ni en el PDF
+-->
+
 ## Modo presentación
 
 Pulsa `p` para entrar en el modo presentación y ver los comentarios, hora, siguiente transparencia...
@@ -145,10 +159,10 @@ Pulsa `p` para entrar en el modo presentación y ver los comentarios, hora, sigu
 
 Además, desde línea de comandos, `--bespoke.progress true` añade una muy útil barra de progreso
 
-(mira envima de esta transparencia)
-
 <!--
 Esto es un comentario visible en el modo presentación
+
+Para la barra de progreso, mira en la parte de arriba de la transparencia
 -->
 
 ## Imágenes en el interior
@@ -165,27 +179,31 @@ Esto es un comentario visible en el modo presentación
 
 Tamaños: pixeles y em, pero **no** porcentajes
 
-> Atributos: https://github.com/marp-team/marpit/blob/main/docs/image-syntax.md
+Atributos: https://github.com/marp-team/marpit/blob/main/docs/image-syntax.md
 
 ## Imágenes en el fondo: bg
 
-![bg saturate:0.5 contrast:0.2 brightness:1.5](https://picsum.photos/720?image=29)
+![bg saturate:0.9 contrast:0.3 brightness:1.5](https://picsum.photos/720?image=27)
 
+```markdown
+![bg saturate:0.9 contrast:0.3 brightness:1.5](https://picsum.photos/720?image=27)
 ```
-![bg saturate:0.5 contrast:0.2 brightness:1.5](https://picsum.photos/720?image=29)
-```
 
-También se puede hacer con directivas, como se verá más adelante.
+Como se verá, también se puede hacer con directivas
 
-¡El orden de los atributos importa!
+<!--
+El orden de los filtros gráficos importa. No es lo mismo desaturar y después contrastar que al revés
+-->
 
 ## Imágenes en el fondo: bg left
 
 ![bg left left:30%](themes/incide/lead-2.jpg)
 
-```
+```markdown
 ![bg left left:30%](themes/incide/lead-2.jpg)
 ```
+
+Fíajate que las imágenes pueden referenciarse con URL relativa o absoluta
 
 ## Imágenes en el fondo: múltiples
 
@@ -205,6 +223,10 @@ GIFs, videos...
 
 Esta transparencia también es un ejemplo de nueva transparencia sin título
 
+<!--
+VSCode no soporta previsualización de GIFs
+-->
+
 # Jugar con los estilos
 <!--
 _class: lead
@@ -215,7 +237,6 @@ _backgroundImage: url('https://cdn.shopify.com/s/files/1/0200/7466/articles/shop
 <!--
 _backgroundImage: url('themes/back-starline.jpg')
 -->
-
 
 Controla el estilo de una transparencia con [directivas](https://marpit.marp.app/directives) justo después del título.
 
@@ -242,6 +263,8 @@ _backgroundImage: "linear-gradient(to bottom, #ffffff, #ffaa00)"
 _color: red
 -->
 
+(incluso si hacen daño)
+
 
 ```markdown
 # <!-- fit --> Otros ejemplos
@@ -254,7 +277,7 @@ _color: red
 -->
 ```
 
-El título ocupa toda la línea, muchos colores, pie y cabecera...
+Hacer que el título ocupe toda la línea, degradados, pie y cabecera...
 
 ## Si quieres personalización total...
 
@@ -294,10 +317,14 @@ Para que funcione el `span` se tiene que activar `--html` en las opciones del co
     li { list-style-type: none}
 </style>
 
-- Con `scoped` esto puedes hacer cambiar el estilo de las listas
+- Con `scoped` esto puedes cambiar el estilo de las listas
 * ...mostrar las frases poco a poco...
 * ...paso a paso
-* pero no se me ocurre cómo animar imágenes
+* pero no se me ocurre cómo hacer que aparezcan imágenes
+
+<!--
+Fíjate: el primer item es un guion para que aparezca desde el principio
+-->
 
 # Tema INCIDE
 <!--
@@ -454,6 +481,7 @@ header: Notas adicionales
 ---
 
 - En 2021, las transparencias son simples y sin animaciones
+- No luches contra el sistema de presentaciones: si no puedes hacer algo, no lo hagas o pon una imagen
 - Puedes usar `header: Título de sección` como directiva en las transparencias de sección
 
 ## Pizarra
