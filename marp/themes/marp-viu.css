@@ -10,7 +10,7 @@
 
 :root {
     --main-color: #e65014;
-    --extra-back-color: gray;
+    --extra-back-color: rgb(175, 172, 172);
 }
 
 section header {

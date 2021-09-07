@@ -11,7 +11,7 @@
 :root {
     --main-color: rgb(17, 138, 207);
     --darker-color: #246;
-    --extra-back-color: gray;
+    --extra-back-color: rgb(175, 172, 172);
 }
 
 section header {
@@ -70,7 +70,7 @@ img[alt~="center"] {
 section blockquote {
     border-top: 0.1em dashed gray;
     font-size: 50%;
-    margin-top: 2em;
+    margin-top: auto;
 }
 
 /******************* lead *****************************/
@@ -240,6 +240,7 @@ section.extra-slide {
     padding: 0.5em 1em;
     width: 90%;
     margin: auto;
+    text-align: center;
 }
 section.with-success > p:last-of-type {
     border-radius: 0.15em;
@@ -248,6 +249,7 @@ section.with-success > p:last-of-type {
     padding: 0.5em 1em;
     width: 90%;
     margin: auto;
+    text-align: center;
 }
 section.with-warning > p:last-of-type {
     border-radius: 0.15em;
@@ -256,4 +258,8 @@ section.with-warning > p:last-of-type {
     padding: 0.5em 1em;
     width: 90%;
     margin: auto;
+    text-align: center;
+}
+section.with-warning > p:last-of-type::before {
+    content: "⚠ ";
 }

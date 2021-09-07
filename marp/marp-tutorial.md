@@ -26,9 +26,9 @@ jvera@incide.es
 
 - [Introducción a MARP](#3)
 - [Jugar con los estilos](#16)
-- [Tema INCIDE](#21)
-- [En el día a día](#28)
-- [Notas adicionales](#32)
+- [Tema INCIDE](#22)
+- [En el día a día](#29)
+- [Notas adicionales](#33)
 
 Esta misma presentación sirve también como ejemplo de Marp
 
@@ -224,7 +224,7 @@ GIFs, videos...
 Esta transparencia también es un ejemplo de nueva transparencia sin título
 
 <!--
-VSCode no soporta previsualización de GIFs
+Nota: VSCode no soporta previsualización de GIFs cuando están en el background
 -->
 
 # Jugar con los estilos
@@ -315,16 +315,45 @@ Para que funcione el `span` se tiene que activar `--html` en las opciones del co
 
 <style scoped>
     li { list-style-type: none}
+    li:nth-child(2) {
+        border-radius: 0.15em;
+        border: 2px solid #73AD21aa;
+        background-color: #73AD2133;
+        padding: 0.5em;
+    }
+    li:nth-child(3) {
+        border-radius: 0.15em;
+        border: 2px solid #ce5708aa;
+        background-color: #ce570855;
+        padding: 0.5em;
+    }
 </style>
 
 - Con `scoped` esto puedes cambiar el estilo de las listas
 * ...mostrar las frases poco a poco...
 * ...paso a paso
-* pero no se me ocurre cómo hacer que aparezcan imágenes
+* ...una a una
 
 <!--
 Fíjate: el primer item es un guion para que aparezca desde el principio
 -->
+
+---
+<!-- _class: center -->
+
+<style scoped>
+li {
+    list-style-type: none;
+    position: absolute;
+    top: 10%;
+    left: 25%;
+}
+</style>
+
+Ejemplo sencillo de imágenes que aparecen
+
+* ![w:20em](https://picsum.photos/720?image=20)
+* ![w:20em](https://picsum.photos/720?image=21)
 
 # Tema INCIDE
 <!--
