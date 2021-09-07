@@ -18,17 +18,18 @@ headingDivider: 2
 
 **Presentaciones en Markdown con MARP**
 
-Juan Vera
+Juanvi
 
 jvera@incide.es
 
 ## Hoy hablamos de...
+<!-- _class: cool-list -->
 
-- [Introducción a MARP](#3)
-- [Jugar con los estilos](#16)
-- [Tema INCIDE](#22)
-- [En el día a día](#29)
-- [Notas adicionales](#33)
+1. [Introducción a MARP](#3)
+1. [Jugar con los estilos](#16)
+1. [Tema INCIDE](#22)
+1. [En el día a día](#31)
+1. [Notas adicionales](#35)
 
 Esta misma presentación sirve también como ejemplo de Marp
 
@@ -41,7 +42,7 @@ Por cierto, esto es una nota de orador
 # Introducción a MARP
 <!-- _class: lead -->
 
-## Escribe presentaciones en Markdown
+## ¡Escribe presentaciones en Markdown!
 
 ```markdown
 ## Marp Next
@@ -62,8 +63,10 @@ Marp Next uriliza VSCode con un plugin como editor.
 -->
 ```
 
+Mira el resultado en la siguiente transparencia
+
 <!--
-MARP se utiliza para crear presentaciones en Common Markdown, el dialecto con mayor compatibilidad y por tanto menos características de Markdown
+MARP utiliza Common Markdown, el dialecto con mayor compatibilidad y por tanto menos características de Markdown
 -->
 
 ## Marp Next
@@ -135,6 +138,10 @@ En la cabecera YAML `headingDivider: 2`, pueden usarse cabeceras para separar tr
 
 Si necesitas una transparencia sin título siempre puedes usar las tres líneas `---`
 
+<!--
+Fíjate también: los textos se centran verticalmente en los temas por defecto
+-->
+
 ## Listas
 
 Las listas con guiones `-` son estáticas
@@ -157,7 +164,7 @@ Pulsa `p` para entrar en el modo presentación y ver los comentarios, hora, sigu
 
 ![center w:20em](images/presentacion.png)
 
-Además, desde línea de comandos, `--bespoke.progress true` añade una muy útil barra de progreso
+Dsde línea de comandos, `--bespoke.progress true` añade una barra de progreso
 
 <!--
 Esto es un comentario visible en el modo presentación
@@ -181,7 +188,13 @@ Tamaños: pixeles y em, pero **no** porcentajes
 
 Atributos: https://github.com/marp-team/marpit/blob/main/docs/image-syntax.md
 
-## Imágenes en el fondo: bg
+<!--
+En Marp, la parte entre corchetes [] puede contener atributos adicionales: clases para aplicar sobre la imagen, tamaños, posiciones...
+
+Nota que esto es una diferencia con respecto a otros dialectos como HackMD o RevealJS, que usan llaves {} para los atributos adicionales.
+-->
+
+## Imágenes en el fondo: `bg`
 
 ![bg saturate:0.9 contrast:0.3 brightness:1.5](https://picsum.photos/720?image=27)
 
@@ -189,31 +202,43 @@ Atributos: https://github.com/marp-team/marpit/blob/main/docs/image-syntax.md
 ![bg saturate:0.9 contrast:0.3 brightness:1.5](https://picsum.photos/720?image=27)
 ```
 
-Como se verá, también se puede hacer con directivas
+También se puede hacer con directivas (lo veremos)
 
 <!--
 El orden de los filtros gráficos importa. No es lo mismo desaturar y después contrastar que al revés
 -->
 
-## Imágenes en el fondo: bg left
+## Imágenes en el fondo: `bg right` o `bg left`
 
-![bg left left:30%](themes/incide/lead-2.jpg)
+![bg left:30% w:80% hue-rotate:120deg](https://freepngimg.com/thumb/android/58538-development-android-software-free-hd-image.png)
+
 
 ```markdown
-![bg left left:30%](themes/incide/lead-2.jpg)
+![bg left:30% w:80%](https://freepngimg.com/...)
 ```
 
-Fíajate que las imágenes pueden referenciarse con URL relativa o absoluta
+Si no se dice nada, la imagen ocupa **todo el alto**
+
+Puede limitarse el ancho con `w:VALOR%`
+
+Nota que con `bg` sí se pueden usar porcentajes
 
 ## Imágenes en el fondo: múltiples
 
-![bg right](https://picsum.photos/720?image=3)
-![bg right](https://picsum.photos/720?image=20)
+![bg left hue-rotate:240deg](https://freepngimg.com/thumb/android/58538-development-android-software-free-hd-image.png)
+![bg left hue-rotate:320deg](https://freepngimg.com/thumb/android/58538-development-android-software-free-hd-image.png)
+![bg left:50%](https://freepngimg.com/thumb/android/58538-development-android-software-free-hd-image.png)
 
+
+```markdown
+![bg left hue-rotate:240deg](https://freepngimg.com/...)
+![bg left hue-rotate:320deg](https://freepngimg.com/...)
+![bg left:50%](https://freepngimg.com/...)
 ```
-![bg right](https://picsum.photos/720?image=3)
-![bg right](https://picsum.photos/720?image=20)
-```
+
+No pueden combinarse `left` y `right`
+
+Fíjate que la última tiene **el total** que ocuparán todas
 
 ---
 
@@ -365,10 +390,10 @@ _class: lead
 
 `theme: marp-incide` en el preámbulo. Su path tiene que estar registrado en VSCode
 
-- Página actual. Mira el CSS para poner también totales
-- Atributo *center* para imágenes
+- Pequeños ajustes: muestra página actual, atributo *center* para imágenes...
 - Clases especiales:
     - *lead* / *lead2* / *first-slide*: inicio de sección
+    - *cool-list* / *cool-list-animated* para listas especiales
     - *two-columns*: transparencia con dos columnas
     - *two-columns-33*: transparencia con dos columnas, la de la izquierda es más pequeña
     - *smaller-font* / *smallest-font*: transparencia con letra más pequeña
@@ -376,6 +401,36 @@ _class: lead
     - *with-info* / *with-success*  / *with-warning*: el último párrafo es una caja *info* / *success* / *warning*
 
 > Utiliza *blockquote* para "notas a pie de página"
+
+## cool-list
+<!-- _class: cool-list -->
+
+1. *Uno*
+1. *Dos*
+    1. *Tres*
+    1. *Cuatro*
+1. *Cinco*
+
+<!--
+Hay que meter obligatoriamente los items entre asteriscos o enlaces
+
+Se puede usar en el índice
+-->
+
+> Basado en: https://catalin.red/css3-ordered-list-styles/
+
+## cool-list-animated
+<!-- _class: cool-list-animated -->
+
+Un estilo alternativo de lista
+
+1. *Uno*
+1. *Dos*
+    1. *Tres*
+    1. *Cuatro*
+1. *Cinco*
+
+> Basado en: https://catalin.red/css3-ordered-list-styles/
 
 ## two-columns
 <!-- _class: two-columns -->
@@ -420,7 +475,7 @@ Tambien está la clase `smaller-font`, que es un poco más grande.
 <!-- _class: with-success -->
 ```
 
- $$
+$$
  \begin{aligned}
  c_1 \oplus c_2  &= (k_{\text{g}} \oplus m_1) \oplus (k_{\text{g}} \oplus m_2) \\
     &= k_{\text{g}} \oplus m_1 \oplus k_{\text{g}} \oplus m_2 \\
@@ -431,7 +486,13 @@ Tambien está la clase `smaller-font`, que es un poco más grande.
 \end{aligned}
 $$
 
-Por supuesto, puedes añadir fórmulas matemáticas: $2 \times 2 = 4$
+Por supuesto, puedes añadir fórmulas matemáticas, tanto en párrafos como inline $2 \times 2 = 4$ y también utilizar emojis 🙆  🏃 💓  y símbolos ⇛ ❤ ⚝
+
+<!--
+La diferencia entre emojis y símbolos es operativa de editores de texto: mientras que los emojis se entrar escribiendo :emoji:, los símbolos se copianpegan de alún sitio como https://unicode-table.com. En realidad, todo es unicode.
+
+En la lista anterior he usado adrede símbolos que la fuente por defecto no tiene instalada, para probar cómo salen
+-->
 
 ## Cajas: *warning*
 <!-- _class: with-warning -->
@@ -442,7 +503,7 @@ Por supuesto, puedes añadir fórmulas matemáticas: $2 \times 2 = 4$
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce vel quam lobortis, egestas ex eu, dictum nisi. Nullam accumsan magna augue, vitae tempor arcu porttitor quis.
 
-Solo puede haber una caja *warning*, *info* o *success* por transparencia. Solo el último párrafo se mete en una caja.
+⚠ Solo puede haber una caja *warning*, *info* o *success* por transparencia. Solo el último párrafo se mete en una caja.
 
 # En el día a día
 <!--
@@ -464,7 +525,7 @@ header: En el día a día
 - RevealJS tiene ayudas espectaculares durante la presentación: alarmas, modo pizarra, movimiento en dos dimensiones...
 - Los temas MARP los tengo **mucho** más desarrollados
 
-**Mi opinión**: es mucho más rápido escribir una presentación tradicional en Marp, pero es más fácil y dinámico presentar con RevealJS.
+**Mi opinión**: es mucho más rápido **escribir** una presentación tradicional en Marp, pero es más fácil y dinámico **presentar** con RevealJS.
 
 <!--
 Las animaciones entre transparencias las tiene que ofrecer "una librería de alto nivel" que use Marp: https://github.com/marp-team/marp-core/issues/110 
@@ -478,6 +539,8 @@ Las animaciones entre transparencias las tiene que ofrecer "una librería de alt
 - Las transparencias que utilicen cosas específicas como animaciones tendrán que repensarse
 
 ![width:15em](https://i.kym-cdn.com/photos/images/original/000/058/092/wololooooooooooooooooooooo20110724-22047-dccquj.gif)
+
+> Ejemplo de *two-columns* con imagen, alternativa a `bg right`
 
 ## Ejemplos de conversiones
 
@@ -498,8 +561,6 @@ Marp:
 
 ![width:20em](imagen.jpg){}
 ```
-
-<script src="whiteboard.js"></script>
 
 # Notas adicionales
 <!--
