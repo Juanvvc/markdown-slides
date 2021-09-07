@@ -29,6 +29,10 @@ jvera@incide.es
 - [Tema INCIDE](#18)
 - [En el día a día](#25)
 
+Esta misma presentación sirve también como ejemplo de Marp
+
+Esto es un índice, por cierto
+
 <!--
 Desgraciadamente, este índice no parece que pueda construirse automáticamente...
 
@@ -37,6 +41,27 @@ Por cierto, esto es una nota de orador
 
 # Introducción a MARP
 <!-- _class: lead -->
+
+## Escribe transparencias en Markdown
+
+```markdown
+## Marp Next
+
+Sistema para generación de presentaciones a partir de Markdown: <https://marp.app/>
+
+Presentación final en HTML, PDF o PPTX
+
+![center width:20em](https://raw.githubusercontent.com/marp-team/marp/master/marp.png)
+
+- *marpit*: mini núcleo del sistema y sintaxis: <https://marpit.marp.app/>
+- *marp-core*: API para Marpit: <https://github.com/marp-team/marp-core>
+- *marp-vscode*: plugin para VSCode
+
+<!--
+El Marp original era una aplicación con editor incluido.
+Marp Next uriliza VSCode con un plugin como editor.
+-->
+```
 
 ## Marp Next
 
@@ -51,22 +76,54 @@ Presentación final en HTML, PDF o PPTX
 - *marp-vscode*: plugin para VSCode
 
 <!--
-El Marp original era una aplicación con editor incluido. Ya no está soportado, en favor de usar VSCode como editor.
+El Marp original era una aplicación con editor incluido.
+Marp Next uriliza VSCode con un plugin como editor.
 -->
 
 ## Edición en VSCode
-
-Plugin: Marp for VS Code
+Plugin: "*Marp for VS Code*". Previsualización con `CMD+k+v`
 
 ![width:27em center](images/vscode-marp.png)
+
+## Compilación desde línea de comandos
+
+```makefile
+# This command only works if you have marp-cli: npm install -g @marp-team/marp-cli
+# You need chrome/chromium in your system for the PDF
+MARP=marp
+# This command needs "marp-cli" from docker: docker pull marpteam/marp-cli
+#MARP=docker run --rm --init -v "$(PWD)":/home/marp/app/ marpteam/marp-cli
+
+# You can overwrite these from the command line
+# For example: make -e THEME=marp-viu
+THEME=marp-incide
+THEME_SET=themes/$(THEME).css
+
+# Convert all .md files in this directory
+SRCS=$(shell find . -name '*.md')
+OBJS=$(patsubst %.md,%.html,$(SRCS))
+
+all: $(OBJS)
+
+%.pdf: %.md
+	$(MARP) "$<" -o "$@" --no-config --theme $(THEME) --theme-set "$(THEME_SET)" --pdf --allow-local-files
+
+%.html: %.md
+	$(MARP) "$<" -o "$@" --no-config --theme $(THEME) --theme-set "$(THEME_SET)" --bespoke.progress true --html
+
+clean:
+	/bin/rm -rf *.html *.pdf
+
+.PHONY: all clean
+```
 
 ## Separación entre transparencias
 
 Por defecto, la separación se hace con una línea de tres guiones `---`
 
-Si se añade `headingDivider: 2` en la cabecera YAML, pueden usarse cabeceras niveles 1 y 2 para separar transparencias
+En la cabecera YAML `headingDivider: 2`, pueden usarse cabeceras para separar transparencias
 
-Si necesitas una trasparencia sin título siempre puedes usar las tres líneas `---`
+Si necesitas una transparencia sin título siempre puedes usar las tres líneas `---`
 
 ## Listas
 
@@ -88,6 +145,8 @@ Pulsa `p` para entrar en el modo presentación y ver los comentarios, hora, sigu
 
 Además, desde línea de comandos, `--bespoke.progress true` añade una muy útil barra de progreso
 
+(mira envima de esta transparencia)
+
 <!--
 Esto es un comentario visible en el modo presentación
 -->
@@ -106,19 +165,27 @@ Esto es un comentario visible en el modo presentación
 
 Tamaños: pixeles y em, pero **no** porcentajes
 
-## Imágenes en el fondo
+> Atributos: https://github.com/marp-team/marpit/blob/main/docs/image-syntax.md
 
-![bg brightness:1.5 saturate:0.5](https://picsum.photos/720?image=29)
+## Imágenes en el fondo: bg
+
+![bg saturate:0.5 contrast:0.2 brightness:1.5](https://picsum.photos/720?image=29)
 
 ```
-![bg brightness:1.5 saturate:0.5](https://picsum.photos/720?image=29)
+![bg saturate:0.5 contrast:0.2 brightness:1.5](https://picsum.photos/720?image=29)
+```
 
 También se puede hacer con directivas, como se verá más adelante.
-```
 
-## Imágenes en el fondo: izquierda
+¡El orden de los atributos importa!
+
+## Imágenes en el fondo: bg left
 
 ![bg left left:30%](themes/incide/lead-2.jpg)
+
+```
+![bg left left:30%](themes/incide/lead-2.jpg)
+```
 
 ## Imágenes en el fondo: múltiples
 
@@ -150,20 +217,20 @@ _backgroundImage: url('themes/back-starline.jpg')
 -->
 
 
-Cambia los estilos con [directivas](https://marpit.marp.app/directives), comentarios justo después del título.
+Controla el estilo de una transparencia con [directivas](https://marpit.marp.app/directives) justo después del título.
 
 Por ejemplo, añadir imagen de fondo:
 
-```
+```html
 <!--
-_backgroundImage: url('themes/back-starline.jpg')
 backgroundImage: url('themes/back-starline.jpg')
+_backgroundImage: url('themes/back-starline.jpg')
 -->
 ```
 
-- Sin guion bajo, activo para esta trasparencia y las siguientes.
-- Con guion bajo, solo activo para esta trasparencia.
-- Si se ponen en la cabecera YAML, activo para todas las trasparencias.
+- Sin guion bajo, activo para esta transparencia y las siguientes.
+- Con guion bajo, solo activo para esta transparencia.
+- Si se ponen en la cabecera YAML, activo para todas las transparencias.
 
 > Background: [Designed by starline / Freepik](http://www.freepik.com).
 
@@ -227,7 +294,7 @@ Para que funcione el `span` se tiene que activar `--html` en las opciones del co
     li { list-style-type: none}
 </style>
 
-- Con `scoped` esto puedes hacer cosas como estas
+- Con `scoped` esto puedes hacer cambiar el estilo de las listas
 * ...mostrar las frases poco a poco...
 * ...paso a paso
 * pero no se me ocurre cómo animar imágenes
@@ -240,7 +307,7 @@ _class: lead
 ## Tema personalizado INCIDE
 <!-- _class: smaller-font -->
 
-`theme: marp-incide` en el preámbulo. Su path tiene que estar registrado
+`theme: marp-incide` en el preámbulo. Su path tiene que estar registrado en VSCode
 
 - Página actual. Mira el CSS para poner también totales
 - Atributo *center* para imágenes
@@ -249,7 +316,7 @@ _class: lead
     - *two-columns*: transparencia con dos columnas
     - *two-columns-33*: transparencia con dos columnas, la de la izquierda es más pequeña
     - *smaller-font* / *smallest-font*: transparencia con letra más pequeña
-    - *center*: centra el contenido de texto
+    - *center*: centra el contenido de texto en la transparencia
     - *with-info* / *with-success*  / *with-warning*: el último párrafo es una caja *info* / *success* / *warning*
 
 > Utiliza *blockquote* para "notas a pie de página"
@@ -326,12 +393,13 @@ Solo puede haber una caja *warning*, *info* o *success* por transparencia. Solo 
 _class: lead
 _backgroundImageAlternate: url('https://www.incide.es/images/incide_office.jpg')
 _backgroundImage: url('https://cdn.shopify.com/s/files/1/0200/7466/files/shopify-new-features-research.jpeg')
+header: En el día a día
  -->
 
  Sí, puedes añadir fondos personalizados a los inicios de secciones
 
 ## Comparando con RevealJS
-<!-- _class: with-info -->
+<!-- _class: with-info-->
 
 - Marp no ofrece animaciones entre transparencias, RevealJS sí
 - Las transparencias de Marp tienen cabeceras y pies
@@ -343,11 +411,11 @@ _backgroundImage: url('https://cdn.shopify.com/s/files/1/0200/7466/files/shopify
 **Mi opinión**: es mucho más rápido escribir una presentación tradicional en Marp, pero es más fácil y dinámico presentar con RevealJS.
 
 <!--
-Las animaciones entre trasparencias las tiene que ofrecer "una librería de alto nivel" que use Marp: https://github.com/marp-team/marp-core/issues/110 
+Las animaciones entre transparencias las tiene que ofrecer "una librería de alto nivel" que use Marp: https://github.com/marp-team/marp-core/issues/110 
 -->
 
 ## Convertir de RevealJS a Marp y viceversa
-<!-- _class: two-columns -->
+<!-- _class: two-columns with-header -->
 
 - Casi todas las transparencias podrán copiarse sin más
 - Sintaxis diferente, pero similar, en imágenes y clases especiales
@@ -369,10 +437,39 @@ RevealJS:
 Marp:
 
 ```markdown
-< !-- _class: lead -->
 # Título
+< !-- _class: lead -->
 
 ![width:20em](imagen.jpg){}
 ```
+
+<script src="whiteboard.js"></script>
+
+# Notas adicionales
+<!--
+_class: lead
+header: Notas adicionales
+-->
+
+---
+
+- En 2021, las transparencias son simples y sin animaciones
+- Puedes usar `header: Título de sección` como directiva en las transparencias de sección
+
+## Pizarra
+
+Puede añadirse JavaScript genérico en la última transparencia
+
+```html
+<script src="whiteboard.js"></script>
+```
+
+Por ejemplo, modo pizarra (experimental):
+
+- `n`: pizarra transparente
+- `k`: pizarra negra
+- `c`: limpia la pizarra
+- `1`, `2`, `3`, `4`, `5`: colores
+
 
 <script src="whiteboard.js"></script>

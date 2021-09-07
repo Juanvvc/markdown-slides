@@ -144,10 +144,9 @@ section.first-slide footer, section.first-slide header, section.first-slide:afte
 
 /******************* center *****************************/
 
-
 /* center class: center all text
 Use: <!-- _class: center --> */
-section.center p {
+section.center p, section.center h1, section.center h2 {
     text-align: center;
 }
 

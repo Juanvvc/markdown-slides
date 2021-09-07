@@ -1,3 +1,14 @@
+/*
+Módulo de pizarra blnaca o negra, para notas
+
+- `n`: pizarra transparente
+- `k`: pizarra negra
+- `c`: limpia la pizarra
+- `1`, `2`, `3`, `4`, `5`: colores
+
+Para usarlo: añade en la última transparencia y activa el html
+No funciona en previsialización VSCode
+*/
 
 class WhiteBoard {
     constructor(canvas, lineColor='#f00f', lineWidth = 5) {
