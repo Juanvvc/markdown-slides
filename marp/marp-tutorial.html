@@ -21,7 +21,7 @@
     right: 30px !important;
     left: auto !important; */font-size:0.5em}div#p>svg>foreignObject>section footer{font-size:0.5em}
 
-/* Main header color */div#p>svg>foreignObject>section h1,div#p>svg>foreignObject>section h2{color:var(--darker-color)}div#p>svg>foreignObject>section a{color:var(--main-color)}
+/* Main headers color */div#p>svg>foreignObject>section h1,div#p>svg>foreignObject>section h2{color:var(--darker-color)}div#p>svg>foreignObject>section a{color:var(--main-color)}
 
 /* Pagination: current / total */div#p>svg>foreignObject>section:after{
     /* content: attr(data-marpit-pagination) ' / ' attr(data-marpit-pagination-total); */content:attr(data-marpit-pagination);font-size:0.5em}div#p>svg>foreignObject>section:after{--marpit-root-font-size:0.5em}
@@ -33,7 +33,7 @@
 /* image directive: center the image. 
 Use: ![center](image.png) */div#p>svg>foreignObject>section img[alt~=center]{display:block;margin:0 auto}
 
-/* Block quote: use only as the last element of a slide, for cites! */div#p>svg>foreignObject>section blockquote{border-top:0.1em dashed gray;font-size:50%;margin-top:auto}
+/* Block quote: use only as the last element of a slide, for cites! */div#p>svg>foreignObject>section blockquote{border-top:0.1em dashed var(--extra-back-color);font-size:60%;margin-top:auto}
 
 /******************* lead *****************************/
 
@@ -54,7 +54,7 @@ Use: <!-- _class: lead2 --> */div#p>svg>foreignObject>section.lead2{background-i
 /******************* first-slide *****************************/
 
 
-/* lead class: first slide (main title). Use h1 as header.
+/* first slide (main title). Use h1 as header.
 Use: <!-- _class: first-slide --> */div#p>svg>foreignObject>section.first-slide{background-image:url('themes/incide/incide-back.png');background-size:cover;background-repeat:no-repeat;text-align:center}div#p>svg>foreignObject>section.first-slide a,div#p>svg>foreignObject>section.first-slide h1,div#p>svg>foreignObject>section.first-slide h2{color:var(--darker-color)}div#p>svg>foreignObject>section.first-slide:after,div#p>svg>foreignObject>section.first-slide footer,div#p>svg>foreignObject>section.first-slide header{
     /* hide header, footer and pagination */display:none}
 
@@ -88,6 +88,18 @@ Use: <!-- _class: two-columns-33 --> or <!-- _class: two-columns-33 with-header 
 /* headers and 4th child extend all the way */div#p>svg>foreignObject>section.two-columns-33 h1,div#p>svg>foreignObject>section.two-columns-33 h2{grid-column:1/3}div#p>svg>foreignObject>section.two-columns-33 :nth-child(4){grid-column:1/3}
 /* with-header: it is the 5th child the one that extends all the way */div#p>svg>foreignObject>section.two-columns-33.with-header :nth-child(4){grid-column:auto!important}div#p>svg>foreignObject>section.two-columns-33.with-header :nth-child(5){grid-column:1/3!important}
 
+/******************* two-columns-list *****************************/
+
+/* two-columns-list
+A large ul list that fits in two columns
+
+Examples of configuration for three columns. In a scoped style section:
+
+ul { height: 20em; list-style-type: numeric; }
+ul>* { width: 12em; } 
+ul ol { list-style-type: lower-latin; /* disc lower-roman decimal }
+*/div#p>svg>foreignObject>section.two-columns-list ul{height:18em; /* height of the list. You may want to change this */display:flex;flex-direction:column;flex-wrap:wrap}div#p>svg>foreignObject>section.two-columns-list ul>*{width:20em; /* You can change this for more columns */padding-right:2em}
+
 /******************* extra-slide *****************************/
 
 /* extra-slide class (greyed out)
@@ -120,12 +132,13 @@ Uso:
     1. *Tres*
     1. *Cuatro*
 1. *Cinco*
-*/div#p>svg>foreignObject>section.cool-list ol{counter-reset:li; /* Initiate a counter */list-style:none; /* Remove default numbering */*list-style:decimal; /* Keep using default numbering for IE6/7 */padding:0;text-shadow:0 1px 0 rgba(255,255,255,.5)}div#p>svg>foreignObject>section.cool-list ol ol{margin:0 0 0 2em /* Add some left margin for inner lists */}div#p>svg>foreignObject>section.cool-list ol li a,div#p>svg>foreignObject>section.cool-list ol li em{position:relative;display:block;padding:.4em .4em .4em 2em;*padding:.4em;margin:.5em 0;background:#ddd;color:#444;text-decoration:none;border-radius:.3em;transition:all .3s ease-out;font-style:normal}div#p>svg>foreignObject>section.cool-list ol li a:before,div#p>svg>foreignObject>section.cool-list ol li em:before{content:counter(li);counter-increment:li;position:absolute;left:-1.3em;top:50%;margin-top:-1.3em;background:var(--main-color);height:2em;width:2em;line-height:2em;border:.3em solid #fff;text-align:center;font-weight:normal;border-radius:2em;transition:all .3s ease-out;color:white}div#p>svg>foreignObject>section.cool-list ol li a:hover,div#p>svg>foreignObject>section.cool-list ol li em:hover{background:#eee;font-weight:bolder}
+*/div#p>svg>foreignObject>section.cool-list ol{counter-reset:li; /* Initiate a counter */list-style:none; /* Remove default numbering */padding:0;text-shadow:0 1px 0 rgba(255,255,255,.5)}div#p>svg>foreignObject>section.cool-list>ol>li>a,div#p>svg>foreignObject>section.cool-list ol>li>em{position:relative;display:block;padding:.4em .4em .4em 2em;margin:.5em 0;background:#ddd;color:#444;text-decoration:none;border-radius:.3em;transition:all .3s ease-out;font-style:normal}div#p>svg>foreignObject>section.cool-list>ol>li>a:before,div#p>svg>foreignObject>section.cool-list ol>li>em:before{content:counter(li);counter-increment:li;position:absolute;left:-1.3em;top:50%;margin-top:-1.3em;background:var(--main-color);height:2em;width:2em;line-height:2em;border:.3em solid #fff;text-align:center;font-weight:normal;border-radius:2em;transition:all .3s ease-out;color:white}div#p>svg>foreignObject>section.cool-list>ol>li>a:hover,div#p>svg>foreignObject>section.cool-list>ol>li>em:hover{background:#eee;font-weight:bolder}
 /* Rotating effect */
 /*
-section.cool-list ol li em:hover:before,section.cool-list ol li a:hover:before{
+section.cool-list ol > li > em:hover:before,section.cool-list ol > li > a:hover:before{
     transform: rotate(360deg);
 }*/
+/* Lists inside lists */div#p>svg>foreignObject>section.cool-list>ol ol{margin:0 0 0 2em; /* Add some left margin for inner lists */font-size:75%;counter-reset:li2 /* Initiate a counter */}div#p>svg>foreignObject>section.cool-list>ol ol>li>a:before,div#p>svg>foreignObject>section.cool-list>ol ol>li>em:before{content:counter(li2);counter-increment:li2}div#p>svg>foreignObject>section.cool-list>ol>li>ul{list-style-type:disc;margin:0 0 0 1em;font-size:75%}div#p>svg>foreignObject>section.cool-list>ol ol>li>em{background:#efefef}
 
 /******************* cool-list-animated *****************************/
 
@@ -143,34 +156,35 @@ Uso:
     1. *Tres*
     1. *Cuatro*
 1. *Cinco*
-*/div#p>svg>foreignObject>section.cool-list-animated ol{counter-reset:li; /* Initiate a counter */list-style:none; /* Remove default numbering */*list-style:decimal; /* Keep using default numbering for IE6/7 */padding:0;text-shadow:0 1px 0 rgba(255,255,255,.5)}div#p>svg>foreignObject>section.cool-list-animated ol ol{margin:0 0 0 2em /* Add some left margin for inner lists */}div#p>svg>foreignObject>section.cool-list-animated ol li em{position:relative;display:block;padding:.4em .4em .4em .8em;*padding:.4em;margin:.5em 0 .5em 2.5em;background:#ddd;color:#444;text-decoration:none;transition:all .3s ease-out;font-style:normal}div#p>svg>foreignObject>section.cool-list-animated ol li em:hover{background:#eee;font-weight:bolder}div#p>svg>foreignObject>section.cool-list-animated ol li em:before{content:counter(li);counter-increment:li;position:absolute;left:-2.5em;top:50%;margin-top:-1em;
+*/div#p>svg>foreignObject>section.cool-list-animated ol{counter-reset:li; /* Initiate a counter */list-style:none; /* Remove default numbering */padding:0;text-shadow:0 1px 0 rgba(255,255,255,.5)}div#p>svg>foreignObject>section.cool-list-animated ol ol{margin:0 0 0 2em /* Add some left margin for inner lists */}div#p>svg>foreignObject>section.cool-list-animated ol li em{position:relative;display:block;padding:.4em .4em .4em .8em;margin:.5em 0 .5em 2.5em;background:#ddd;color:#444;text-decoration:none;transition:all .3s ease-out;font-style:normal}div#p>svg>foreignObject>section.cool-list-animated ol li em:hover{background:#eee;font-weight:bolder}div#p>svg>foreignObject>section.cool-list-animated ol li em:before{content:counter(li);counter-increment:li;position:absolute;left:-2.5em;top:50%;margin-top:-1em;
     /* background: #fa8072; */background:var(--lighter-color);height:2em;width:2em;line-height:2em;text-align:center;font-weight:bold}div#p>svg>foreignObject>section.cool-list-animated ol li em:after{position:absolute;content:'';border:.5em solid transparent;left:-1em;top:50%;margin-top:-.5em;transition:all .3s ease-out}div#p>svg>foreignObject>section.cool-list-animated ol li em:hover:after{left:-.5em;
     /* border-left-color: #fa8072; */border-left-color:var(--lighter-color)}
+/* Lists inside lists */div#p>svg>foreignObject>section.cool-list-animated ol ol{margin:0 0 0 2em; /* Add some left margin for inner lists */font-size:75%;counter-reset:li2 /* Initiate a counter */}div#p>svg>foreignObject>section.cool-list-animated ol ol>li>a:before,div#p>svg>foreignObject>section.cool-list-animated ol ol>li>em:before{content:counter(li2);counter-increment:li2;background:lightgray}div#p>svg>foreignObject>section.cool-list-animated ol ul{list-style-type:disc;margin:0 0 0 1em;font-size:75%}div#p>svg>foreignObject>section.cool-list-animated ol ol em{background:#efefef}
 /* You can add custom style here. VSCode supports this.
     Other editor might need these custom code in
-    the YAML header: section: | */div#p>svg>foreignObject>section[data-marpit-scope-OcJJqRDJ] .mycustomspan{border:solid 1px orange;background-color:red;color:white}div#p>svg>foreignObject>section[data-marpit-scope-OcJJqRDJ] p:nth-of-type(2){text-align:center;margin:0 2em 0 2em;color:green}div#p>svg>foreignObject>section[data-marpit-scope-OcJJqRDJ]:before{background-image:none}div#p>svg>foreignObject>section[data-marpit-scope-18KiS1DI] li{list-style-type:none}div#p>svg>foreignObject>section[data-marpit-scope-18KiS1DI] li:nth-child(2){border-radius:0.15em;border:2px solid #73AD21aa;background-color:#73AD2133;padding:0.5em}div#p>svg>foreignObject>section[data-marpit-scope-18KiS1DI] li:nth-child(3){border-radius:0.15em;border:2px solid #ce5708aa;background-color:#ce570855;padding:0.5em}div#p>svg>foreignObject>section[data-marpit-scope-Crn78QdO] li{list-style-type:none;position:absolute;top:10%;left:25%}div#p>svg>foreignObject>section[data-marpit-advanced-background=background]{display:block!important;padding:0!important}div#p>svg>foreignObject>section[data-marpit-advanced-background=background]:after,div#p>svg>foreignObject>section[data-marpit-advanced-background=background]:before,div#p>svg>foreignObject>section[data-marpit-advanced-background=content]:after,div#p>svg>foreignObject>section[data-marpit-advanced-background=content]:before{display:none!important}div#p>svg>foreignObject>section[data-marpit-advanced-background=background]>div[data-marpit-advanced-background-container]{all:initial;display:flex;flex-direction:row;height:100%;overflow:hidden;width:100%}div#p>svg>foreignObject>section[data-marpit-advanced-background=background]>div[data-marpit-advanced-background-container][data-marpit-advanced-background-direction=vertical]{flex-direction:column}div#p>svg>foreignObject>section[data-marpit-advanced-background=background][data-marpit-advanced-background-split]>div[data-marpit-advanced-background-container]{width:var(--marpit-advanced-background-split,50%)}div#p>svg>foreignObject>section[data-marpit-advanced-background=background][data-marpit-advanced-background-split=right]>div[data-marpit-advanced-background-container]{margin-left:calc(100% - var(--marpit-advanced-background-split, 50%))}div#p>svg>foreignObject>section[data-marpit-advanced-background=background]>div[data-marpit-advanced-background-container]>figure{all:initial;background-position:center;background-repeat:no-repeat;background-size:cover;flex:auto;margin:0}div#p>svg>foreignObject>section[data-marpit-advanced-background=content],div#p>svg>foreignObject>section[data-marpit-advanced-background=pseudo]{background:transparent!important}div#p>svg>foreignObject>section[data-marpit-advanced-background=pseudo],div#p>svg[data-marpit-svg]>foreignObject[data-marpit-advanced-background=pseudo]{pointer-events:none!important}div#p>svg>foreignObject>section[data-marpit-advanced-background-split]{width:100%;height:100%}</style></head><body><div class="bespoke-progress-parent"><div class="bespoke-progress-bar"></div></div><div class="bespoke-marp-osc"><button data-bespoke-marp-osc="prev" tabindex="-1" title="Previous slide">Previous slide</button><span data-bespoke-marp-osc="page"></span><button data-bespoke-marp-osc="next" tabindex="-1" title="Next slide">Next slide</button><button data-bespoke-marp-osc="fullscreen" tabindex="-1" title="Toggle fullscreen (f)">Toggle fullscreen</button><button data-bespoke-marp-osc="presenter" tabindex="-1" title="Open presenter view (p)">Open presenter view</button></div><div id="p"><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="1" data-paginate="true" data-class="first-slide" data-theme="marp-incide" data-heading-divider="2" class="first-slide" data-marpit-pagination="1" data-marpit-pagination-total="37" style="--paginate:true;--class:first-slide;--theme:marp-incide;--heading-divider:2;">
+    the YAML header: section: | */div#p>svg>foreignObject>section[data-marpit-scope-jFHho5b2] .mycustomspan{border:solid 1px orange;background-color:red;color:white}div#p>svg>foreignObject>section[data-marpit-scope-jFHho5b2] p:nth-of-type(2){text-align:center;margin:0 2em 0 2em;color:green}div#p>svg>foreignObject>section[data-marpit-scope-jFHho5b2]:before{background-image:none}div#p>svg>foreignObject>section[data-marpit-scope-WthdVeWg] li{list-style-type:none}div#p>svg>foreignObject>section[data-marpit-scope-WthdVeWg] li:nth-child(2){border-radius:0.15em;border:2px solid #73AD21aa;background-color:#73AD2133;padding:0.5em}div#p>svg>foreignObject>section[data-marpit-scope-WthdVeWg] li:nth-child(3){border-radius:0.15em;border:2px solid #ce5708aa;background-color:#ce570855;padding:0.5em}div#p>svg>foreignObject>section[data-marpit-scope-KrCjqvtc] li{list-style-type:none;position:absolute;top:10%;left:25%}div#p>svg>foreignObject>section[data-marpit-scope-JvfGkOvy] ol{counter-reset:li 5}div#p>svg>foreignObject>section[data-marpit-scope-9t8z6mKg] ul>*{width:12em /* para tres columnas */}div#p>svg>foreignObject>section[data-marpit-scope-9t8z6mKg] ul ol{list-style-type:lower-latin /* disc lower-roman decimal */}div#p>svg>foreignObject>section[data-marpit-scope-5sjUbqHt] ol{height:20em;display:flex;flex-direction:column;flex-wrap:wrap}div#p>svg>foreignObject>section[data-marpit-scope-5sjUbqHt] ol>*{flex:0 1 auto;width:45%}div#p>svg>foreignObject>section[data-marpit-advanced-background=background]{display:block!important;padding:0!important}div#p>svg>foreignObject>section[data-marpit-advanced-background=background]:after,div#p>svg>foreignObject>section[data-marpit-advanced-background=background]:before,div#p>svg>foreignObject>section[data-marpit-advanced-background=content]:after,div#p>svg>foreignObject>section[data-marpit-advanced-background=content]:before{display:none!important}div#p>svg>foreignObject>section[data-marpit-advanced-background=background]>div[data-marpit-advanced-background-container]{all:initial;display:flex;flex-direction:row;height:100%;overflow:hidden;width:100%}div#p>svg>foreignObject>section[data-marpit-advanced-background=background]>div[data-marpit-advanced-background-container][data-marpit-advanced-background-direction=vertical]{flex-direction:column}div#p>svg>foreignObject>section[data-marpit-advanced-background=background][data-marpit-advanced-background-split]>div[data-marpit-advanced-background-container]{width:var(--marpit-advanced-background-split,50%)}div#p>svg>foreignObject>section[data-marpit-advanced-background=background][data-marpit-advanced-background-split=right]>div[data-marpit-advanced-background-container]{margin-left:calc(100% - var(--marpit-advanced-background-split, 50%))}div#p>svg>foreignObject>section[data-marpit-advanced-background=background]>div[data-marpit-advanced-background-container]>figure{all:initial;background-position:center;background-repeat:no-repeat;background-size:cover;flex:auto;margin:0}div#p>svg>foreignObject>section[data-marpit-advanced-background=content],div#p>svg>foreignObject>section[data-marpit-advanced-background=pseudo]{background:transparent!important}div#p>svg>foreignObject>section[data-marpit-advanced-background=pseudo],div#p>svg[data-marpit-svg]>foreignObject[data-marpit-advanced-background=pseudo]{pointer-events:none!important}div#p>svg>foreignObject>section[data-marpit-advanced-background-split]{width:100%;height:100%}</style></head><body><div class="bespoke-progress-parent"><div class="bespoke-progress-bar"></div></div><div class="bespoke-marp-osc"><button data-bespoke-marp-osc="prev" tabindex="-1" title="Previous slide">Previous slide</button><span data-bespoke-marp-osc="page"></span><button data-bespoke-marp-osc="next" tabindex="-1" title="Next slide">Next slide</button><button data-bespoke-marp-osc="fullscreen" tabindex="-1" title="Toggle fullscreen (f)">Toggle fullscreen</button><button data-bespoke-marp-osc="presenter" tabindex="-1" title="Open presenter view (p)">Open presenter view</button></div><div id="p"><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="1" data-paginate="true" data-class="first-slide" data-theme="marp-incide" data-heading-divider="2" class="first-slide" data-marpit-pagination="1" data-marpit-pagination-total="39" style="--paginate:true;--class:first-slide;--theme:marp-incide;--heading-divider:2;">
 <h1>Píldoras INCIDE</h1>
 
 <p><strong>Presentaciones en Markdown con MARP</strong></p>
 <p>Juanvi</p>
 <p><a href="mailto:jvera@incide.es">jvera@incide.es</a></p>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="2" data-paginate="true" data-class="cool-list" data-theme="marp-incide" data-heading-divider="2" class="cool-list" data-marpit-pagination="2" data-marpit-pagination-total="37" style="--paginate:true;--class:cool-list;--theme:marp-incide;--heading-divider:2;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="2" data-paginate="true" data-class="cool-list" data-theme="marp-incide" data-heading-divider="2" class="cool-list" data-marpit-pagination="2" data-marpit-pagination-total="39" style="--paginate:true;--class:cool-list;--theme:marp-incide;--heading-divider:2;">
 <h2>Hoy hablamos de...</h2>
 
 <ol>
 <li><a href="#3">Introducción a MARP</a></li>
 <li><a href="#16">Jugar con los estilos</a></li>
 <li><a href="#22">Tema INCIDE</a></li>
-<li><a href="#31">En el día a día</a></li>
-<li><a href="#35">Notas adicionales</a></li>
+<li><a href="#33">En el día a día</a></li>
+<li><a href="#37">Notas adicionales</a></li>
 </ol>
 <p>Esta misma presentación sirve también como ejemplo de Marp</p>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="3" data-paginate="true" data-class="lead" data-theme="marp-incide" data-heading-divider="2" class="lead" data-marpit-pagination="3" data-marpit-pagination-total="37" style="--paginate:true;--class:lead;--theme:marp-incide;--heading-divider:2;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="3" data-paginate="true" data-class="lead" data-theme="marp-incide" data-heading-divider="2" class="lead" data-marpit-pagination="3" data-marpit-pagination-total="39" style="--paginate:true;--class:lead;--theme:marp-incide;--heading-divider:2;">
 <h1>Introducción a MARP</h1>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="4" data-paginate="true" data-theme="marp-incide" data-heading-divider="2" data-marpit-pagination="4" data-marpit-pagination-total="37" style="--paginate:true;--theme:marp-incide;--heading-divider:2;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="4" data-paginate="true" data-theme="marp-incide" data-heading-divider="2" data-marpit-pagination="4" data-marpit-pagination-total="39" style="--paginate:true;--theme:marp-incide;--heading-divider:2;">
 <h2>¡Escribe presentaciones en Markdown!</h2>
 <pre><code class="language-markdown"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap><span class="hljs-section">## Marp Next</span>
 
@@ -191,7 +205,7 @@ Marp Next uriliza VSCode con un plugin como editor.
 </span></span></foreignObject></svg></code></pre>
 <p>Mira el resultado en la siguiente transparencia</p>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="5" data-paginate="true" data-theme="marp-incide" data-heading-divider="2" data-marpit-pagination="5" data-marpit-pagination-total="37" style="--paginate:true;--theme:marp-incide;--heading-divider:2;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="5" data-paginate="true" data-theme="marp-incide" data-heading-divider="2" data-marpit-pagination="5" data-marpit-pagination-total="39" style="--paginate:true;--theme:marp-incide;--heading-divider:2;">
 <h2>Marp Next</h2>
 <p>Sistema para generación de presentaciones a partir de Markdown: <a href="https://marp.app/">https://marp.app/</a></p>
 <p>Presentación final en HTML, PDF o PPTX</p>
@@ -202,12 +216,12 @@ Marp Next uriliza VSCode con un plugin como editor.
 <li><em>marp-vscode</em>: plugin para VSCode</li>
 </ul>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="6" data-paginate="true" data-theme="marp-incide" data-heading-divider="2" data-marpit-pagination="6" data-marpit-pagination-total="37" style="--paginate:true;--theme:marp-incide;--heading-divider:2;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="6" data-paginate="true" data-theme="marp-incide" data-heading-divider="2" data-marpit-pagination="6" data-marpit-pagination-total="39" style="--paginate:true;--theme:marp-incide;--heading-divider:2;">
 <h2>Edición en VSCode</h2>
 <p>Plugin: &quot;<em>Marp for VS Code</em>&quot;. Previsualización con <code>CMD+k+v</code></p>
 <p><img src="images/vscode-marp.png" alt="width:27em center" style="width:27em;" /></p>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="7" data-paginate="true" data-theme="marp-incide" data-heading-divider="2" data-marpit-pagination="7" data-marpit-pagination-total="37" style="--paginate:true;--theme:marp-incide;--heading-divider:2;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="7" data-paginate="true" data-theme="marp-incide" data-heading-divider="2" data-marpit-pagination="7" data-marpit-pagination-total="39" style="--paginate:true;--theme:marp-incide;--heading-divider:2;">
 <h2>Compilación desde línea de comandos</h2>
 <pre><code class="language-makefile"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap><span class="hljs-comment"># This command only works if you have marp-cli: npm install -g @marp-team/marp-cli</span>
 <span class="hljs-comment"># You need chrome/chromium in your system for the PDF</span>
@@ -238,13 +252,13 @@ OBJS=<span class="hljs-variable">$(<span class="hljs-built_in">patsubst</span> %
 <span class="hljs-meta"><span class="hljs-meta-keyword">.PHONY</span>: all clean</span>
 </span></span></foreignObject></svg></code></pre>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="8" data-paginate="true" data-theme="marp-incide" data-heading-divider="2" data-marpit-pagination="8" data-marpit-pagination-total="37" style="--paginate:true;--theme:marp-incide;--heading-divider:2;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="8" data-paginate="true" data-theme="marp-incide" data-heading-divider="2" data-marpit-pagination="8" data-marpit-pagination-total="39" style="--paginate:true;--theme:marp-incide;--heading-divider:2;">
 <h2>Separación entre transparencias</h2>
 <p>Por defecto, la separación se hace con una línea de tres guiones <code>---</code></p>
 <p>En la cabecera YAML <code>headingDivider: 2</code>, pueden usarse cabeceras para separar transparencias</p>
 <p>Si necesitas una transparencia sin título siempre puedes usar las tres líneas <code>---</code></p>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="9" data-marpit-fragments="2" data-paginate="true" data-theme="marp-incide" data-heading-divider="2" data-marpit-pagination="9" data-marpit-pagination-total="37" style="--paginate:true;--theme:marp-incide;--heading-divider:2;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="9" data-marpit-fragments="2" data-paginate="true" data-theme="marp-incide" data-heading-divider="2" data-marpit-pagination="9" data-marpit-pagination-total="39" style="--paginate:true;--theme:marp-incide;--heading-divider:2;">
 <h2>Listas</h2>
 <p>Las listas con guiones <code>-</code> son estáticas</p>
 <ul>
@@ -257,13 +271,13 @@ OBJS=<span class="hljs-variable">$(<span class="hljs-built_in">patsubst</span> %
 <li data-marpit-fragment="2">Dos</li>
 </ul>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="10" data-paginate="true" data-theme="marp-incide" data-heading-divider="2" data-marpit-pagination="10" data-marpit-pagination-total="37" style="--paginate:true;--theme:marp-incide;--heading-divider:2;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="10" data-paginate="true" data-theme="marp-incide" data-heading-divider="2" data-marpit-pagination="10" data-marpit-pagination-total="39" style="--paginate:true;--theme:marp-incide;--heading-divider:2;">
 <h2>Modo presentación</h2>
 <p>Pulsa <code>p</code> para entrar en el modo presentación y ver los comentarios, hora, siguiente transparencia...</p>
 <p><img src="images/presentacion.png" alt="center w:20em" style="width:20em;" /></p>
 <p>Dsde línea de comandos, <code>--bespoke.progress true</code> añade una barra de progreso</p>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="11" data-paginate="true" data-theme="marp-incide" data-heading-divider="2" data-marpit-pagination="11" data-marpit-pagination-total="37" style="--paginate:true;--theme:marp-incide;--heading-divider:2;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="11" data-paginate="true" data-theme="marp-incide" data-heading-divider="2" data-marpit-pagination="11" data-marpit-pagination-total="39" style="--paginate:true;--theme:marp-incide;--heading-divider:2;">
 <h2>Imágenes en el interior</h2>
 <p><img src="https://www.incide.es/images/incide_logo.png" alt="center" /><br />
 <img src="https://www.incide.es/images/incide_logo.png" alt="width:50px" style="width:50px;" /><br />
@@ -275,13 +289,13 @@ OBJS=<span class="hljs-variable">$(<span class="hljs-built_in">patsubst</span> %
 <p>Tamaños: pixeles y em, pero <strong>no</strong> porcentajes</p>
 <p>Atributos: <a href="https://github.com/marp-team/marpit/blob/main/docs/image-syntax.md">https://github.com/marp-team/marpit/blob/main/docs/image-syntax.md</a></p>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section data-paginate="true" data-theme="marp-incide" data-heading-divider="2" data-marpit-pagination="12" data-marpit-pagination-total="37" style="--paginate:true;--theme:marp-incide;--heading-divider:2;" data-marpit-advanced-background="background"><div data-marpit-advanced-background-container="true" data-marpit-advanced-background-direction="horizontal"><figure style="background-image:url(&quot;https://picsum.photos/720?image=27&quot;);filter:saturate(0.9) contrast(0.3) brightness(1.5);"></figure></div></section></foreignObject><foreignObject width="1280" height="720"><section id="12" data-paginate="true" data-theme="marp-incide" data-heading-divider="2" data-marpit-pagination="12" data-marpit-pagination-total="37" style="--paginate:true;--theme:marp-incide;--heading-divider:2;" data-marpit-advanced-background="content">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section data-paginate="true" data-theme="marp-incide" data-heading-divider="2" data-marpit-pagination="12" data-marpit-pagination-total="39" style="--paginate:true;--theme:marp-incide;--heading-divider:2;" data-marpit-advanced-background="background"><div data-marpit-advanced-background-container="true" data-marpit-advanced-background-direction="horizontal"><figure style="background-image:url(&quot;https://picsum.photos/720?image=27&quot;);filter:saturate(0.9) contrast(0.3) brightness(1.5);"></figure></div></section></foreignObject><foreignObject width="1280" height="720"><section id="12" data-paginate="true" data-theme="marp-incide" data-heading-divider="2" data-marpit-pagination="12" data-marpit-pagination-total="39" style="--paginate:true;--theme:marp-incide;--heading-divider:2;" data-marpit-advanced-background="content">
 <h2>Imágenes en el fondo: <code>bg</code></h2>
 <pre><code class="language-markdown"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap>![<span class="hljs-string">bg saturate:0.9 contrast:0.3 brightness:1.5</span>](<span class="hljs-link">https://picsum.photos/720?image=27</span>)
 </span></span></foreignObject></svg></code></pre>
 <p>También se puede hacer con directivas (lo veremos)</p>
 </section>
-</foreignObject><foreignObject width="1280" height="720" data-marpit-advanced-background="pseudo"><section style="" data-marpit-advanced-background="pseudo" data-marpit-pagination="12" data-marpit-pagination-total="37"></section></foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section data-paginate="true" data-theme="marp-incide" data-heading-divider="2" data-marpit-pagination="13" data-marpit-pagination-total="37" style="--paginate:true;--theme:marp-incide;--heading-divider:2;--marpit-advanced-background-split:30%;" data-marpit-advanced-background="background" data-marpit-advanced-background-split="left"><div data-marpit-advanced-background-container="true" data-marpit-advanced-background-direction="horizontal"><figure style="background-image:url(&quot;https://freepngimg.com/thumb/android/58538-development-android-software-free-hd-image.png&quot;);background-size:80% auto;filter:hue-rotate(120deg);"></figure></div></section></foreignObject><foreignObject width="70%" height="720" x="30%"><section id="13" data-paginate="true" data-theme="marp-incide" data-heading-divider="2" data-marpit-pagination="13" data-marpit-pagination-total="37" style="--paginate:true;--theme:marp-incide;--heading-divider:2;--marpit-advanced-background-split:30%;" data-marpit-advanced-background="content" data-marpit-advanced-background-split="left">
+</foreignObject><foreignObject width="1280" height="720" data-marpit-advanced-background="pseudo"><section style="" data-marpit-advanced-background="pseudo" data-marpit-pagination="12" data-marpit-pagination-total="39"></section></foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section data-paginate="true" data-theme="marp-incide" data-heading-divider="2" data-marpit-pagination="13" data-marpit-pagination-total="39" style="--paginate:true;--theme:marp-incide;--heading-divider:2;--marpit-advanced-background-split:30%;" data-marpit-advanced-background="background" data-marpit-advanced-background-split="left"><div data-marpit-advanced-background-container="true" data-marpit-advanced-background-direction="horizontal"><figure style="background-image:url(&quot;https://freepngimg.com/thumb/android/58538-development-android-software-free-hd-image.png&quot;);background-size:80% auto;filter:hue-rotate(120deg);"></figure></div></section></foreignObject><foreignObject width="70%" height="720" x="30%"><section id="13" data-paginate="true" data-theme="marp-incide" data-heading-divider="2" data-marpit-pagination="13" data-marpit-pagination-total="39" style="--paginate:true;--theme:marp-incide;--heading-divider:2;--marpit-advanced-background-split:30%;" data-marpit-advanced-background="content" data-marpit-advanced-background-split="left">
 <h2>Imágenes en el fondo: <code>bg right</code> o <code>bg left</code></h2>
 <pre><code class="language-markdown"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap>![<span class="hljs-string">bg left:30% w:80%</span>](<span class="hljs-link">https://freepngimg.com/...</span>)
 </span></span></foreignObject></svg></code></pre>
@@ -289,7 +303,7 @@ OBJS=<span class="hljs-variable">$(<span class="hljs-built_in">patsubst</span> %
 <p>Puede limitarse el ancho con <code>w:VALOR%</code></p>
 <p>Nota que con <code>bg</code> sí se pueden usar porcentajes</p>
 </section>
-</foreignObject><foreignObject width="1280" height="720" data-marpit-advanced-background="pseudo"><section style="" data-marpit-advanced-background="pseudo" data-marpit-pagination="13" data-marpit-pagination-total="37"></section></foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section data-paginate="true" data-theme="marp-incide" data-heading-divider="2" data-marpit-pagination="14" data-marpit-pagination-total="37" style="--paginate:true;--theme:marp-incide;--heading-divider:2;--marpit-advanced-background-split:50%;" data-marpit-advanced-background="background" data-marpit-advanced-background-split="left"><div data-marpit-advanced-background-container="true" data-marpit-advanced-background-direction="horizontal"><figure style="background-image:url(&quot;https://freepngimg.com/thumb/android/58538-development-android-software-free-hd-image.png&quot;);filter:hue-rotate(240deg);"></figure><figure style="background-image:url(&quot;https://freepngimg.com/thumb/android/58538-development-android-software-free-hd-image.png&quot;);filter:hue-rotate(320deg);"></figure><figure style="background-image:url(&quot;https://freepngimg.com/thumb/android/58538-development-android-software-free-hd-image.png&quot;);"></figure></div></section></foreignObject><foreignObject width="50%" height="720" x="50%"><section id="14" data-paginate="true" data-theme="marp-incide" data-heading-divider="2" data-marpit-pagination="14" data-marpit-pagination-total="37" style="--paginate:true;--theme:marp-incide;--heading-divider:2;--marpit-advanced-background-split:50%;" data-marpit-advanced-background="content" data-marpit-advanced-background-split="left">
+</foreignObject><foreignObject width="1280" height="720" data-marpit-advanced-background="pseudo"><section style="" data-marpit-advanced-background="pseudo" data-marpit-pagination="13" data-marpit-pagination-total="39"></section></foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section data-paginate="true" data-theme="marp-incide" data-heading-divider="2" data-marpit-pagination="14" data-marpit-pagination-total="39" style="--paginate:true;--theme:marp-incide;--heading-divider:2;--marpit-advanced-background-split:50%;" data-marpit-advanced-background="background" data-marpit-advanced-background-split="left"><div data-marpit-advanced-background-container="true" data-marpit-advanced-background-direction="horizontal"><figure style="background-image:url(&quot;https://freepngimg.com/thumb/android/58538-development-android-software-free-hd-image.png&quot;);filter:hue-rotate(240deg);"></figure><figure style="background-image:url(&quot;https://freepngimg.com/thumb/android/58538-development-android-software-free-hd-image.png&quot;);filter:hue-rotate(320deg);"></figure><figure style="background-image:url(&quot;https://freepngimg.com/thumb/android/58538-development-android-software-free-hd-image.png&quot;);"></figure></div></section></foreignObject><foreignObject width="50%" height="720" x="50%"><section id="14" data-paginate="true" data-theme="marp-incide" data-heading-divider="2" data-marpit-pagination="14" data-marpit-pagination-total="39" style="--paginate:true;--theme:marp-incide;--heading-divider:2;--marpit-advanced-background-split:50%;" data-marpit-advanced-background="content" data-marpit-advanced-background-split="left">
 <h2>Imágenes en el fondo: múltiples</h2>
 <pre><code class="language-markdown"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap>![<span class="hljs-string">bg left hue-rotate:240deg</span>](<span class="hljs-link">https://freepngimg.com/...</span>)
 ![<span class="hljs-string">bg left hue-rotate:320deg</span>](<span class="hljs-link">https://freepngimg.com/...</span>)
@@ -298,14 +312,14 @@ OBJS=<span class="hljs-variable">$(<span class="hljs-built_in">patsubst</span> %
 <p>No pueden combinarse <code>left</code> y <code>right</code></p>
 <p>Fíjate que la última tiene <strong>el total</strong> que ocuparán todas</p>
 </section>
-</foreignObject><foreignObject width="1280" height="720" data-marpit-advanced-background="pseudo"><section style="" data-marpit-advanced-background="pseudo" data-marpit-pagination="14" data-marpit-pagination-total="37"></section></foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section data-paginate="true" data-theme="marp-incide" data-heading-divider="2" data-marpit-pagination="15" data-marpit-pagination-total="37" style="--paginate:true;--theme:marp-incide;--heading-divider:2;" data-marpit-advanced-background="background"><div data-marpit-advanced-background-container="true" data-marpit-advanced-background-direction="horizontal"><figure style="background-image:url(&quot;http://i.giphy.com/90F8aUepslB84.gif&quot;);"></figure></div></section></foreignObject><foreignObject width="1280" height="720"><section id="15" data-paginate="true" data-theme="marp-incide" data-heading-divider="2" data-marpit-pagination="15" data-marpit-pagination-total="37" style="--paginate:true;--theme:marp-incide;--heading-divider:2;" data-marpit-advanced-background="content">
+</foreignObject><foreignObject width="1280" height="720" data-marpit-advanced-background="pseudo"><section style="" data-marpit-advanced-background="pseudo" data-marpit-pagination="14" data-marpit-pagination-total="39"></section></foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section data-paginate="true" data-theme="marp-incide" data-heading-divider="2" data-marpit-pagination="15" data-marpit-pagination-total="39" style="--paginate:true;--theme:marp-incide;--heading-divider:2;" data-marpit-advanced-background="background"><div data-marpit-advanced-background-container="true" data-marpit-advanced-background-direction="horizontal"><figure style="background-image:url(&quot;http://i.giphy.com/90F8aUepslB84.gif&quot;);"></figure></div></section></foreignObject><foreignObject width="1280" height="720"><section id="15" data-paginate="true" data-theme="marp-incide" data-heading-divider="2" data-marpit-pagination="15" data-marpit-pagination-total="39" style="--paginate:true;--theme:marp-incide;--heading-divider:2;" data-marpit-advanced-background="content">
 <p>GIFs, videos...</p>
 <p>Esta transparencia también es un ejemplo de nueva transparencia sin título</p>
 </section>
-</foreignObject><foreignObject width="1280" height="720" data-marpit-advanced-background="pseudo"><section style="" data-marpit-advanced-background="pseudo" data-marpit-pagination="15" data-marpit-pagination-total="37"></section></foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="16" data-paginate="true" data-class="lead" data-background-image="url('https://cdn.shopify.com/s/files/1/0200/7466/articles/shopify-new-features_1000x.jpeg')" data-theme="marp-incide" data-heading-divider="2" class="lead" data-marpit-pagination="16" data-marpit-pagination-total="37" style="--paginate:true;--class:lead;--background-image:url('https://cdn.shopify.com/s/files/1/0200/7466/articles/shopify-new-features_1000x.jpeg');--theme:marp-incide;--heading-divider:2;background-image:url('https://cdn.shopify.com/s/files/1/0200/7466/articles/shopify-new-features_1000x.jpeg');background-position:center;background-repeat:no-repeat;background-size:cover;">
+</foreignObject><foreignObject width="1280" height="720" data-marpit-advanced-background="pseudo"><section style="" data-marpit-advanced-background="pseudo" data-marpit-pagination="15" data-marpit-pagination-total="39"></section></foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="16" data-paginate="true" data-class="lead" data-background-image="url('https://cdn.shopify.com/s/files/1/0200/7466/articles/shopify-new-features_1000x.jpeg')" data-theme="marp-incide" data-heading-divider="2" class="lead" data-marpit-pagination="16" data-marpit-pagination-total="39" style="--paginate:true;--class:lead;--background-image:url('https://cdn.shopify.com/s/files/1/0200/7466/articles/shopify-new-features_1000x.jpeg');--theme:marp-incide;--heading-divider:2;background-image:url('https://cdn.shopify.com/s/files/1/0200/7466/articles/shopify-new-features_1000x.jpeg');background-position:center;background-repeat:no-repeat;background-size:cover;">
 <h1>Jugar con los estilos</h1>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="17" data-paginate="true" data-background-image="url('themes/back-starline.jpg')" data-theme="marp-incide" data-heading-divider="2" data-marpit-pagination="17" data-marpit-pagination-total="37" style="--paginate:true;--background-image:url('themes/back-starline.jpg');--theme:marp-incide;--heading-divider:2;background-image:url('themes/back-starline.jpg');background-position:center;background-repeat:no-repeat;background-size:cover;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="17" data-paginate="true" data-background-image="url('themes/back-starline.jpg')" data-theme="marp-incide" data-heading-divider="2" data-marpit-pagination="17" data-marpit-pagination-total="39" style="--paginate:true;--background-image:url('themes/back-starline.jpg');--theme:marp-incide;--heading-divider:2;background-image:url('themes/back-starline.jpg');background-position:center;background-repeat:no-repeat;background-size:cover;">
 <h2>Uso de directivas</h2>
 
 <p>Controla el estilo de una transparencia con <a href="https://marpit.marp.app/directives">directivas</a> justo después del título.</p>
@@ -324,7 +338,7 @@ _backgroundImage: url(&#x27;themes/back-starline.jpg&#x27;)
 <p>Background: <a href="http://www.freepik.com">Designed by starline / Freepik</a>.</p>
 </blockquote>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="18" data-paginate="true" data-header="![width:5em grayscale invert brightness:2](https://www.incide.es/images/incide_logo.png)" data-footer="Pie personalizado con [enlace](http://www.incide.es)" data-background-image="linear-gradient(to bottom, #ffffff, #ffaa00)" data-color="red" data-theme="marp-incide" data-heading-divider="2" data-marpit-pagination="18" data-marpit-pagination-total="37" style="--paginate:true;--footer:Pie personalizado con [enlace](http://www.incide.es);--background-image:linear-gradient(to bottom, #ffffff, #ffaa00);--color:red;--theme:marp-incide;--heading-divider:2;color:red;background-image:linear-gradient(to bottom, #ffffff, #ffaa00);background-position:center;background-repeat:no-repeat;background-size:cover;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="18" data-paginate="true" data-header="![width:5em grayscale invert brightness:2](https://www.incide.es/images/incide_logo.png)" data-footer="Pie personalizado con [enlace](http://www.incide.es)" data-background-image="linear-gradient(to bottom, #ffffff, #ffaa00)" data-color="red" data-theme="marp-incide" data-heading-divider="2" data-marpit-pagination="18" data-marpit-pagination-total="39" style="--paginate:true;--footer:Pie personalizado con [enlace](http://www.incide.es);--background-image:linear-gradient(to bottom, #ffffff, #ffaa00);--color:red;--theme:marp-incide;--heading-divider:2;color:red;background-image:linear-gradient(to bottom, #ffffff, #ffaa00);background-position:center;background-repeat:no-repeat;background-size:cover;">
 <header><img src="https://www.incide.es/images/incide_logo.png" alt="width:5em grayscale invert brightness:2" style="width:5em;filter:grayscale(1) invert(1) brightness(2);" /></header>
 <h2><svg data-marp-fitting="svg"><foreignObject><span data-marp-fitting-svg-content> Otros ejemplos</span></foreignObject></svg></h2>
 
@@ -341,7 +355,7 @@ _</span>color: red
 <p>Hacer que el título ocupe toda la línea, degradados, pie y cabecera...</p>
 <footer>Pie personalizado con <a href="http://www.incide.es">enlace</a></footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="19" data-marpit-scope-OcJJqRDJ="" data-paginate="true" data-theme="marp-incide" data-heading-divider="2" data-marpit-pagination="19" data-marpit-pagination-total="37" style="--paginate:true;--theme:marp-incide;--heading-divider:2;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="19" data-marpit-scope-jFHho5b2="" data-paginate="true" data-theme="marp-incide" data-heading-divider="2" data-marpit-pagination="19" data-marpit-pagination-total="39" style="--paginate:true;--theme:marp-incide;--heading-divider:2;">
 <h2>Si quieres personalización total...</h2>
 <pre><code class="language-html"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap><span class="hljs-tag">&lt;<span class="hljs-name">style</span> <span class="hljs-attr">scoped</span>&gt;</span><span class="css">
     <span class="hljs-selector-class">.mycustomspan</span> {
@@ -360,7 +374,7 @@ Esto es un párrafo <span class="hljs-tag">&lt;<span class="hljs-name">span</spa
 <p>Esto es un párrafo <span class="mycustomspan">y esto unas cuantas palabras</span>.</p>
 <p>Para que funcione el <code>span</code> se tiene que activar <code>--html</code> en las opciones del compilador Marp o en la sección Marp de VSCode. Es un riesgo si abres presentaciones de atacantes, porque pueden incluir cualquier script</p>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="20" data-marpit-scope-18KiS1DI="" data-marpit-fragments="3" data-paginate="true" data-theme="marp-incide" data-heading-divider="2" data-marpit-pagination="20" data-marpit-pagination-total="37" style="--paginate:true;--theme:marp-incide;--heading-divider:2;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="20" data-marpit-scope-WthdVeWg="" data-marpit-fragments="3" data-paginate="true" data-theme="marp-incide" data-heading-divider="2" data-marpit-pagination="20" data-marpit-pagination-total="39" style="--paginate:true;--theme:marp-incide;--heading-divider:2;">
 <ul>
 <li>Con <code>scoped</code> esto puedes cambiar el estilo de las listas</li>
 </ul>
@@ -370,17 +384,17 @@ Esto es un párrafo <span class="hljs-tag">&lt;<span class="hljs-name">span</spa
 <li data-marpit-fragment="3">...una a una</li>
 </ul>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="21" data-marpit-scope-Crn78QdO="" data-marpit-fragments="2" data-paginate="true" data-class="center" data-theme="marp-incide" data-heading-divider="2" class="center" data-marpit-pagination="21" data-marpit-pagination-total="37" style="--paginate:true;--class:center;--theme:marp-incide;--heading-divider:2;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="21" data-marpit-scope-KrCjqvtc="" data-marpit-fragments="2" data-paginate="true" data-class="center" data-theme="marp-incide" data-heading-divider="2" class="center" data-marpit-pagination="21" data-marpit-pagination-total="39" style="--paginate:true;--class:center;--theme:marp-incide;--heading-divider:2;">
 <p>Ejemplo sencillo de imágenes que aparecen</p>
 <ul>
 <li data-marpit-fragment="1"><img src="https://picsum.photos/720?image=20" alt="w:20em" style="width:20em;" /></li>
 <li data-marpit-fragment="2"><img src="https://picsum.photos/720?image=21" alt="w:20em" style="width:20em;" /></li>
 </ul>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="22" data-paginate="true" data-class="lead" data-theme="marp-incide" data-heading-divider="2" class="lead" data-marpit-pagination="22" data-marpit-pagination-total="37" style="--paginate:true;--class:lead;--theme:marp-incide;--heading-divider:2;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="22" data-paginate="true" data-class="lead" data-theme="marp-incide" data-heading-divider="2" class="lead" data-marpit-pagination="22" data-marpit-pagination-total="39" style="--paginate:true;--class:lead;--theme:marp-incide;--heading-divider:2;">
 <h1>Tema INCIDE</h1>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="23" data-paginate="true" data-class="smaller-font" data-theme="marp-incide" data-heading-divider="2" class="smaller-font" data-marpit-pagination="23" data-marpit-pagination-total="37" style="--paginate:true;--class:smaller-font;--theme:marp-incide;--heading-divider:2;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="23" data-paginate="true" data-class="smaller-font" data-theme="marp-incide" data-heading-divider="2" class="smaller-font" data-marpit-pagination="23" data-marpit-pagination-total="39" style="--paginate:true;--class:smaller-font;--theme:marp-incide;--heading-divider:2;">
 <h2>Tema personalizado INCIDE</h2>
 
 <p><code>theme: marp-incide</code> en el preámbulo. Su path tiene que estar registrado en VSCode</p>
@@ -390,8 +404,8 @@ Esto es un párrafo <span class="hljs-tag">&lt;<span class="hljs-name">span</spa
 <ul>
 <li><em>lead</em> / <em>lead2</em> / <em>first-slide</em>: inicio de sección</li>
 <li><em>cool-list</em> / <em>cool-list-animated</em> para listas especiales</li>
-<li><em>two-columns</em>: transparencia con dos columnas</li>
-<li><em>two-columns-33</em>: transparencia con dos columnas, la de la izquierda es más pequeña</li>
+<li><em>two-columns</em> / <em>two-columns-33</em>: transparencia con dos columnas</li>
+<li><em>two-columns-list</em>: lista en dos o más columnas</li>
 <li><em>smaller-font</em> / <em>smallest-font</em>: transparencia con letra más pequeña</li>
 <li><em>center</em>: centra el contenido de texto en la transparencia</li>
 <li><em>with-info</em> / <em>with-success</em>  / <em>with-warning</em>: el último párrafo es una caja <em>info</em> / <em>success</em> / <em>warning</em></li>
@@ -402,43 +416,53 @@ Esto es un párrafo <span class="hljs-tag">&lt;<span class="hljs-name">span</spa
 <p>Utiliza <em>blockquote</em> para &quot;notas a pie de página&quot;</p>
 </blockquote>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="24" data-paginate="true" data-class="cool-list" data-theme="marp-incide" data-heading-divider="2" class="cool-list" data-marpit-pagination="24" data-marpit-pagination-total="37" style="--paginate:true;--class:cool-list;--theme:marp-incide;--heading-divider:2;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="24" data-paginate="true" data-class="cool-list" data-theme="marp-incide" data-heading-divider="2" class="cool-list" data-marpit-pagination="24" data-marpit-pagination-total="39" style="--paginate:true;--class:cool-list;--theme:marp-incide;--heading-divider:2;">
 <h2>cool-list</h2>
 
 <ol>
-<li><em>Uno</em></li>
+<li><em>Uno</em>
+<ul>
+<li>Uno y medio</li>
+<li>y tres cuartos</li>
+</ul>
+</li>
 <li><em>Dos</em>
 <ol>
-<li><em>Tres</em></li>
-<li><em>Cuatro</em></li>
+<li><em>Dos y medio</em></li>
+<li><em>Dos y un poco más</em></li>
 </ol>
 </li>
-<li><em>Cinco</em></li>
+<li><em>Tres</em></li>
 </ol>
 
 <blockquote>
 <p>Basado en: <a href="https://catalin.red/css3-ordered-list-styles/">https://catalin.red/css3-ordered-list-styles/</a></p>
 </blockquote>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="25" data-paginate="true" data-class="cool-list-animated" data-theme="marp-incide" data-heading-divider="2" class="cool-list-animated" data-marpit-pagination="25" data-marpit-pagination-total="37" style="--paginate:true;--class:cool-list-animated;--theme:marp-incide;--heading-divider:2;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="25" data-marpit-scope-JvfGkOvy="" data-paginate="true" data-class="cool-list-animated" data-theme="marp-incide" data-heading-divider="2" class="cool-list-animated" data-marpit-pagination="25" data-marpit-pagination-total="39" style="--paginate:true;--class:cool-list-animated;--theme:marp-incide;--heading-divider:2;">
 <h2>cool-list-animated</h2>
 
 <p>Un estilo alternativo de lista</p>
 <ol>
-<li><em>Uno</em></li>
-<li><em>Dos</em>
+<li><em>Seis (nota que podemos empezar en cualquier número)</em>
+<ul>
+<li><code>&lt;style scoped&gt;ol { counter-reset: li 5; }&lt;/style&gt;</code></li>
+<li>y tres cuartos</li>
+</ul>
+</li>
+<li><em>Siete</em>
 <ol>
-<li><em>Tres</em></li>
-<li><em>Cuatro</em></li>
+<li><em>y medio</em></li>
+<li><em>y un poco más</em></li>
 </ol>
 </li>
-<li><em>Cinco</em></li>
+<li><em>Ocho</em></li>
 </ol>
 <blockquote>
 <p>Basado en: <a href="https://catalin.red/css3-ordered-list-styles/">https://catalin.red/css3-ordered-list-styles/</a></p>
 </blockquote>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="26" data-paginate="true" data-class="two-columns" data-theme="marp-incide" data-heading-divider="2" class="two-columns" data-marpit-pagination="26" data-marpit-pagination-total="37" style="--paginate:true;--class:two-columns;--theme:marp-incide;--heading-divider:2;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="26" data-paginate="true" data-class="two-columns" data-theme="marp-incide" data-heading-divider="2" class="two-columns" data-marpit-pagination="26" data-marpit-pagination-total="39" style="--paginate:true;--class:two-columns;--theme:marp-incide;--heading-divider:2;">
 <h2>two-columns</h2>
 
 <table>
@@ -475,7 +499,7 @@ Esto es un párrafo <span class="hljs-tag">&lt;<span class="hljs-name">span</spa
 </ul>
 <p>El siguiente elemento único va después de todo y se extiende hasta el final de la transparencia.</p>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="27" data-paginate="true" data-class="two-columns-33 with-header" data-header="Header de ejemplo" data-footer="Footer de ejemplo, con [link](https://www.incide.es)" data-theme="marp-incide" data-heading-divider="2" class="two-columns-33 with-header" data-marpit-pagination="27" data-marpit-pagination-total="37" style="--paginate:true;--class:two-columns-33 with-header;--header:Header de ejemplo;--footer:Footer de ejemplo, con [link](https://www.incide.es);--theme:marp-incide;--heading-divider:2;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="27" data-paginate="true" data-class="two-columns-33 with-header" data-header="Header de ejemplo" data-footer="Footer de ejemplo, con [link](https://www.incide.es)" data-theme="marp-incide" data-heading-divider="2" class="two-columns-33 with-header" data-marpit-pagination="27" data-marpit-pagination-total="39" style="--paginate:true;--class:two-columns-33 with-header;--header:Header de ejemplo;--footer:Footer de ejemplo, con [link](https://www.incide.es);--theme:marp-incide;--heading-divider:2;">
 <header>Header de ejemplo</header>
 <h2>two-columns-33</h2>
 
@@ -484,14 +508,96 @@ Esto es un párrafo <span class="hljs-tag">&lt;<span class="hljs-name">span</spa
 <p>Si tienes un header, añade la clase <code>with-header</code> como en este ejemplo</p>
 <footer>Footer de ejemplo, con <a href="https://www.incide.es">link</a></footer>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="28" data-paginate="true" data-class="smallest-font center with-info" data-theme="marp-incide" data-heading-divider="2" class="smallest-font center with-info" data-marpit-pagination="28" data-marpit-pagination-total="37" style="--paginate:true;--class:smallest-font center with-info;--theme:marp-incide;--heading-divider:2;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="28" data-marpit-scope-9t8z6mKg="" data-paginate="true" data-class="two-columns-list with-warning" data-theme="marp-incide" data-heading-divider="2" class="two-columns-list with-warning" data-marpit-pagination="28" data-marpit-pagination-total="39" style="--paginate:true;--class:two-columns-list with-warning;--theme:marp-incide;--heading-divider:2;">
+<h2>two-columns-list</h2>
+
+<p>Se usa para listas largas que se organizan en dos o más columnas. Mira el código de esta transparencia para configuración.</p>
+<ul>
+<li>Uno, uno, uno y uno y uno y uno y uno y uno
+<ol>
+<li>Uno</li>
+<li>Dos</li>
+</ol>
+</li>
+<li>Dos</li>
+<li>Tres</li>
+<li>Cuatro
+<ol>
+<li>Uno</li>
+</ol>
+</li>
+<li>Cinco</li>
+<li>Seis
+<ol>
+<li>Uno</li>
+<li>Dos</li>
+</ol>
+</li>
+<li>Dos</li>
+<li>Tres</li>
+<li>Cuatro
+<ol>
+<li>Uno</li>
+<li>Dos</li>
+</ol>
+</li>
+<li>Seis
+<ol>
+<li>Uno</li>
+<li>Dos</li>
+</ol>
+</li>
+<li>Dos</li>
+<li>Tres</li>
+<li>Cuatro
+<ol>
+<li>Uno</li>
+<li>Dos</li>
+</ol>
+</li>
+</ul>
+<p>La lista externa es ul, la interna es ol</p>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="29" data-marpit-scope-5sjUbqHt="" data-paginate="true" data-class="cool-list with-warning smaller-font" data-theme="marp-incide" data-heading-divider="2" class="cool-list with-warning smaller-font" data-marpit-pagination="29" data-marpit-pagination-total="39" style="--paginate:true;--class:cool-list with-warning smaller-font;--theme:marp-incide;--heading-divider:2;">
+<h2>Listas en dos columnas con cool list</h2>
+
+<p>No uses two-columns-list, necesita estilos especiales. Mira el código de esta transparencia</p>
+<ol>
+<li><em>Uno, uno, uno y uno y uno y uno y uno y uno</em>
+<ul>
+<li>y otro</li>
+<li>y otro</li>
+</ul>
+</li>
+<li><em>Dos</em></li>
+<li><em>Tres</em>
+<ul>
+<li>y otro</li>
+<li>y otro</li>
+</ul>
+</li>
+<li><em>Cuatro uno</em>
+<ul>
+<li>y otro</li>
+<li>y otro</li>
+</ul>
+</li>
+<li><em>Cinco</em>
+<ul>
+<li>uno, uno y uno y uno y uno y uno y uno y uno y uno, uno y uno y uno y uno y uno y uno</li>
+</ul>
+</li>
+</ol>
+<p>La lista externa es ol, la interna ul</p>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="30" data-paginate="true" data-class="smallest-font center with-info" data-theme="marp-incide" data-heading-divider="2" class="smallest-font center with-info" data-marpit-pagination="30" data-marpit-pagination-total="39" style="--paginate:true;--class:smallest-font center with-info;--theme:marp-incide;--heading-divider:2;">
 <h2><svg data-marp-fitting="svg"><foreignObject><span data-marp-fitting-svg-content> smallest-font</span></foreignObject></svg></h2>
 
 <p>(y también ejemplo de título <em>fit</em> y clase <em>center</em> y <em>with-info</em>)</p>
 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce vel quam lobortis, egestas ex eu, dictum nisi. Nullam accumsan magna augue, vitae tempor arcu porttitor quis. Nam sit amet turpis sit amet tellus lacinia convallis. Nam suscipit sollicitudin orci, quis vehicula velit. Pellentesque viverra lacus nec velit fermentum suscipit sit amet eu erat. Mauris finibus massa eu eros luctus, nec congue velit lobortis. Quisque rhoncus velit porta tristique consectetur. Praesent sagittis facilisis ex in facilisis. Curabitur vel vulputate libero. Sed leo metus, maximus non lectus non, vestibulum scelerisque ipsum. Nunc convallis, felis vitae commodo iaculis, tellus nisl sollicitudin ligula, quis consectetur sem tellus vitae lorem. Duis rhoncus tristique volutpat. Nunc erat ante, pellentesque non ligula id, gravida vehicula lacus.</p>
 <p>Tambien está la clase <code>smaller-font</code>, que es un poco más grande.</p>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="29" data-paginate="true" data-class="with-success" data-theme="marp-incide" data-heading-divider="2" class="with-success" data-marpit-pagination="29" data-marpit-pagination-total="37" style="--paginate:true;--class:with-success;--theme:marp-incide;--heading-divider:2;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="31" data-paginate="true" data-class="with-success" data-theme="marp-incide" data-heading-divider="2" class="with-success" data-marpit-pagination="31" data-marpit-pagination-total="39" style="--paginate:true;--class:with-success;--theme:marp-incide;--heading-divider:2;">
 <h2>Cajas: <em>success</em></h2>
 <pre><code class="language-html"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap><span class="hljs-comment">&lt;!-- _class: with-success --&gt;</span>
 </span></span></foreignObject></svg></code></pre>
@@ -505,20 +611,20 @@ Esto es un párrafo <span class="hljs-tag">&lt;<span class="hljs-name">span</spa
 \end{aligned}
 </annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:9.000000000000002em;vertical-align:-4.250000000000001em;"></span><span class="mord"><span class="mtable"><span class="col-align-r"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:4.750000000000001em;"><span style="top:-6.910000000000001em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mord mathnormal">c</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">⊕</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord"><span class="mord mathnormal">c</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span><span style="top:-5.41em;"><span class="pstrut" style="height:3em;"></span><span class="mord"></span></span><span style="top:-3.9099999999999993em;"><span class="pstrut" style="height:3em;"></span><span class="mord"></span></span><span style="top:-2.4099999999999993em;"><span class="pstrut" style="height:3em;"></span><span class="mord"></span></span><span style="top:-0.9099999999999997em;"><span class="pstrut" style="height:3em;"></span><span class="mord"></span></span><span style="top:0.5900000000000007em;"><span class="pstrut" style="height:3em;"></span><span class="mord"></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:4.250000000000001em;"><span></span></span></span></span></span><span class="col-align-l"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:4.750000000000001em;"><span style="top:-6.910000000000001em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03148em;">k</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.15139200000000003em;"><span style="top:-2.5500000000000003em;margin-left:-0.03148em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord text mtight"><span class="mord mtight">g</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">⊕</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord"><span class="mord mathnormal">m</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">⊕</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03148em;">k</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.15139200000000003em;"><span style="top:-2.5500000000000003em;margin-left:-0.03148em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord text mtight"><span class="mord mtight">g</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">⊕</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord"><span class="mord mathnormal">m</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span></span></span><span style="top:-5.41em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03148em;">k</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.15139200000000003em;"><span style="top:-2.5500000000000003em;margin-left:-0.03148em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord text mtight"><span class="mord mtight">g</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">⊕</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord"><span class="mord mathnormal">m</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">⊕</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03148em;">k</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.15139200000000003em;"><span style="top:-2.5500000000000003em;margin-left:-0.03148em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord text mtight"><span class="mord mtight">g</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">⊕</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord"><span class="mord mathnormal">m</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span><span style="top:-3.9099999999999993em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03148em;">k</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.15139200000000003em;"><span style="top:-2.5500000000000003em;margin-left:-0.03148em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord text mtight"><span class="mord mtight">g</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">⊕</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03148em;">k</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.15139200000000003em;"><span style="top:-2.5500000000000003em;margin-left:-0.03148em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord text mtight"><span class="mord mtight">g</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">⊕</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord"><span class="mord mathnormal">m</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">⊕</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord"><span class="mord mathnormal">m</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span><span style="top:-2.4099999999999993em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03148em;">k</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.15139200000000003em;"><span style="top:-2.5500000000000003em;margin-left:-0.03148em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord text mtight"><span class="mord mtight">g</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">⊕</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03148em;">k</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.15139200000000003em;"><span style="top:-2.5500000000000003em;margin-left:-0.03148em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord text mtight"><span class="mord mtight">g</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">⊕</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal">m</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">⊕</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord"><span class="mord mathnormal">m</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span></span></span><span style="top:-0.9099999999999997em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mopen">(</span><span class="mopen">{</span><span class="mord">0</span><span class="mord">0</span><span class="mord">0</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="minner">⋯</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">0</span><span class="mord">0</span><span class="mord">0</span><span class="mclose">}</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">⊕</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal">m</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">⊕</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord"><span class="mord mathnormal">m</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span></span></span><span style="top:0.5900000000000007em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mord"><span class="mord mathnormal">m</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">⊕</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord"><span class="mord mathnormal">m</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:4.250000000000001em;"><span></span></span></span></span></span></span></span></span></span></span></span></span></span></foreignObject></svg></p><p>Por supuesto, puedes añadir fórmulas matemáticas, tanto en párrafos como inline <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn><mo>×</mo><mn>2</mn><mo>=</mo><mn>4</mn></mrow><annotation encoding="application/x-tex">2 \times 2 = 4</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="mord">2</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">2</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">4</span></span></span></span> y también utilizar emojis <img class="emoji" draggable="false" alt="🙆" src="https://twemoji.maxcdn.com/2/svg/1f646.svg" data-marp-twemoji=""/>  <img class="emoji" draggable="false" alt="🏃" src="https://twemoji.maxcdn.com/2/svg/1f3c3.svg" data-marp-twemoji=""/> <img class="emoji" draggable="false" alt="💓" src="https://twemoji.maxcdn.com/2/svg/1f493.svg" data-marp-twemoji=""/>  y símbolos ⇛ ❤ ⚝</p>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="30" data-paginate="true" data-class="with-warning" data-theme="marp-incide" data-heading-divider="2" class="with-warning" data-marpit-pagination="30" data-marpit-pagination-total="37" style="--paginate:true;--class:with-warning;--theme:marp-incide;--heading-divider:2;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="32" data-paginate="true" data-class="with-warning" data-theme="marp-incide" data-heading-divider="2" class="with-warning" data-marpit-pagination="32" data-marpit-pagination-total="39" style="--paginate:true;--class:with-warning;--theme:marp-incide;--heading-divider:2;">
 <h2>Cajas: <em>warning</em></h2>
 <pre><code class="language-html"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap><span class="hljs-comment">&lt;!-- _class: with-warning --&gt;</span>
 </span></span></foreignObject></svg></code></pre>
 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce vel quam lobortis, egestas ex eu, dictum nisi. Nullam accumsan magna augue, vitae tempor arcu porttitor quis.</p>
 <p>⚠ Solo puede haber una caja <em>warning</em>, <em>info</em> o <em>success</em> por transparencia. Solo el último párrafo se mete en una caja.</p>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="31" data-paginate="true" data-header="En el día a día" data-class="lead" data-background-image="url('https://cdn.shopify.com/s/files/1/0200/7466/files/shopify-new-features-research.jpeg')" data-theme="marp-incide" data-heading-divider="2" class="lead" data-marpit-pagination="31" data-marpit-pagination-total="37" style="--paginate:true;--header:En el día a día;--class:lead;--background-image:url('https://cdn.shopify.com/s/files/1/0200/7466/files/shopify-new-features-research.jpeg');--theme:marp-incide;--heading-divider:2;background-image:url('https://cdn.shopify.com/s/files/1/0200/7466/files/shopify-new-features-research.jpeg');background-position:center;background-repeat:no-repeat;background-size:cover;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="33" data-paginate="true" data-header="En el día a día" data-class="lead" data-background-image="url('https://cdn.shopify.com/s/files/1/0200/7466/files/shopify-new-features-research.jpeg')" data-theme="marp-incide" data-heading-divider="2" class="lead" data-marpit-pagination="33" data-marpit-pagination-total="39" style="--paginate:true;--header:En el día a día;--class:lead;--background-image:url('https://cdn.shopify.com/s/files/1/0200/7466/files/shopify-new-features-research.jpeg');--theme:marp-incide;--heading-divider:2;background-image:url('https://cdn.shopify.com/s/files/1/0200/7466/files/shopify-new-features-research.jpeg');background-position:center;background-repeat:no-repeat;background-size:cover;">
 <header>En el día a día</header>
 <h1>En el día a día</h1>
 
 <p>Sí, puedes añadir fondos personalizados a los inicios de secciones</p>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="32" data-paginate="true" data-header="En el día a día" data-class="with-info" data-theme="marp-incide" data-heading-divider="2" class="with-info" data-marpit-pagination="32" data-marpit-pagination-total="37" style="--paginate:true;--header:En el día a día;--class:with-info;--theme:marp-incide;--heading-divider:2;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="34" data-paginate="true" data-header="En el día a día" data-class="with-info" data-theme="marp-incide" data-heading-divider="2" class="with-info" data-marpit-pagination="34" data-marpit-pagination-total="39" style="--paginate:true;--header:En el día a día;--class:with-info;--theme:marp-incide;--heading-divider:2;">
 <header>En el día a día</header>
 <h2>Comparando con RevealJS</h2>
 
@@ -528,11 +634,11 @@ Esto es un párrafo <span class="hljs-tag">&lt;<span class="hljs-name">span</spa
 <li>HackMD no soporta directamente Marp, pero sí RevealJS</li>
 <li>El plugin para VSCode de Marp es superior y eso convierte a Marp (<strong>¡opinión!</strong>) en más productivo: exportación a PDF perfecta, preview más rápido</li>
 <li>RevealJS tiene ayudas espectaculares durante la presentación: alarmas, modo pizarra, movimiento en dos dimensiones...</li>
-<li>Los temas MARP los tengo <strong>mucho</strong> más desarrollados</li>
+<li>Los temas Marp los tengo <strong>mucho</strong> más desarrollados</li>
 </ul>
 <p><strong>Mi opinión</strong>: es mucho más rápido <strong>escribir</strong> una presentación tradicional en Marp, pero es más fácil y dinámico <strong>presentar</strong> con RevealJS.</p>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="33" data-paginate="true" data-header="En el día a día" data-class="two-columns with-header" data-theme="marp-incide" data-heading-divider="2" class="two-columns with-header" data-marpit-pagination="33" data-marpit-pagination-total="37" style="--paginate:true;--header:En el día a día;--class:two-columns with-header;--theme:marp-incide;--heading-divider:2;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="35" data-paginate="true" data-header="En el día a día" data-class="two-columns with-header" data-theme="marp-incide" data-heading-divider="2" class="two-columns with-header" data-marpit-pagination="35" data-marpit-pagination-total="39" style="--paginate:true;--header:En el día a día;--class:two-columns with-header;--theme:marp-incide;--heading-divider:2;">
 <header>En el día a día</header>
 <h2>Convertir de RevealJS a Marp y viceversa</h2>
 
@@ -546,7 +652,7 @@ Esto es un párrafo <span class="hljs-tag">&lt;<span class="hljs-name">span</spa
 <p>Ejemplo de <em>two-columns</em> con imagen, alternativa a <code>bg right</code></p>
 </blockquote>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="34" data-paginate="true" data-header="En el día a día" data-theme="marp-incide" data-heading-divider="2" data-marpit-pagination="34" data-marpit-pagination-total="37" style="--paginate:true;--header:En el día a día;--theme:marp-incide;--heading-divider:2;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="36" data-paginate="true" data-header="En el día a día" data-theme="marp-incide" data-heading-divider="2" data-marpit-pagination="36" data-marpit-pagination-total="39" style="--paginate:true;--header:En el día a día;--theme:marp-incide;--heading-divider:2;">
 <header>En el día a día</header>
 <h2>Ejemplos de conversiones</h2>
 <p>RevealJS:</p>
@@ -562,19 +668,19 @@ Esto es un párrafo <span class="hljs-tag">&lt;<span class="hljs-name">span</spa
 ![<span class="hljs-string">width:20em</span>](<span class="hljs-link">imagen.jpg</span>){}
 </span></span></span></foreignObject></svg></code></pre>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="35" data-paginate="true" data-header="Notas adicionales" data-class="lead" data-theme="marp-incide" data-heading-divider="2" class="lead" data-marpit-pagination="35" data-marpit-pagination-total="37" style="--paginate:true;--header:Notas adicionales;--class:lead;--theme:marp-incide;--heading-divider:2;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="37" data-paginate="true" data-header="Notas adicionales" data-class="lead" data-theme="marp-incide" data-heading-divider="2" class="lead" data-marpit-pagination="37" data-marpit-pagination-total="39" style="--paginate:true;--header:Notas adicionales;--class:lead;--theme:marp-incide;--heading-divider:2;">
 <header>Notas adicionales</header>
 <h1>Notas adicionales</h1>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="36" data-paginate="true" data-header="Notas adicionales" data-theme="marp-incide" data-heading-divider="2" data-marpit-pagination="36" data-marpit-pagination-total="37" style="--paginate:true;--header:Notas adicionales;--theme:marp-incide;--heading-divider:2;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="38" data-paginate="true" data-header="Notas adicionales" data-theme="marp-incide" data-heading-divider="2" data-marpit-pagination="38" data-marpit-pagination-total="39" style="--paginate:true;--header:Notas adicionales;--theme:marp-incide;--heading-divider:2;">
 <header>Notas adicionales</header>
 <ul>
 <li>En 2021, las transparencias son simples y sin animaciones</li>
-<li>No luches contra el sistema de presentaciones: si no puedes hacer algo, no lo hagas o pon una imagen</li>
+<li>No luches contra el sistema de presentaciones: si no puedes hacer algo, no pierdas demasiado tiempo buscando cómo</li>
 <li>Puedes usar <code>header: Título de sección</code> como directiva en las transparencias de sección</li>
 </ul>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="37" data-paginate="true" data-header="Notas adicionales" data-theme="marp-incide" data-heading-divider="2" data-marpit-pagination="37" data-marpit-pagination-total="37" style="--paginate:true;--header:Notas adicionales;--theme:marp-incide;--heading-divider:2;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="39" data-paginate="true" data-header="Notas adicionales" data-theme="marp-incide" data-heading-divider="2" data-marpit-pagination="39" data-marpit-pagination-total="39" style="--paginate:true;--header:Notas adicionales;--theme:marp-incide;--heading-divider:2;">
 <header>Notas adicionales</header>
 <h2>Pizarra</h2>
 <p>Puede añadirse JavaScript genérico en la última transparencia</p>
@@ -602,9 +708,15 @@ Para la barra de progreso, mira en la parte de arriba de la transparencia</p></d
 
 Nota que esto es una diferencia con respecto a otros dialectos como HackMD o RevealJS, que usan llaves {} para los atributos adicionales.</p></div><div class="bespoke-marp-note" data-index="11" tabindex="0"><p>El orden de los filtros gráficos importa. No es lo mismo desaturar y después contrastar que al revés</p></div><div class="bespoke-marp-note" data-index="14" tabindex="0"><p>Nota: VSCode no soporta previsualización de GIFs cuando están en el background</p></div><div class="bespoke-marp-note" data-index="19" tabindex="0"><p>Fíjate: el primer item es un guion para que aparezca desde el principio</p></div><div class="bespoke-marp-note" data-index="23" tabindex="0"><p>Hay que meter obligatoriamente los items entre asteriscos o enlaces
 
-Se puede usar en el índice</p></div><div class="bespoke-marp-note" data-index="28" tabindex="0"><p>La diferencia entre emojis y símbolos es operativa de editores de texto: mientras que los emojis se entrar escribiendo :emoji:, los símbolos se copianpegan de alún sitio como https://unicode-table.com. En realidad, todo es unicode.
+Se puede usar en el índice</p></div><div class="bespoke-marp-note" data-index="25" tabindex="0"><p>- Cualquier elemento después del último volverá a estar en formato columnas
+- Para poner párrafos en las columnas, usa listas pero oculta los puntos:
 
-En la lista anterior he usado adrede símbolos que la fuente por defecto no tiene instalada, para probar cómo salen</p></div><div class="bespoke-marp-note" data-index="31" tabindex="0"><p>Las animaciones entre transparencias las tiene que ofrecer &quot;una librería de alto nivel&quot; que use Marp: https://github.com/marp-team/marp-core/issues/110</p></div><script>!function(){"use strict";var e=function(e,t){var n,r=1===(e.parent||e).nodeType?e.parent||e:document.querySelector(e.parent||e),s=[].filter.call("string"==typeof e.slides?r.querySelectorAll(e.slides):e.slides||r.children,(function(e){return"SCRIPT"!==e.nodeName})),a={},i=function(e,t){return(t=t||{}).index=s.indexOf(e),t.slide=e,t},o=function(e,t){a[e]=(a[e]||[]).filter((function(e){return e!==t}))},l=function(e,t){return(a[e]||[]).reduce((function(e,n){return e&&!1!==n(t)}),!0)},c=function(e,t){s[e]&&(n&&l("deactivate",i(n,t)),n=s[e],l("activate",i(n,t)))},d=function(e,t){var r=s.indexOf(n)+e;l(e>0?"next":"prev",i(n,t))&&c(r,t)},u={off:o,on:function(e,t){return(a[e]||(a[e]=[])).push(t),o.bind(null,e,t)},fire:l,slide:function(e,t){if(!arguments.length)return s.indexOf(n);l("slide",i(s[e],t))&&c(e,t)},next:d.bind(null,1),prev:d.bind(null,-1),parent:r,slides:s,destroy:function(e){l("destroy",i(n,e)),a={}}};return(t||[]).forEach((function(e){e(u)})),n||c(0),u};function t(e){e.parent.classList.add("bespoke-marp-parent"),e.slides.forEach((e=>e.classList.add("bespoke-marp-slide"))),e.on("activate",(t=>{const n=t.slide,r=!n.classList.contains("bespoke-marp-active");e.slides.forEach((e=>{e.classList.remove("bespoke-marp-active"),e.setAttribute("aria-hidden","true")})),n.classList.add("bespoke-marp-active"),n.removeAttribute("aria-hidden"),r&&(n.classList.add("bespoke-marp-active-ready"),document.body.clientHeight,n.classList.remove("bespoke-marp-active-ready"))}))}function n(e){let t=0,n=0;Object.defineProperty(e,"fragments",{enumerable:!0,value:e.slides.map((e=>[null,...e.querySelectorAll("[data-marpit-fragment]")]))});const r=r=>void 0!==e.fragments[t][n+r],s=(r,s)=>{t=r,n=s,e.fragments.forEach(((e,t)=>{e.forEach(((e,n)=>{if(null==e)return;const a=t<r||t===r&&n<=s;e.setAttribute("data-bespoke-marp-fragment",a?"active":"inactive"),t===r&&n===s?e.setAttribute("data-bespoke-marp-current-fragment","current"):e.removeAttribute("data-bespoke-marp-current-fragment")}))})),e.fragmentIndex=s;const a={slide:e.slides[r],index:r,fragments:e.fragments[r],fragmentIndex:s};e.fire("fragment",a)};e.on("next",(({fragment:a=!0})=>{if(a){if(r(1))return s(t,n+1),!1;const a=t+1;e.fragments[a]&&s(a,0)}else{const r=e.fragments[t].length;if(n+1<r)return s(t,r-1),!1;const a=e.fragments[t+1];a&&s(t+1,a.length-1)}})),e.on("prev",(({fragment:a=!0})=>{if(r(-1)&&a)return s(t,n-1),!1;const i=t-1;e.fragments[i]&&s(i,e.fragments[i].length-1)})),e.on("slide",(({index:t,fragment:n})=>{let r=0;if(void 0!==n){const s=e.fragments[t];if(s){const{length:e}=s;r=-1===n?e-1:Math.min(Math.max(n,0),e-1)}}s(t,r)})),s(0,0)}
+&lt;style scoped&gt;
+ul { list-style-type: none; }
+li {margin-bottom: 1em}
+&lt;/style&gt;</p></div><div class="bespoke-marp-note" data-index="30" tabindex="0"><p>La diferencia entre emojis y símbolos es operativa de editores de texto: mientras que los emojis se entrar escribiendo :emoji:, los símbolos se copianpegan de alún sitio como https://unicode-table.com. En realidad, todo es unicode.
+
+En la lista anterior he usado adrede símbolos que la fuente por defecto no tiene instalada, para probar cómo salen</p></div><div class="bespoke-marp-note" data-index="33" tabindex="0"><p>Las animaciones entre transparencias las tiene que ofrecer &quot;una librería de alto nivel&quot; que use Marp: https://github.com/marp-team/marp-core/issues/110</p></div><script>!function(){"use strict";var e=function(e,t){var n,r=1===(e.parent||e).nodeType?e.parent||e:document.querySelector(e.parent||e),s=[].filter.call("string"==typeof e.slides?r.querySelectorAll(e.slides):e.slides||r.children,(function(e){return"SCRIPT"!==e.nodeName})),a={},i=function(e,t){return(t=t||{}).index=s.indexOf(e),t.slide=e,t},o=function(e,t){a[e]=(a[e]||[]).filter((function(e){return e!==t}))},l=function(e,t){return(a[e]||[]).reduce((function(e,n){return e&&!1!==n(t)}),!0)},c=function(e,t){s[e]&&(n&&l("deactivate",i(n,t)),n=s[e],l("activate",i(n,t)))},d=function(e,t){var r=s.indexOf(n)+e;l(e>0?"next":"prev",i(n,t))&&c(r,t)},u={off:o,on:function(e,t){return(a[e]||(a[e]=[])).push(t),o.bind(null,e,t)},fire:l,slide:function(e,t){if(!arguments.length)return s.indexOf(n);l("slide",i(s[e],t))&&c(e,t)},next:d.bind(null,1),prev:d.bind(null,-1),parent:r,slides:s,destroy:function(e){l("destroy",i(n,e)),a={}}};return(t||[]).forEach((function(e){e(u)})),n||c(0),u};function t(e){e.parent.classList.add("bespoke-marp-parent"),e.slides.forEach((e=>e.classList.add("bespoke-marp-slide"))),e.on("activate",(t=>{const n=t.slide,r=!n.classList.contains("bespoke-marp-active");e.slides.forEach((e=>{e.classList.remove("bespoke-marp-active"),e.setAttribute("aria-hidden","true")})),n.classList.add("bespoke-marp-active"),n.removeAttribute("aria-hidden"),r&&(n.classList.add("bespoke-marp-active-ready"),document.body.clientHeight,n.classList.remove("bespoke-marp-active-ready"))}))}function n(e){let t=0,n=0;Object.defineProperty(e,"fragments",{enumerable:!0,value:e.slides.map((e=>[null,...e.querySelectorAll("[data-marpit-fragment]")]))});const r=r=>void 0!==e.fragments[t][n+r],s=(r,s)=>{t=r,n=s,e.fragments.forEach(((e,t)=>{e.forEach(((e,n)=>{if(null==e)return;const a=t<r||t===r&&n<=s;e.setAttribute("data-bespoke-marp-fragment",a?"active":"inactive"),t===r&&n===s?e.setAttribute("data-bespoke-marp-current-fragment","current"):e.removeAttribute("data-bespoke-marp-current-fragment")}))})),e.fragmentIndex=s;const a={slide:e.slides[r],index:r,fragments:e.fragments[r],fragmentIndex:s};e.fire("fragment",a)};e.on("next",(({fragment:a=!0})=>{if(a){if(r(1))return s(t,n+1),!1;const a=t+1;e.fragments[a]&&s(a,0)}else{const r=e.fragments[t].length;if(n+1<r)return s(t,r-1),!1;const a=e.fragments[t+1];a&&s(t+1,a.length-1)}})),e.on("prev",(({fragment:a=!0})=>{if(r(-1)&&a)return s(t,n-1),!1;const i=t-1;e.fragments[i]&&s(i,e.fragments[i].length-1)})),e.on("slide",(({index:t,fragment:n})=>{let r=0;if(void 0!==n){const s=e.fragments[t];if(s){const{length:e}=s;r=-1===n?e-1:Math.min(Math.max(n,0),e-1)}}s(t,r)})),s(0,0)}
 /*!
 * screenfull
 * v5.1.0 - 2020-12-24

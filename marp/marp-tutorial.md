@@ -28,8 +28,8 @@ jvera@incide.es
 1. [Introducción a MARP](#3)
 1. [Jugar con los estilos](#16)
 1. [Tema INCIDE](#22)
-1. [En el día a día](#31)
-1. [Notas adicionales](#35)
+1. [En el día a día](#33)
+1. [Notas adicionales](#37)
 
 Esta misma presentación sirve también como ejemplo de Marp
 
@@ -394,8 +394,8 @@ _class: lead
 - Clases especiales:
     - *lead* / *lead2* / *first-slide*: inicio de sección
     - *cool-list* / *cool-list-animated* para listas especiales
-    - *two-columns*: transparencia con dos columnas
-    - *two-columns-33*: transparencia con dos columnas, la de la izquierda es más pequeña
+    - *two-columns* / *two-columns-33*: transparencia con dos columnas
+    - *two-columns-list*: lista en dos o más columnas
     - *smaller-font* / *smallest-font*: transparencia con letra más pequeña
     - *center*: centra el contenido de texto en la transparencia
     - *with-info* / *with-success*  / *with-warning*: el último párrafo es una caja *info* / *success* / *warning*
@@ -406,15 +406,18 @@ _class: lead
 <!-- _class: cool-list -->
 
 1. *Uno*
+    - Uno y medio
+    - y tres cuartos
 1. *Dos*
-    1. *Tres*
-    1. *Cuatro*
-1. *Cinco*
+    1. *Dos y medio*
+    1. *Dos y un poco más*
+1. *Tres*
 
 <!--
 Hay que meter obligatoriamente los items entre asteriscos o enlaces
 
 Se puede usar en el índice
+
 -->
 
 > Basado en: https://catalin.red/css3-ordered-list-styles/
@@ -422,13 +425,17 @@ Se puede usar en el índice
 ## cool-list-animated
 <!-- _class: cool-list-animated -->
 
+<style scoped>ol { counter-reset: li 5; }</style>
+
 Un estilo alternativo de lista
 
-1. *Uno*
-1. *Dos*
-    1. *Tres*
-    1. *Cuatro*
-1. *Cinco*
+1. *Seis (nota que podemos empezar en cualquier número)*
+    - `<style scoped>ol { counter-reset: li 5; }</style>`
+    - y tres cuartos
+1. *Siete*
+    1. *y medio*
+    1. *y un poco más*
+1. *Ocho*
 
 > Basado en: https://catalin.red/css3-ordered-list-styles/
 
@@ -446,6 +453,17 @@ Uno|Dos|Tres|Cuatro|Cinco
 
 El siguiente elemento único va después de todo y se extiende hasta el final de la transparencia.
 
+
+<!--
+- Cualquier elemento después del último volverá a estar en formato columnas
+- Para poner párrafos en las columnas, usa listas pero oculta los puntos:
+
+<style scoped>
+ul { list-style-type: none; }
+li {margin-bottom: 1em}
+</style>
+-->
+
 ## two-columns-33
 <!--
 _class: two-columns-33 with-header
@@ -458,6 +476,81 @@ _footer: Footer de ejemplo, con [link](https://www.incide.es)
 Lo mismo que `two-columns`, pero la izquierda es más estrecha
 
 Si tienes un header, añade la clase `with-header` como en este ejemplo
+
+## two-columns-list
+<!-- _class: two-columns-list with-warning -->
+
+<style scoped>
+ul>* {
+    width: 12em; /* para tres columnas */
+}
+ul ol {
+    list-style-type: lower-latin; /* disc lower-roman decimal */
+}
+</style>
+
+Se usa para listas largas que se organizan en dos o más columnas. Mira el código de esta transparencia para configuración.
+
+- Uno, uno, uno y uno y uno y uno y uno y uno
+    1. Uno
+    1. Dos
+- Dos
+- Tres
+- Cuatro
+    1. Uno
+- Cinco
+- Seis
+    1. Uno
+    1. Dos
+- Dos
+- Tres
+- Cuatro
+    1. Uno
+    1. Dos
+- Seis
+    1. Uno
+    1. Dos
+- Dos
+- Tres
+- Cuatro
+    1. Uno
+    1. Dos
+
+La lista externa es ul, la interna es ol
+
+## Listas en dos columnas con cool list
+<!-- _class: cool-list with-warning smaller-font -->
+
+<style scoped>
+    ol {
+        height: 20em;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+    }
+    ol>* {
+        flex: 0 1 auto;
+        width: 45%;
+    }
+</style>
+
+
+No uses two-columns-list, necesita estilos especiales. Mira el código de esta transparencia
+
+1. *Uno, uno, uno y uno y uno y uno y uno y uno*
+    - y otro
+    - y otro
+1. *Dos*
+1. *Tres*
+    - y otro
+    - y otro
+1. *Cuatro uno*
+    - y otro
+    - y otro
+1. *Cinco*
+    - uno, uno y uno y uno y uno y uno y uno y uno y uno, uno y uno y uno y uno y uno y uno
+
+La lista externa es ol, la interna ul
 
 ## <!-- fit --> smallest-font
 <!-- _class: smallest-font center with-info -->
@@ -523,7 +616,7 @@ header: En el día a día
 - HackMD no soporta directamente Marp, pero sí RevealJS
 - El plugin para VSCode de Marp es superior y eso convierte a Marp (**¡opinión!**) en más productivo: exportación a PDF perfecta, preview más rápido
 - RevealJS tiene ayudas espectaculares durante la presentación: alarmas, modo pizarra, movimiento en dos dimensiones...
-- Los temas MARP los tengo **mucho** más desarrollados
+- Los temas Marp los tengo **mucho** más desarrollados
 
 **Mi opinión**: es mucho más rápido **escribir** una presentación tradicional en Marp, pero es más fácil y dinámico **presentar** con RevealJS.
 
@@ -571,7 +664,7 @@ header: Notas adicionales
 ---
 
 - En 2021, las transparencias son simples y sin animaciones
-- No luches contra el sistema de presentaciones: si no puedes hacer algo, no lo hagas o pon una imagen
+- No luches contra el sistema de presentaciones: si no puedes hacer algo, no pierdas demasiado tiempo buscando cómo
 - Puedes usar `header: Título de sección` como directiva en las transparencias de sección
 
 ## Pizarra
