@@ -9,9 +9,9 @@ MARP=marp
 # You can overwrite these from the command line
 # For example: make -e THEME=marp-viu
 THEME=marp-incide
-THEME_SET=themes/$(THEME).css
+THEME_SET=themes
 
-# Convert all .md files in this directory
+# Convert all .md files in current directory
 SRCS=$(shell find . -name '*.md')
 OBJS=$(patsubst %.md,%.html,$(SRCS))
 
@@ -22,6 +22,7 @@ all: $(OBJS)
 
 %.html: %.md
 	$(MARP) "$<" -o "$@" --no-config --theme $(THEME) --theme-set "$(THEME_SET)" --bespoke.progress true --html
+	#--bespoke.transition
 
 clean:
 	/bin/rm -rf *.html *.pdf

@@ -1,15 +1,26 @@
 ---
+# Activate Marp mode in VSCode (preview on the right)
 marp: true
-paginate: true
-title: Píldoras INCIDE - Intróducción a MARP
+# Metadata, in HTML and PDF
+title: Píldoras INCIDE - Introducción a MARP
+description: Introducción a MARP y ejemplos de tema personalizado
+author: Juan Vera
+keywords: marp,tutorial,incide
+# Configuration
 theme: marp-incide
+paginate: true
 headingDivider: 2
+# Example of additional configuration
+#backgroundImage: url("themes/back-starline.jpg")
+#backgroundColor: #eef
+# slide transition is experimental in Marp 1.4.0 and only works in Chrome
+#transition: fade
 ---
 
 <style>
     /* You can add custom style here. VSCode supports this.
     Other editor might need these custom code in
-    the YAML header: section: | */
+    the YAML header: style: | */
 </style>
 
 
@@ -29,14 +40,14 @@ jvera@incide.es
 1. [Jugar con los estilos](#16)
 1. [Tema INCIDE](#22)
 1. [En el día a día](#33)
-1. [Notas adicionales](#37)
+1. [Notas adicionales](#38)
 
 Esta misma presentación sirve también como ejemplo de Marp
 
 <!--
-Desgraciadamente, este índice no parece que pueda construirse automáticamente
+Los identificadores en los enlaces son páginas. Podría usarse el tradicional <a id="enlace"></a>, pero me parece muy incómodo y contra el espíritu de markdown
 
-Por cierto, esto es una nota de orador
+Por cierto, esto es una nota de orador. Aparecen pulsando P
 -->
 
 # Introducción a MARP
@@ -47,11 +58,9 @@ Por cierto, esto es una nota de orador
 ```markdown
 ## Marp Next
 
-Sistema para generación de presentaciones a partir de Markdown: <https://marp.app/>
+Presentaciones HTML, PDF y PPTX en Markdown
 
-Presentación final en HTML, PDF o PPTX
-
-![center width:20em](https://raw.githubusercontent.com/marp-team/marp/master/marp.png)
+[![center width:20em](https://raw.githubusercontent.com/marp-team/marp/master/marp.png)](https://marp.app/)
 
 - *marpit*: mini núcleo del sistema y sintaxis: <https://marpit.marp.app/>
 - *marp-core*: API para Marpit: <https://github.com/marp-team/marp-core>
@@ -71,15 +80,13 @@ MARP utiliza Common Markdown, el dialecto con mayor compatibilidad y por tanto m
 
 ## Marp Next
 
-Sistema para generación de presentaciones a partir de Markdown: <https://marp.app/>
+Presentaciones HTML, PDF y PPTX en Markdown
 
-Presentación final en HTML, PDF o PPTX
+[![center width:20em](https://raw.githubusercontent.com/marp-team/marp/master/marp.png)](https://marp.app/)
 
-![center width:20em](https://raw.githubusercontent.com/marp-team/marp/master/marp.png)
-
-- *marpit*: mini núcleo del sistema y sintaxis: <https://marpit.marp.app/>
-- *marp-core*: API para Marpit: <https://github.com/marp-team/marp-core>
-- *marp-vscode*: plugin para VSCode
+- [marpit](https://marpit.marp.app/): mini núcleo del sistema y documentación
+- [marp-core](https://github.com/marp-team/marp-core): API para Marpit para programadores
+- [Marp for VS Code](https://marketplace.visualstudio.com/items?itemName=marp-team.marp-vscode): plugin para VSCode
 
 <!--
 El Marp original era una aplicación con editor incluido.
@@ -87,9 +94,10 @@ Marp Next uriliza VSCode con un plugin como editor.
 -->
 
 ## Edición en VSCode
-Plugin: "*Marp for VS Code*". Previsualización con `CMD+k+v`
 
 ![width:27em center](images/vscode-marp.png)
+
+Plugin: "*Marp for VS Code*". Previsualización con `CMD+k+v`
 
 <!--
 El plugin permite:
@@ -110,7 +118,7 @@ MARP=marp
 # You can overwrite these from the command line
 # For example: make -e THEME=marp-viu
 THEME=marp-incide
-THEME_SET=themes/$(THEME).css
+THEME_SET=themes
 
 # Convert all .md files in this directory
 SRCS=$(shell find . -name '*.md')
@@ -123,6 +131,7 @@ all: $(OBJS)
 
 %.html: %.md
 	$(MARP) "$<" -o "$@" --no-config --theme $(THEME) --theme-set "$(THEME_SET)" --bespoke.progress true --html
+	#--bespoke.transition
 
 clean:
 	/bin/rm -rf *.html *.pdf
@@ -134,22 +143,24 @@ clean:
 
 Por defecto, la separación se hace con una línea de tres guiones `---`
 
-En la cabecera YAML `headingDivider: 2`, pueden usarse cabeceras para separar transparencias
+`headingDivider: 2` en YAML: usa cabeceras para separar transparencias
 
 Si necesitas una transparencia sin título siempre puedes usar las tres líneas `---`
 
 <!--
 Fíjate también: los textos se centran verticalmente en los temas por defecto
+
+En esta presentación de ejemplo se utilizan los títulos para separar transparencias porque me parece más cómodo. Fíjate en el headingDivider de la cabecera YAML de esta presentación
 -->
 
 ## Listas
 
-Las listas con guiones `-` son estáticas
+Las listas con guiones `-` o con `1.` son estáticas
 
 - Uno
 - Dos
 
-Las listas con asteriscos `*` son dinámicas, pero solo en el HTML
+Las listas con asteriscos `*` o con `1)` son animadas, pero solo en el HTML
 
 * Uno
 * Dos
@@ -158,18 +169,17 @@ Las listas con asteriscos `*` son dinámicas, pero solo en el HTML
 Es decir, los asteriscos no mostrarán los items de la lista uno a uno ni en la previsualización ni en el PDF
 -->
 
-## Modo presentación
+## Modo speaker
 
-Pulsa `p` para entrar en el modo presentación y ver los comentarios, hora, siguiente transparencia...
+Pulsa `p` para entrar en el modo *speaker*: comentarios, hora, siguiente transparencia...
 
-![center w:20em](images/presentacion.png)
+![center w:22em](images/presentacion.png)
 
-Dsde línea de comandos, `--bespoke.progress true` añade una barra de progreso
 
 <!--
 Esto es un comentario visible en el modo presentación
 
-Para la barra de progreso, mira en la parte de arriba de la transparencia
+Desde línea de comandos, `--bespoke.progress true` añade una barra de progreso. Mira en la parte de arriba de la transparencia
 -->
 
 ## Imágenes en el interior
@@ -184,9 +194,9 @@ Para la barra de progreso, mira en la parte de arriba de la transparencia
 ![width:15em](https://www.incide.es/images/incide_logo.png) 
 ```
 
-Tamaños: pixeles y em, pero **no** porcentajes
+Tamaños: pixeles y em, pero no porcentajes
 
-Atributos: https://github.com/marp-team/marpit/blob/main/docs/image-syntax.md
+Hay muchos [atributos disponibles](https://github.com/marp-team/marpit/blob/main/docs/image-syntax.md)
 
 <!--
 En Marp, la parte entre corchetes [] puede contener atributos adicionales: clases para aplicar sobre la imagen, tamaños, posiciones...
@@ -194,7 +204,7 @@ En Marp, la parte entre corchetes [] puede contener atributos adicionales: clase
 Nota que esto es una diferencia con respecto a otros dialectos como HackMD o RevealJS, que usan llaves {} para los atributos adicionales.
 -->
 
-## Imágenes en el fondo: `bg`
+## Imágenes en el fondo: atributo `bg`
 
 ![bg saturate:0.9 contrast:0.3 brightness:1.5](https://picsum.photos/720?image=27)
 
@@ -263,7 +273,7 @@ _backgroundImage: url('https://cdn.shopify.com/s/files/1/0200/7466/articles/shop
 _backgroundImage: url('themes/back-starline.jpg')
 -->
 
-Controla el estilo de una transparencia con [directivas](https://marpit.marp.app/directives) justo después del título.
+Controla el estilo de una transparencia con [directivas](https://marpit.marp.app/directives) justo después del título
 
 Por ejemplo, añadir imagen de fondo:
 
@@ -274,15 +284,15 @@ _backgroundImage: url('themes/back-starline.jpg')
 -->
 ```
 
-- Sin guion bajo, activo para esta transparencia y las siguientes.
-- Con guion bajo, solo activo para esta transparencia.
-- Si se ponen en la cabecera YAML, activo para todas las transparencias.
+- Sin guion bajo, activo a partir de ahora en todas las transparencias
+- Con guion bajo, solo activo en esta transparencia
+- En la cabecera YAML, activo para todas las transparencias
 
 > Background: [Designed by starline / Freepik](http://www.freepik.com).
 
 ## <!-- fit --> Otros ejemplos
 <!--
-_header: '![width:5em grayscale invert brightness:2](https://www.incide.es/images/incide_logo.png)'
+_header: 'Cabecera con imagen ![width:5em grayscale invert brightness:2](/themes/incide/incide_logo.png)'
 _footer: 'Pie personalizado con [enlace](http://www.incide.es)'
 _backgroundImage: "linear-gradient(to bottom, #ffffff, #ffaa00)"
 _color: red
@@ -295,14 +305,12 @@ _color: red
 # <!-- fit --> Otros ejemplos
 
 <!--
-_header: '![width:5em grayscale invert brightness:2](https://www.incide.es/images/incide_logo.png)'
+_header: 'Cabecera con imagen ![width:5em grayscale invert brightness:2](/themes/incide/incide_logo.png)'
 _footer: 'Pie personalizado con [enlace](http://www.incide.es)'
-_backgroundImage: "linear-gradient(to bottom, #ffffff, green)"
+_backgroundImage: "linear-gradient(to bottom, #ffffff, #ffaa00)"
 _color: red
 -->
 ```
-
-Hacer que el título ocupe toda la línea, degradados, pie y cabecera...
 
 ## Si quieres personalización total...
 
@@ -336,6 +344,8 @@ Esto es un párrafo <span class="mycustomspan">y esto unas cuantas palabras</spa
 
 Para que funcione el `span` se tiene que activar `--html` en las opciones del compilador Marp o en la sección Marp de VSCode. Es un riesgo si abres presentaciones de atacantes, porque pueden incluir cualquier script
 
+<!-- Solo lo pongo como ejemplo, la idea de los temas personalizados en no necesitar (casi nunca) esto -->
+
 ---
 
 <style scoped>
@@ -354,7 +364,7 @@ Para que funcione el `span` se tiene que activar `--html` en las opciones del co
     }
 </style>
 
-- Con `scoped` esto puedes cambiar el estilo de las listas
+- Con `scoped` puedes por ejemplo cambiar completamente el estilo de las listas
 * ...mostrar las frases poco a poco...
 * ...paso a paso
 * ...una a una
@@ -380,27 +390,37 @@ Ejemplo sencillo de imágenes que aparecen
 * ![w:20em](https://picsum.photos/720?image=20)
 * ![w:20em](https://picsum.photos/720?image=21)
 
+<!-- De nuevo, ejemplo de qué puede hacerse pero no recomiendo su uso -->
+
 # Tema INCIDE
 <!--
 _class: lead
 -->
 
 ## Tema personalizado INCIDE
-<!-- _class: smaller-font -->
+<!-- _class: with-info -->
 
-`theme: marp-incide` en el preámbulo. Su path tiene que estar registrado en VSCode
+`theme: marp-incide` en el preámbulo
 
-- Pequeños ajustes: muestra página actual, atributo *center* para imágenes...
-- Clases especiales:
-    - *lead* / *lead2* / *first-slide*: inicio de sección
-    - *cool-list* / *cool-list-animated* para listas especiales
-    - *two-columns* / *two-columns-33*: transparencia con dos columnas
-    - *two-columns-list*: lista en dos o más columnas
-    - *smaller-font* / *smallest-font*: transparencia con letra más pequeña
-    - *center*: centra el contenido de texto en la transparencia
-    - *with-info* / *with-success*  / *with-warning*: el último párrafo es una caja *info* / *success* / *warning*
+En opciones de VSCode -> Marp, hay que incluir el *path*
+
+**Idea principal del tema**: que casi todo sea Markdown, y solo cambiar ocasionalmente la clase (el layout) de la transparencia
+
+![bg right w:95%](themes/incide/incide_logo.png)
+
+## Clases / layouts especiales
+
+- *lead* / *lead2* / *first-slide*: inicio de sección. Ya hemos visto ejemplos
+- *cool-list* / *cool-list-animated* para listas especiales
+- *two-columns* / *two-columns-33*: transparencia con dos columnas
+- *two-columns-list*: lista en dos o más columnas
+- *smaller-font* / *smallest-font*: transparencia con letra más pequeña
+- *center*: centra el contenido de texto en la transparencia
+- *with-info* / *with-success*  / *with-warning*: el último párrafo es una caja *info* / *success* / *warning*
 
 > Utiliza *blockquote* para "notas a pie de página"
+> También incluye pequeños ajustes: muestra página actual, logotipo, atributo *center* para imágenes...
+
 
 ## cool-list
 <!-- _class: cool-list -->
@@ -417,13 +437,12 @@ _class: lead
 Hay que meter obligatoriamente los items entre asteriscos o enlaces
 
 Se puede usar en el índice
-
 -->
 
 > Basado en: https://catalin.red/css3-ordered-list-styles/
 
 ## cool-list-animated
-<!-- _class: cool-list-animated -->
+<!-- _class: cool-list2 -->
 
 <style scoped>ol { counter-reset: li 5; }</style>
 
@@ -471,9 +490,12 @@ _header: Header de ejemplo
 _footer: Footer de ejemplo, con [link](https://www.incide.es)
 -->
 
+<style scoped>ul {list-style-type: none;}</style>
+
 ![](https://www.incide.es/images/incide_logo.png)
 
-Lo mismo que `two-columns`, pero la izquierda es más estrecha
+- Lo mismo que `two-columns`, pero la izquierda es más estrecha
+- Fíjate que aunque este elemento es una lista, puedes desactivar los puntos con `<style scoped>ul {list-style-type: none;}</style>`
 
 Si tienes un header, añade la clase `with-header` como en este ejemplo
 
@@ -481,61 +503,48 @@ Si tienes un header, añade la clase `with-header` como en este ejemplo
 <!-- _class: two-columns-list with-warning -->
 
 <style scoped>
-ul>* {
-    width: 12em; /* para tres columnas */
-}
-ul ol {
-    list-style-type: lower-latin; /* disc lower-roman decimal */
-}
-</style>
-
-Se usa para listas largas que se organizan en dos o más columnas. Mira el código de esta transparencia para configuración.
-
-- Uno, uno, uno y uno y uno y uno y uno y uno
-    1. Uno
-    1. Dos
-- Dos
-- Tres
-- Cuatro
-    1. Uno
-- Cinco
-- Seis
-    1. Uno
-    1. Dos
-- Dos
-- Tres
-- Cuatro
-    1. Uno
-    1. Dos
-- Seis
-    1. Uno
-    1. Dos
-- Dos
-- Tres
-- Cuatro
-    1. Uno
-    1. Dos
-
-La lista externa es ul, la interna es ol
-
-## Listas en dos columnas con cool list
-<!-- _class: cool-list with-warning smaller-font -->
-
-<style scoped>
     ol {
-        height: 20em;
-        display: flex;
-        flex-direction: column;
-        flex-wrap: wrap;
+        height: 18em; /* alto de la lista */
+        list-style-type: disc; /* Discos en vez de números para la lista externa */
     }
     ol>* {
-        flex: 0 1 auto;
-        width: 45%;
+        width: 11em; /* ancho de una columna */
     }
 </style>
 
+Listas largas que se organizan en dos o más columnas. Mira el código de esta transparencia para configuración
 
-No uses two-columns-list, necesita estilos especiales. Mira el código de esta transparencia
+1. Uno, uno, uno y uno y uno y uno y uno y uno
+    - Uno
+    - Dos
+1. Dos
+1. Tres
+1. Cuatro
+    - Uno
+1. Cinco
+1. Seis
+    - Uno
+    - Dos
+1. Siete
+1. Ocho
+1. Nueve
+    - Uno
+    - Dos
+1. Diez
+    - Uno
+    - Dos
+1. Once
+1. Doce
+1. Trece
+    - Uno
+    - Dos
+
+La lista externa es *ol*, la interna es *ul*
+
+## two-columns-list y cool-list
+<!-- _class: two-columns-list cool-list with-warning smaller-font -->
+
+Puedes combinar *two-columns-list* y *cool-list*
 
 1. *Uno, uno, uno y uno y uno y uno y uno y uno*
     - y otro
@@ -609,16 +618,17 @@ header: En el día a día
  Sí, puedes añadir fondos personalizados a los inicios de secciones
 
 ## Comparando con RevealJS
-<!-- _class: with-info-->
+<!-- _class: with-info smaller-font -->
 
 - Marp no ofrece animaciones entre transparencias, RevealJS sí
-- Las transparencias de Marp tienen cabeceras y pies
+    - Esto puede cambiar cuanto se adopte la [Element Transition API](https://developer.chrome.com/blog/shared-element-transitions-for-spas/) en los navegadores. La versión 1.4.0 (2021) ya incluye animaciones, en Chrome
 - HackMD no soporta directamente Marp, pero sí RevealJS
-- El plugin para VSCode de Marp es superior y eso convierte a Marp (**¡opinión!**) en más productivo: exportación a PDF perfecta, preview más rápido
+- El plugin para VSCode de Marp es **muy** superior y eso convierte a Marp (**¡opinión!**) en más productivo: exportación a PDF perfecta, preview más rápido
 - RevealJS tiene ayudas espectaculares durante la presentación: alarmas, modo pizarra, movimiento en dos dimensiones...
+- RevealJS es mucho más flexible con el layout de una transparencia, a cambio de escribir más HTML
 - Los temas Marp los tengo **mucho** más desarrollados
 
-**Mi opinión**: es mucho más rápido **escribir** una presentación tradicional en Marp, pero es más fácil y dinámico **presentar** con RevealJS.
+**Mi opinión**: es mucho más rápido **ESCRIBIR** una presentación tradicional en Marp, pero es más fácil y dinámico **PRESENTAR** con RevealJS.
 
 <!--
 Las animaciones entre transparencias las tiene que ofrecer "una librería de alto nivel" que use Marp: https://github.com/marp-team/marp-core/issues/110 
@@ -663,9 +673,9 @@ header: Notas adicionales
 
 ---
 
-- En 2021, las transparencias son simples y sin animaciones
+- En 2021, las transparencias son simples, sin sombras, sin animaciones...
 - No luches contra el sistema de presentaciones: si no puedes hacer algo, no pierdas demasiado tiempo buscando cómo
-- Puedes usar `header: Título de sección` como directiva en las transparencias de sección
+- Puedes usar `header: Título de sección` como directiva en las transparencias de sección y aparecerá a partir de ese momento. Mira el header de esta transparencia
 
 ## Pizarra
 
@@ -684,3 +694,9 @@ Por ejemplo, modo pizarra (experimental):
 
 
 <script src="whiteboard.js"></script>
+
+<!--
+Para que funcione la pizarra tienes que activar el código HTML.
+
+Mira el Makefile
+-->
