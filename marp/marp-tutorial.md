@@ -186,12 +186,12 @@ Desde línea de comandos, `--bespoke.progress true` añade una barra de progreso
 
 ![center](https://www.incide.es/images/incide_logo.png)
 ![width:50px](https://www.incide.es/images/incide_logo.png)
-![width:5em](https://www.incide.es/images/incide_logo.png)
+![w:5em](https://www.incide.es/images/incide_logo.png)
 
 ```markdown
 ![center](https://www.incide.es/images/incide_logo.png)
 ![width:50px](https://www.incide.es/images/incide_logo.png)
-![width:15em](https://www.incide.es/images/incide_logo.png) 
+![w:15em](https://www.incide.es/images/incide_logo.png) 
 ```
 
 Tamaños: pixeles y em, pero no porcentajes
@@ -202,6 +202,8 @@ Hay muchos [atributos disponibles](https://github.com/marp-team/marpit/blob/main
 En Marp, la parte entre corchetes [] puede contener atributos adicionales: clases para aplicar sobre la imagen, tamaños, posiciones...
 
 Nota que esto es una diferencia con respecto a otros dialectos como HackMD o RevealJS, que usan llaves {} para los atributos adicionales.
+
+Puedes usar width o w, height o h
 -->
 
 ## Imágenes en el fondo: atributo `bg`
@@ -251,6 +253,7 @@ No pueden combinarse `left` y `right`
 Fíjate que la última tiene **el total** que ocuparán todas
 
 ---
+<!-- _color: #bbb -->
 
 ![bg](http://i.giphy.com/90F8aUepslB84.gif)
 
@@ -258,8 +261,16 @@ GIFs, videos...
 
 Esta transparencia también es un ejemplo de nueva transparencia sin título
 
+<iframe width="400" height="300" src="https://www.youtube.com/watch?v=dQw4w9WgXcQ">
+</iframe>
+
+
 <!--
 Nota: VSCode no soporta previsualización de GIFs cuando están en el background
+
+Los vídeos necesitan la activación del código HTML en VSCode o en línea de comandos (mira el Makefile)
+
+También puedes usar etiqueda <video> para vídeos en local
 -->
 
 # Jugar con los estilos
@@ -402,16 +413,16 @@ _class: lead
 
 `theme: marp-incide` en el preámbulo
 
-En opciones de VSCode -> Marp, hay que incluir el *path*
+En opciones de VSCode -> Marp, hay que incluir el *path* al tema
 
-**Idea principal del tema**: que casi todo sea Markdown, y solo cambiar ocasionalmente la clase (el layout) de la transparencia
+**Idea principal**: que todo sea Markdown, y solo cambiar "la clase" (el layout) de la transparencia
 
 ![bg right w:95%](themes/incide/incide_logo.png)
 
 ## Clases / layouts especiales
 
 - *lead* / *lead2* / *first-slide*: inicio de sección. Ya hemos visto ejemplos
-- *cool-list* / *cool-list-animated* para listas especiales
+- *cool-list* / *cool-list2* para listas especiales
 - *two-columns* / *two-columns-33*: transparencia con dos columnas
 - *two-columns-list*: lista en dos o más columnas
 - *smaller-font* / *smallest-font*: transparencia con letra más pequeña
@@ -441,7 +452,7 @@ Se puede usar en el índice
 
 > Basado en: https://catalin.red/css3-ordered-list-styles/
 
-## cool-list-animated
+## cool-list2
 <!-- _class: cool-list2 -->
 
 <style scoped>ol { counter-reset: li 5; }</style>
@@ -539,7 +550,7 @@ Listas largas que se organizan en dos o más columnas. Mira el código de esta t
     - Uno
     - Dos
 
-La lista externa es *ol*, la interna es *ul*
+La lista externa es *ol*, la interna es *ul*. Al revés no funciona
 
 ## two-columns-list y cool-list
 <!-- _class: two-columns-list cool-list with-warning smaller-font -->
@@ -559,7 +570,7 @@ Puedes combinar *two-columns-list* y *cool-list*
 1. *Cinco*
     - uno, uno y uno y uno y uno y uno y uno y uno y uno, uno y uno y uno y uno y uno y uno
 
-La lista externa es ol, la interna ul
+En este caso no puedes usar listas *ol* internas
 
 ## <!-- fit --> smallest-font
 <!-- _class: smallest-font center with-info -->
