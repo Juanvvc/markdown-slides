@@ -58,6 +58,11 @@ section.lead footer, section.lead header, section.lead:after {
     /* hide footer and pagination */
     display: none;
 }
+section.lead::before {
+    /* reset logo */
+    filter: inherit;
+}
+
 
 /******************* first-slide *****************************/
 

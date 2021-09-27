@@ -56,6 +56,10 @@ section.lead footer, section.lead header, section.lead:after {
     /* hide footer and pagination */
     display: none;
 }
+section.lead::before {
+    /* reset logo */
+    filter: inherit;
+}
 
 /******************* first-slide *****************************/
 
@@ -86,4 +90,8 @@ section.first-slide a {
 section.first-slide footer, section.first-slide first-slide, section.first-slide:after {
     /* hide footer and pagination */
     display: none;
+}
+section.first-slide::before {
+    /* logo in white */
+    filter: sepia(100%) brightness(2) saturate(0);
 }
