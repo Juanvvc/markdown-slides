@@ -49,7 +49,7 @@ section.lead footer, section.lead header, section.lead:after {
 }
 section.lead::before {
     /* logo in white */
-    filter: invert(100%) brightness(2) saturate(0);
+    filter: invert(100%) saturate(0) brightness(1.8);
 }
 
 /******************* lead2 *****************************/
