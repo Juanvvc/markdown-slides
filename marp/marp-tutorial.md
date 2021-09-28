@@ -29,9 +29,7 @@ headingDivider: 2
 
 **Presentaciones en Markdown con MARP**
 
-Juanvi
-
-jvera@incide.es
+Juanvi - jvera@incide.es
 
 ## Hoy hablamos de...
 <!-- _class: cool-list -->
