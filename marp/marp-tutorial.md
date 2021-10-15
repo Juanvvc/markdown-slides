@@ -13,8 +13,10 @@ headingDivider: 2
 # Example of additional configuration
 #backgroundImage: url("themes/back-starline.jpg")
 #backgroundColor: #eef
+#size: 4:3
 # slide transition is experimental in Marp 1.4.0 and only works in Chrome
-#transition: fade
+# available effects: fade reveal cover implode explode
+transition: fade
 ---
 
 <style>
@@ -45,7 +47,9 @@ Esta misma presentación sirve también como ejemplo de Marp
 <!--
 Los identificadores en los enlaces son páginas. Podría usarse el tradicional <a id="enlace"></a>, pero me parece muy incómodo y contra el espíritu de markdown
 
-Por cierto, esto es una nota de orador. Aparecen pulsando P
+Por cierto, esto es una nota de orador. Aparecen pulsando P... pero solo si el HTML no se ha abierto con protocolo file://.
+
+También aparecen en el PDF como annotations. Algunos visores PDF como pympress o el PDF de OSX aceptan anotaciones, pero otros como Okular no.
 -->
 
 # Introducción a MARP
@@ -88,7 +92,7 @@ Presentaciones HTML, PDF y PPTX en Markdown
 
 <!--
 El Marp original era una aplicación con editor incluido.
-Marp Next uriliza VSCode con un plugin como editor.
+Marp Next utiliza VSCode con un plugin como editor.
 -->
 
 ## Edición en VSCode
@@ -101,7 +105,7 @@ Plugin: "*Marp for VS Code*". Previsualización con `CMD+k+v`
 El plugin permite:
 
 - Previsualización instantánea
-- Compilación a PDF, HTML o PPTX
+- Compilación a PDF, HTML o PPTX. PDF y PPTX necesitan tener instalado Chrome
 -->
 
 ## Compilación desde línea de comandos
@@ -117,6 +121,7 @@ MARP=marp
 # For example: make -e THEME=marp-viu
 THEME=marp-incide
 THEME_SET=themes
+THEME_OPTS=--theme $(THEME) --theme-set "$(THEME_SET)"
 
 # Convert all .md files in this directory
 SRCS=$(shell find . -name '*.md')
@@ -125,10 +130,10 @@ OBJS=$(patsubst %.md,%.html,$(SRCS))
 all: $(OBJS)
 
 %.pdf: %.md
-	$(MARP) "$<" -o "$@" --no-config --theme $(THEME) --theme-set "$(THEME_SET)" --pdf --allow-local-files
+	$(MARP) "$<" -o "$@" --no-config $(THEME_OPTS) --pdf --allow-local-files --html --pdf-notes
 
 %.html: %.md
-	$(MARP) "$<" -o "$@" --no-config --theme $(THEME) --theme-set "$(THEME_SET)" --bespoke.progress true --html
+	$(MARP) "$<" -o "$@" --no-config $(THEME_OPTS) --bespoke.progress true --html
 	#--bespoke.transition
 
 clean:
@@ -136,6 +141,10 @@ clean:
 
 .PHONY: all clean
 ```
+
+<!--
+Además, la opción -p abre una ventana de navegador, y la opción -s un servidor que se queda escuchando para cambios.
+-->
 
 ## Separación entre transparencias
 
@@ -157,14 +166,18 @@ Las listas con guiones `-` o con `1.` son estáticas
 
 - Uno
 - Dos
+- Tres
 
 Las listas con asteriscos `*` o con `1)` son animadas, pero solo en el HTML
 
 * Uno
 * Dos
+* Tres
 
 <!--
 Es decir, los asteriscos no mostrarán los items de la lista uno a uno ni en la previsualización ni en el PDF
+
+Puedes combinar - y * en la misma lista, y así algunos items aparecen siempre, si quieres.
 -->
 
 ## Modo speaker
@@ -266,7 +279,7 @@ Esta transparencia también es un ejemplo de nueva transparencia sin título
 <!--
 Nota: VSCode no soporta previsualización de GIFs cuando están en el background
 
-Los vídeos necesitan la activación del código HTML en VSCode o en línea de comandos (mira el Makefile)
+Los vídeos necesitan la activación del código HTML en VSCode o en línea de comandos (mira el Makefile). En local, pueden no funcionar si abres la presentación con protocolo file://
 
 También puedes usar etiqueda <video> para vídeos en local
 -->
@@ -293,31 +306,32 @@ _backgroundImage: url('themes/back-starline.jpg')
 -->
 ```
 
-- Sin guion bajo, activo a partir de ahora en todas las transparencias
-- Con guion bajo, solo activo en esta transparencia
 - En la cabecera YAML, activo para todas las transparencias
+- Sin guion bajo, activo **a partir de ahora** en todas las transparencias
+- Con guion bajo, solo activo en la transparencia actual
+
 
 > Background: [Designed by starline / Freepik](http://www.freepik.com).
 
 ## <!-- fit --> Otros ejemplos
 <!--
-_header: 'Cabecera con imagen ![width:5em grayscale invert brightness:2](/themes/incide/incide_logo.png)'
+_header: 'Cabecera con imagen ![width:5em grayscale invert brightness:2](themes/incide/incide_logo.png)'
 _footer: 'Pie personalizado con [enlace](http://www.incide.es)'
-_backgroundImage: "linear-gradient(to bottom, #ffffff, #ffaa00)"
-_color: red
+_backgroundImage: "linear-gradient(to bottom, #67b8e3, #F288d1)"
+_color: #fff
 -->
 
-(incluso si hacen daño)
+<style scoped>code {color: black;} </style>
 
 
-```markdown
+```
 # <!-- fit --> Otros ejemplos
 
 <!--
-_header: 'Cabecera con imagen ![width:5em grayscale invert brightness:2](/themes/incide/incide_logo.png)'
+_header: 'Cabecera con imagen ![width:5em grayscale invert brightness:2](themes/incide/incide_logo.png)'
 _footer: 'Pie personalizado con [enlace](http://www.incide.es)'
-_backgroundImage: "linear-gradient(to bottom, #ffffff, #ffaa00)"
-_color: red
+_backgroundImage: "linear-gradient(to bottom, #67b8e3, #F288d1)"
+_color: #fff
 -->
 ```
 
@@ -377,6 +391,7 @@ Para que funcione el `span` se tiene que activar `--html` en las opciones del co
 * ...mostrar las frases poco a poco...
 * ...paso a paso
 * ...una a una
+* imagino que ua entiendes la idea
 
 <!--
 Fíjate: el primer item es un guion para que aparezca desde el principio
@@ -394,12 +409,12 @@ li {
 }
 </style>
 
-Ejemplo sencillo de imágenes que aparecen
+Ejemplo sencillo de imágenes que aparecen en el centro
 
 * ![w:20em](https://picsum.photos/720?image=20)
 * ![w:20em](https://picsum.photos/720?image=21)
 
-<!-- De nuevo, ejemplo de qué puede hacerse pero no recomiendo su uso -->
+<!-- ejemplo de qué puede hacerse pero no recomiendo su uso -->
 
 # Tema INCIDE
 <!--
@@ -419,7 +434,7 @@ En opciones de VSCode -> Marp, hay que incluir el *path* al tema
 
 ## Clases / layouts especiales
 
-- *lead* / *lead2* / *first-slide*: inicio de sección. Ya hemos visto ejemplos
+- *lead* / *lead2* / *first-slide* | *last-slide*: inicio de sección. Ya hemos visto ejemplos
 - *cool-list* / *cool-list2* para listas especiales
 - *two-columns* / *two-columns-33*: transparencia con dos columnas
 - *two-columns-list*: lista en dos o más columnas
@@ -630,12 +645,12 @@ header: En el día a día
 <!-- _class: with-info smaller-font -->
 
 - Marp no ofrece animaciones entre transparencias, RevealJS sí
-    - Esto puede cambiar cuanto se adopte la [Element Transition API](https://developer.chrome.com/blog/shared-element-transitions-for-spas/) en los navegadores. La versión 1.4.0 (2021) ya incluye animaciones, en Chrome
+    - Esto puede cambiar cuanto se adopte la [Element Transition API](https://developer.chrome.com/blog/shared-element-transitions-for-spas/) en los navegadores. La versión 1.4.0 (2021) de Marp ya incluye animaciones pero solo en Chrome
 - HackMD no soporta directamente Marp, pero sí RevealJS
 - El plugin para VSCode de Marp es **muy** superior y eso convierte a Marp (**¡opinión!**) en más productivo: exportación a PDF perfecta, preview más rápido
 - RevealJS tiene ayudas espectaculares durante la presentación: alarmas, modo pizarra, movimiento en dos dimensiones...
 - RevealJS es mucho más flexible con el layout de una transparencia, a cambio de escribir más HTML
-- Los temas Marp los tengo **mucho** más desarrollados
+- Los temas Marp los tengo mucho más desarrollados
 
 **Mi opinión**: es mucho más rápido **ESCRIBIR** una presentación tradicional en Marp, pero es más fácil y dinámico **PRESENTAR** con RevealJS.
 
@@ -700,6 +715,9 @@ Por ejemplo, modo pizarra (experimental):
 - `k`: pizarra negra
 - `c`: limpia la pizarra
 - `1`, `2`, `3`, `4`, `5`: colores
+
+# ¡Gracias!
+<!-- _class: last-slide -->
 
 
 <script src="whiteboard.js"></script>

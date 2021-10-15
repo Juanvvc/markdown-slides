@@ -1,19 +1,30 @@
-A project to document Marp and Reveal using examples.
+A project to document how to use Marp and RevealJS using examples.
 
 Use to store themes and Makefiles
 
 # Marp
 
-Since this is my preferred system, themes and examples are much more developed than RevealJS
+Since this is my preferred system, Marp themes and examples are much more
+developed than RevealJS
+
+Install:
+
+```
+npm install -g @marp-team/marp-cli
+# optionally, install Chrome/Chromium for PDF/PPTX support
+# If Chrome/Chromium is not in the system, the only
+# available output is HTML
+```
 
 Usage:
 
 ```
-make THEME=marp-incide marp-tutorial.md
+make -e THEME=marp-incide marp-tutorial.md
 ```
 
 Check the Makefile for additional examples
 
 # RevealJS
 
-Much less developed than Marp themes and examples, it is just a test
+These themes are much less developed than Marp themes and examples, it is just
+a test

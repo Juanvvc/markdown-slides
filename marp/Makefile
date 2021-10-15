@@ -10,18 +10,19 @@ MARP=marp
 # For example: make -e THEME=marp-viu
 THEME=marp-incide
 THEME_SET=themes
+THEME_OPTS=--theme $(THEME) --theme-set "$(THEME_SET)"
 
-# Convert all .md files in current directory
+# Convert all .md files in this directory
 SRCS=$(shell find . -name '*.md')
 OBJS=$(patsubst %.md,%.html,$(SRCS))
 
 all: $(OBJS)
 
 %.pdf: %.md
-	$(MARP) "$<" -o "$@" --no-config --theme $(THEME) --theme-set "$(THEME_SET)" --pdf --allow-local-files
+	$(MARP) "$<" -o "$@" --no-config $(THEME_OPTS) --pdf --allow-local-files --html --pdf-notes
 
 %.html: %.md
-	$(MARP) "$<" -o "$@" --no-config --theme $(THEME) --theme-set "$(THEME_SET)" --bespoke.progress true --html
+	$(MARP) "$<" -o "$@" --no-config $(THEME_OPTS) --bespoke.progress true --html
 	#--bespoke.transition
 
 clean:
