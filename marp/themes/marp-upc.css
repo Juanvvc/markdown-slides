@@ -79,15 +79,14 @@ section.first-slide h1, section.first-slide h2 {
 section.first-slide p {
     color: white;
     background-color: #2c3e5099;
-    margin: 0;
-    padding-top: 0.15em;
-    padding-bottom: 0.15em;
+    margin: 0em;
+    padding: 0em;
 }
 section.first-slide a {
     color: white;
     background-color: transparent !important;
 }
-section.first-slide footer, section.first-slide first-slide, section.first-slide:after {
+section.first-slide footer, section.first-slide:after {
     /* hide footer and pagination */
     display: none;
 }

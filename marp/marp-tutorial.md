@@ -391,7 +391,7 @@ Para que funcione el `span` se tiene que activar `--html` en las opciones del co
 * ...mostrar las frases poco a poco...
 * ...paso a paso
 * ...una a una
-* imagino que ua entiendes la idea
+* imagino que ya entiendes la idea
 
 <!--
 Fíjate: el primer item es un guion para que aparezca desde el principio
@@ -524,15 +524,15 @@ _footer: Footer de ejemplo, con [link](https://www.incide.es)
 Si tienes un header, añade la clase `with-header` como en este ejemplo
 
 ## two-columns-list
-<!-- _class: two-columns-list with-warning -->
+<!-- _class: two-columns-list with-warning smaller-font -->
 
 <style scoped>
     ol {
-        height: 18em; /* alto de la lista */
+        height: 17em; /* alto de la lista */
         list-style-type: disc; /* Discos en vez de números para la lista externa */
     }
     ol>* {
-        width: 11em; /* ancho de una columna */
+        width: 5em; /* ancho de una columna */
     }
 </style>
 

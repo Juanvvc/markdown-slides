@@ -15,6 +15,14 @@
     --extra-back-color: rgb(175, 172, 172);
 }
 
+section {
+    line-height: 1.2em;
+}
+
+section p {
+    margin-bottom: 1em;
+}
+
 section header {
     /* header to the rigth
     right: 30px !important;
