@@ -697,9 +697,10 @@ header: Notas adicionales
 
 ---
 
-- En 2021, las transparencias son simples, sin sombras, sin animaciones...
+- En 2022, las transparencias son simples, sin sombras, sin animaciones...
 - No luches contra el sistema de presentaciones: si no puedes hacer algo, no pierdas demasiado tiempo buscando cómo
 - Puedes usar `header: Título de sección` como directiva en las transparencias de sección y aparecerá a partir de ese momento. Mira el header de esta transparencia
+- <http://www.jilles.net/perma/2020/06/05/presentation-rules.html>
 
 ## Pizarra
 
@@ -711,9 +712,9 @@ Puede añadirse JavaScript genérico en la última transparencia
 
 Por ejemplo, modo pizarra (experimental):
 
-- `n`: pizarra transparente
-- `k`: pizarra negra
-- `c`: limpia la pizarra
+- `n`: activa pizarra transparente
+- `k`: activa pizarra negra
+- `c`: vuelve al modo normal
 - `1`, `2`, `3`, `4`, `5`: colores
 
 # ¡Gracias!
