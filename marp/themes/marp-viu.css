@@ -4,7 +4,7 @@
 
 /* Tema VIU para MARP */
 
-@import 'marp-incide';
+@import 'marp-base';
 
 /******************* common styles *****************************/
 
@@ -107,8 +107,8 @@ section.first-slide a, section.first-slide p {
 /******************* last-slide *****************************/
 
 
-/* last-slide. Use h1 as header.
-Use: <!-- _class: last-slide --> */
+/* last-slide class (Thanks)
+Use: <!-- _class: first-slide --> */
 section.last-slide {
     background-size: cover;
     background-repeat: no-repeat;

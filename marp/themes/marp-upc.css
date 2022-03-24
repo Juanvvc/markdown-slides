@@ -4,7 +4,7 @@
 
 /* Tema UPC para MARP */
 
-@import 'marp-incide';
+@import 'marp-base';
 
 /******************* common styles *****************************/
 
@@ -126,7 +126,7 @@ section.last-slide footer, section.last-slide:after {
     /* hide footer and pagination */
     display: none;
 }
-section.first-slide::before {
+section.last-slide::before {
     /* logo in white */
     filter: sepia(100%) brightness(2) saturate(0);
 }
