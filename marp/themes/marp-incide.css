@@ -23,7 +23,8 @@ section::before {
     position: absolute;
     right: 1%;
     top: 2%;
-    background: url('themes/incide/incide_logo.png') no-repeat center/contain;
+    /*background: url('themes/incide/incide_logo.png') no-repeat center/contain;*/
+    background: url('https://github.com/Juanvvc/markdown-slides/raw/master/marp/themes/incide/incide_logo.png') no-repeat center/contain;
 }
 
 /******************* lead2 *****************************/
@@ -42,7 +43,8 @@ section.lead2 {
 /* first slide (main title). Use h1 as header.
 Use: <!-- _class: first-slide --> */
 section.first-slide {
-    background-image: url('themes/incide/incide-back.png');
+    /*background-image: url('themes/incide/incide-back.png');*/
+    background-image: url('https://github.com/Juanvvc/markdown-slides/raw/master/marp/themes/incide/incide-back.png');
     background-size: cover;
     background-repeat: no-repeat;
     text-align: center;
@@ -53,7 +55,8 @@ section.first-slide {
 /* last slide (thanks). Use h1 as header.
 Use: <!-- _class: last-slide --> */
 section.last-slide {
-    background-image: url('themes/incide/incide-back.png');
+    /*background-image: url('themes/incide/incide-back.png');*/
+    background-image: url('https://github.com/Juanvvc/markdown-slides/raw/master/marp/themes/incide/incide-back.png');
     background-size: cover;
     background-repeat: no-repeat;
     text-align: center;
