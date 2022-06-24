@@ -4,7 +4,7 @@ Use to store themes and Makefiles
 
 # Marp
 
-Live example: <https://juanvvc.github.io/markdown-slides/marp/marp-tutorial.html>
+Live example: <https://juanvvc.github.io/markdown-slides/marp-tutorial.html>
 
 Since this is my preferred system, Marp themes and examples are much more
 developed than RevealJS
