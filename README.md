@@ -22,11 +22,11 @@ make
 # Use in your projects
 
 ```
-git submodule add https://github.com/Juanvvc/markdown-slides.git
+git submodule add https://github.com/Juanvvc/markdown-slides.git slides-support
 git submodule init
-git submodule update
+git submodule update --remote --merge
 ```
 
-Configure VSCode to read themes from `markdown-slides/slides/themes`
+Configure VSCode to read themes from `slides-support/slides/themes`
 
 
