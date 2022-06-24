@@ -24,7 +24,7 @@ section::before {
     right: 1%;
     top: 0%;
     /* background: url('themes/upc/logo-upc.png') no-repeat center/contain; */
-    background: url('https://github.com/Juanvvc/markdown-slides/raw/master/marp/themes/upc/logo-upc.png') no-repeat center/contain;
+    background: url('https://github.com/Juanvvc/markdown-slides/raw/master/slides/themes/upc/logo-upc.png') no-repeat center/contain;
 }
 
 /******************* lead *****************************/
@@ -52,7 +52,7 @@ section.lead h1:before {
     top: 0;
     display: block;
     /* background: url('themes/upc/lead2.png') no-repeat; */
-    background: url('https://github.com/Juanvvc/markdown-slides/raw/master/marp/themes/upc/lead2.png') no-repeat;
+    background: url('https://github.com/Juanvvc/markdown-slides/raw/master/slides/themes/upc/lead2.png') no-repeat;
 }
 section.lead footer, section.lead header, section.lead:after {
     /* hide footer and pagination */
@@ -70,7 +70,7 @@ section.lead::before {
 Use: <!-- _class: first-slide --> */
 section.first-slide {
     /* background-image: url('themes/upc/foto-UPC-20-1000x520.jpg'); */
-    background-image: url('https://github.com/Juanvvc/markdown-slides/raw/master/marp/themes/upc/foto-UPC-20-1000x520.jpg');
+    background-image: url('https://github.com/Juanvvc/markdown-slides/raw/master/slides/themes/upc/foto-UPC-20-1000x520.jpg');
     background-size: cover;
     background-repeat: no-repeat;
     text-align: center;
@@ -106,7 +106,7 @@ section.first-slide::before {
 Use: <!-- _class: first-slide --> */
 section.last-slide {
     /*background-image: url('themes/upc/foto-UPC-20-1000x520.jpg');*/
-    background-image: url('https://github.com/Juanvvc/markdown-slides/raw/master/marp/themes/upc/foto-UPC-20-1000x520.jpg');
+    background-image: url('https://github.com/Juanvvc/markdown-slides/raw/master/slides/themes/upc/foto-UPC-20-1000x520.jpg');
     background-size: cover;
     background-repeat: no-repeat;
     text-align: center;

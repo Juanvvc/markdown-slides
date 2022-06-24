@@ -1,15 +1,10 @@
-A project to document how to use Marp and RevealJS using examples.
+A project to document how to use Marp, and themes examples
 
 Use to store themes and Makefiles
 
-# Marp
-
 Live example: <https://juanvvc.github.io/markdown-slides/marp-tutorial.html>
 
-Since this is my preferred system, Marp themes and examples are much more
-developed than RevealJS
-
-Install:
+# Install
 
 ```
 npm install -g @marp-team/marp-cli
@@ -18,15 +13,20 @@ npm install -g @marp-team/marp-cli
 # available output is HTML
 ```
 
-Usage:
+# Build
 
 ```
-make -e THEME=marp-incide marp-tutorial.md
+make
 ```
 
-Check the Makefile for additional examples
+# Use in your projects
 
-# RevealJS
+```
+git submodule add https://github.com/Juanvvc/markdown-slides.git
+git submodule init
+git submodule update
+```
 
-These themes are much less developed than Marp themes and examples, it is just
-a test
+Configure VSCode to read themes from `markdown-slides/slides/themes`
+
+
