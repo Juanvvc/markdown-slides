@@ -24,7 +24,7 @@ section::before {
     right: 2.5%;
     top: 2%;
     /*background: url('themes/viu/logo-viu.png') no-repeat center/contain;*/
-    background: url('https://github.com/Juanvvc/markdown-slides/raw/master/marp/themes/viu/logo-viu.png') no-repeat center/contain;
+    background: url('https://github.com/Juanvvc/markdown-slides/raw/master/slides/themes/viu/logo-viu.png') no-repeat center/contain;
 }
 
 
@@ -36,7 +36,7 @@ section.lead2 {
     background-size: cover;
     background-repeat: no-repeat;
     /*background-image: url('themes/viu/bg2.png');*/
-    background-image: url('https://github.com/Juanvvc/markdown-slides/raw/master/marp/themes/viu/bg2.png');
+    background-image: url('https://github.com/Juanvvc/markdown-slides/raw/master/slides/themes/viu/bg2.png');
     text-align: left;
     padding: inherit;
 }
@@ -88,7 +88,7 @@ section.first-slide {
     background-size: cover;
     background-repeat: no-repeat;
     /*background-image: url('themes/viu/bg1.png');*/
-    background-image: url('https://github.com/Juanvvc/markdown-slides/raw/master/marp/themes/viu/bg1.png');
+    background-image: url('https://github.com/Juanvvc/markdown-slides/raw/master/slides/themes/viu/bg1.png');
     justify-content: flex-start;
     align-items: center;
 }
@@ -116,7 +116,7 @@ section.last-slide {
     background-size: cover;
     background-repeat: no-repeat;
     /*background-image: url('themes/viu/bg1.png');*/
-    background-image: url('https://github.com/Juanvvc/markdown-slides/raw/master/marp/themes/viu/bg1.png');
+    background-image: url('https://github.com/Juanvvc/markdown-slides/raw/master/slides/themes/viu/bg1.png');
     justify-content: flex-start;
     align-items: center;
 }

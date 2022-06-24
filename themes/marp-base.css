@@ -328,20 +328,18 @@ section.with-warning > p:last-of-type::before {
 
 /******************* cool-list *****************************/
 
-/* Una lista redonda
+/* A rounded item list. Inspired from: https://catalin.red/css3-ordered-list-styles/
 
-Sacada de: https://catalin.red/css3-ordered-list-styles/
-
-Uso:
+Use: list must be ordered list, items must include en element (anchor, emphasis...)
 
 ## cool-list
 <!-- _class: cool-list -->
 
-1. *Uno*
-1. *Dos*
-    1. *Tres*
-    1. *Cuatro*
-1. *Cinco*
+1. *One*
+1. *Two*
+    1. *Three*
+    1. *Four*
+1. *Five*
 */
 
 section.cool-list ol {
@@ -414,20 +412,18 @@ section.cool-list > ol ol > li > em {
 
 /******************* cool-list2 *****************************/
 
-/* Una lista animada.
+/* An animated list. Inspiration: https://catalin.red/css3-ordered-list-styles/
 
-Sacada de: https://catalin.red/css3-ordered-list-styles/
-
-Uso:
+Use: list must be ordered. Items must include an element: anchor, emphasis...
 
 ## cool-list2
 <!-- _class: cool-list2 -->
 
-1. *Uno*
-1. *Dos*
-    1. *Tres*
-    1. *Cuatro*
-1. *Cinco*
+1. *One*
+1. *Two*
+    1. *Three*
+    1. *For*
+1. *Five*
 */
 
 section.cool-list2 ol {
