@@ -64,31 +64,29 @@ section.first-slide {
     background-repeat: no-repeat;
     /*background-image: url('themes/viu/bg2.png');*/
     background-image: url('https://github.com/Juanvvc/markdown-slides/raw/master/slides/themes/viu/bg2.png');
-    text-align: center;
     padding: inherit;
 }
 section.first-slide h1{
     color: #333;
-    text-align: center;
+    text-align: left;
     background-color: transparent;
     /* top rigth bottom left */
-    margin: 0em auto 6em 5em !important;
-    color: #eee;
-    width: 15em;
+    margin: 35% auto 0 5% !important;
+    font-size: 200%;
+    color: #111;
 }    
 section.first-slide h2, section.first-slide p {
-    color: #333;
-    text-align: center;
-    background-color: transparent;
-    margin-top: 1em;
-    margin-bottom: 0;
+    color: #111;
+    text-align: left;
+    margin: 0.5em 0 0 5% !important;
+}
+section.first-slide a {
+    color: #111;
+    text-align: left;
 }
 section.first-slide footer, section.first-slide:after {
     /* hide footer and pagination */
     display: none;
-}
-section.first-slide a, section.first-slide p {
-    color: #111;
 }
 
 /******************* last-slide *****************************/

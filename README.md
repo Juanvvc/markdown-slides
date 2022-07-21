@@ -1,6 +1,6 @@
-A project to document how to use Marp, and themes examples
+# Tutorial: presentations with Marp
 
-Use to store themes and Makefiles
+A project to document how to use Marp, and a repository of themes I use in my presentations.
 
 Live example: <https://juanvvc.github.io/markdown-slides/marp-tutorial.html>
 
@@ -27,6 +27,8 @@ git submodule init
 git submodule update --remote --merge
 ```
 
-Configure VSCode to read themes from `slides-support/slides/themes`
+Configure VSCode to read themes from `slides-support/slides/themes`, preferably in the workspace. Check the .workspace file for an example.
+
+Check example: <https://github.com/Juanvvc/crypto>
 
 

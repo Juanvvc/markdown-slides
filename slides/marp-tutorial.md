@@ -2,12 +2,12 @@
 # Activate Marp mode in VSCode (preview on the right)
 marp: true
 # Metadata, in HTML and PDF
-title: Píldoras INCIDE - Introducción a MARP
+title: Tutoriales - Introducción a MARP
 description: Introducción a MARP y ejemplos de tema personalizado
 author: Juan Vera
-keywords: marp,tutorial,incide
+keywords: marp,tutorial
 # Configuration
-theme: marp-incide
+theme: marp-viu
 paginate: true
 headingDivider: 2
 # Example of additional configuration
@@ -26,19 +26,19 @@ transition: fade
 </style>
 
 
-# Píldoras INCIDE
+# Tutoriales
 <!-- _class: first-slide -->
 
 **Presentaciones en Markdown con MARP**
 
-Juanvi - jvera@incide.es
+Juan Vera - juanvvc@gmail.com
 
 ## Hoy hablamos de...
 <!-- _class: cool-list -->
 
 1. [Introducción a MARP](#3)
 1. [Jugar con los estilos](#16)
-1. [Tema INCIDE](#22)
+1. [Tema personalizado](#22)
 1. [En el día a día](#33)
 1. [Notas adicionales](#38)
 
@@ -118,8 +118,8 @@ MARP=marp
 #MARP=docker run --rm --init -v "$(PWD)":/home/marp/app/ marpteam/marp-cli
 
 # You can overwrite these from the command line
-# For example: make -e THEME=marp-viu
-THEME=marp-incide
+# For example: make -e THEME=marp-upc
+THEME=marp-viu
 THEME_SET=themes
 THEME_OPTS=--theme $(THEME) --theme-set "$(THEME_SET)"
 
@@ -195,14 +195,14 @@ Desde línea de comandos, `--bespoke.progress true` añade una barra de progreso
 
 ## Imágenes en el interior
 
-![center](https://www.incide.es/images/incide_logo.png)
-![width:50px](https://www.incide.es/images/incide_logo.png)
-![w:5em](https://www.incide.es/images/incide_logo.png)
+![center width:15em](https://raw.githubusercontent.com/marp-team/marp/master/marp.png)
+![width:50px](https://raw.githubusercontent.com/marp-team/marp/master/marp.png)
+![w:5em](https://raw.githubusercontent.com/marp-team/marp/master/marp.png)
 
 ```markdown
-![center](https://www.incide.es/images/incide_logo.png)
-![width:50px](https://www.incide.es/images/incide_logo.png)
-![w:15em](https://www.incide.es/images/incide_logo.png) 
+![center width:15em](https://raw.githubusercontent.com/marp-team/marp/master/marp.png)
+![width:50px](https://raw.githubusercontent.com/marp-team/marp/master/marp.png)
+![w:5em](https://raw.githubusercontent.com/marp-team/marp/master/marp.png)
 ```
 
 Tamaños: pixeles y em, pero no porcentajes
@@ -315,8 +315,8 @@ _backgroundImage: url('themes/back-starline.jpg')
 
 ## <!-- fit --> Otros ejemplos
 <!--
-_header: 'Cabecera con imagen ![width:5em grayscale invert brightness:2](themes/incide/incide_logo.png)'
-_footer: 'Pie personalizado con [enlace](http://www.incide.es)'
+_header: 'Cabecera con imagen ![width:5em grayscale invert brightness:2](themes/viu/logo-viu.png)'
+_footer: 'Pie personalizado con [enlace](https://www.universidadviu.com/es/)'
 _backgroundImage: "linear-gradient(to bottom, #67b8e3, #F288d1)"
 _color: #fff
 -->
@@ -328,8 +328,8 @@ _color: #fff
 # <!-- fit --> Otros ejemplos
 
 <!--
-_header: 'Cabecera con imagen ![width:5em grayscale invert brightness:2](themes/incide/incide_logo.png)'
-_footer: 'Pie personalizado con [enlace](http://www.incide.es)'
+_header: 'Cabecera con imagen ![width:5em grayscale invert brightness:2](themes/viu/logo-viu.png)'
+_footer: 'Pie personalizado con [enlace](https://www.universidadviu.com/es/)'
 _backgroundImage: "linear-gradient(to bottom, #67b8e3, #F288d1)"
 _color: #fff
 -->
@@ -416,21 +416,25 @@ Ejemplo sencillo de imágenes que aparecen en el centro
 
 <!-- ejemplo de qué puede hacerse pero no recomiendo su uso -->
 
-# Tema INCIDE
+# Tema personalizado
 <!--
 _class: lead
 -->
 
-## Tema personalizado INCIDE
+## Tema personalizado
 <!-- _class: with-info -->
 
-`theme: marp-incide` en el preámbulo
+`theme: marp-XXX` en el preámbulo. Están disponibles:
 
-En opciones de VSCode -> Marp, hay que incluir el *path* al tema
+- marp-viu
+- marp-upc
+- marp-incide
+
+En opciones de VSCode -> Marp, hay que incluir el *path* al tema. Fíjate en el [archivo workspace](https://github.com/Juanvvc/markdown-slides/blob/master/workspace.code-workspace)
 
 **Idea principal**: que todo sea Markdown, y solo cambiar "la clase" (el layout) de la transparencia
 
-![bg right w:95%](themes/incide/incide_logo.png)
+![bg right w:95%](themes/viu/logo-viu.png)
 
 ## Clases / layouts especiales
 
@@ -511,12 +515,12 @@ li {margin-bottom: 1em}
 <!--
 _class: two-columns-33 with-header
 _header: Header de ejemplo
-_footer: Footer de ejemplo, con [link](https://www.incide.es)
+_footer: Footer de ejemplo, con [link](https://www.google.com)
 -->
 
 <style scoped>ul {list-style-type: none;}</style>
 
-![](https://www.incide.es/images/incide_logo.png)
+![](themes/viu/logo-viu.png)
 
 - Lo mismo que `two-columns`, pero la izquierda es más estrecha
 - Fíjate que aunque este elemento es una lista, puedes desactivar los puntos con `<style scoped>ul {list-style-type: none;}</style>`
@@ -634,7 +638,6 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce vel quam lobortis
 # En el día a día
 <!--
 _class: lead
-_backgroundImageAlternate: url('https://www.incide.es/images/incide_office.jpg')
 _backgroundImage: url('https://cdn.shopify.com/s/files/1/0200/7466/files/shopify-new-features-research.jpeg')
 header: En el día a día
  -->

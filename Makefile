@@ -10,8 +10,8 @@ IN_DIR=slides
 OUT_DIR=build
 
 # You can overwrite these from the command line
-# For example: make -e THEME=marp-viu
-THEME=marp-upc
+# For example: make -e THEME=marp-upc
+THEME=marp-viu
 THEME_SET=$(IN_DIR)/themes
 THEME_OPTS=--theme $(THEME) --theme-set "$(THEME_SET)"
 
@@ -23,6 +23,7 @@ all:
 build:
 	mkdir -p $(OUT_DIR)
 	cp -r $(THEME_SET) $(OUT_DIR)/.
+	cp -r $(IN_DIR)/*js $(OUT_DIR)/.
 	cp -r $(IN_DIR)/images $(OUT_DIR)/.
 
 pdfs: build

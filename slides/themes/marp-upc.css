@@ -38,9 +38,9 @@ section.lead {
 }
 section.lead h1, section.lead h2, section.lead p {
     margin-left: 25%;
-    background-color: white;
+    background-color: #fff9;
     color: var(--main-color);
-    padding: inherit;
+    padding: 1em;
     margin-bottom: inherit;
 }
 section.lead h1:before {
