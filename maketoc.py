@@ -60,16 +60,16 @@ def build_toc(sections: dict) -> list[str]:
 def is_slide(line: str, level: int = 2) -> bool:
     """
     Params:
-        - level: headers with his level mark a slide
+        - level: headers with his level mark a slide. level>2 are not supported
     
     Returns:
         True if the line marks a new slide
     """
     if level == 2:
-        return line.startswith('# ') or line.startswith('## ') or line == '---'
+        return line.startswith('# ') or line.startswith('## ') or line.startswith('---')
     if level == 1:
-        return line.startswith('# ') or line.startswith('## ') or line == '---'
-    return line.startswith('## ') or line == '---'
+        return line.startswith('# ') or line.startswith('## ') or line.startswith('---')
+    return line.startswith('---')
 
 
 def scan_file(inputfile: str, level: int = 2) -> str:
@@ -90,7 +90,7 @@ def scan_file(inputfile: str, level: int = 2) -> str:
                 fout.writelines(build_toc(sections))
                 fout.write('\n')
                 ignoring = True
-            if is_slide(line):
+            if is_slide(line, level):
                 ignoring = False
             if not ignoring:
                 fout.write(line)
