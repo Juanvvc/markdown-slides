@@ -119,11 +119,8 @@ section.lead::before {
 /******************* lead2 *****************************/
 
 
-/* lead2 class (alternate version) first slide in a section. Use h1 as header.
+/* lead2 class (alternate version for lead) first slide in a section. Use h1 as header.
 Use: <!-- _class: lead2 --> */
-section.lead2 {
-
-}
 section.lead2 h1, section.lead2 h2, section.lead2 a {
     color: white;
     background-color: var(--darker-color);
@@ -500,7 +497,7 @@ section.cool-list2 ol ol em {
 }
 
 
-/******************* cool-list2 *****************************/
+/******************* logo management *****************************/
 
 /* A special class for a white logo */
 section.white-logo::before {
@@ -512,4 +509,9 @@ section.white-logo::before {
 section.black-logo::before {
     /* logo in white */
     filter: brightness(0) !important;
+}
+
+/* A special class to hide the logo */
+section.no-logo::before {
+    filter: opacity(0) !important;
 }
