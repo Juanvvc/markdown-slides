@@ -33,24 +33,22 @@ transition: fade
 
 Juan Vera - juanvvc@gmail.com
 
+<!--
+Esta misma presentación sirve como ejemplo de qué se puede hacer
+
+Esto es una nota de orador. Aparecen pulsando P... pero solo si el HTML no se ha abierto con protocolo file://.
+
+También aparecen en el PDF como annotations. Algunos visores PDF como pympress o el PDF de OSX aceptan anotaciones, pero otros como Okular no.
+-->
+
 ## Hoy hablamos de...
-<!-- _class: cool-list -->
+<!-- _class: cool-list toc -->
 
 1. [Introducción a MARP](#3)
 1. [Jugar con los estilos](#16)
 1. [Tema personalizado](#22)
-1. [En el día a día](#33)
+1. [En el día a día](#34)
 1. [Notas adicionales](#38)
-
-Esta misma presentación sirve también como ejemplo de Marp
-
-<!--
-Los identificadores en los enlaces son páginas. Podría usarse el tradicional <a id="enlace"></a>, pero me parece muy incómodo y contra el espíritu de markdown
-
-Por cierto, esto es una nota de orador. Aparecen pulsando P... pero solo si el HTML no se ha abierto con protocolo file://.
-
-También aparecen en el PDF como annotations. Algunos visores PDF como pympress o el PDF de OSX aceptan anotaciones, pero otros como Okular no.
--->
 
 # Introducción a MARP
 <!-- _class: lead -->

@@ -2,6 +2,8 @@
 
 A project to document how to use Marp, and a repository of themes I use in my presentations.
 
+There is a little utility maketoc.py to create the TOC of a presentation. Use class *lead* to mark sections and *toc* to mark the slide with the toc. Warning: this script is a utility, do not assume it works correctly. It can delete your slides!
+
 Live example: <https://juanvvc.github.io/markdown-slides/marp-tutorial.html>
 
 # Install

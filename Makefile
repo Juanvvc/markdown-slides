@@ -40,6 +40,9 @@ release: pdfs
 htmls: build
 	$(MARP) -I $(IN_DIR) -o $(OUT_DIR) --no-config $(THEME_OPTS) --bespoke.progress true --html --bespoke.transition
 
+toc:
+	find $(IN_DIR) -name '*.md' -exec python3 maketoc.py --input \{} --level 2 \;
+
 clean:
 	/bin/rm -rf $(OUT_DIR)
 
