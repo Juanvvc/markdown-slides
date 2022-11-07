@@ -2,6 +2,7 @@
 from __future__ import annotations 
 import sys
 import os
+import shutil
 import re
 import tempfile
 
@@ -106,9 +107,9 @@ def update_toc_in_file(infilename: str, outfilename: str | None, level: int = 2)
     """
     tempfilename = scan_file(infilename, level=level)
     if outfilename is None:
-        os.rename(tempfilename, infilename)
+        shutil.copyfile(tempfilename, infilename)
     else:
-        os.rename(tempfilename, outfilename)
+        shutil.copyfile(tempfilename, outfilename)
 
 
 if __name__ == '__main__':
