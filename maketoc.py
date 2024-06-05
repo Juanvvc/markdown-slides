@@ -20,7 +20,7 @@ def get_sections(inputfilename: str, level: int = 2) -> dict:
     sections = dict()
     first_line = True
     ignore_section = False
-    with open(inputfilename, 'r') as f:
+    with open(inputfilename, 'r', encoding='utf-8') as f:
         for line in f.readlines():
             line = line.strip()
             # manage yaml
@@ -82,7 +82,7 @@ def scan_file(inputfile: str, level: int = 2) -> str:
     sections = get_sections(inputfile, level=level)
     outputfile = tempfile.NamedTemporaryFile(delete=False)
     ignoring = False
-    with open(inputfile, 'r') as fin, open(outputfile.name, 'w') as fout:
+    with open(inputfile, 'r', encoding='utf-8') as fin, open(outputfile.name, 'w', encoding='utf-8') as fout:
         lines = fin.readlines()
         for line in lines:
             if re.search(r'_class:.* toc ', line):
