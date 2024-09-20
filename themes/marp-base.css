@@ -104,7 +104,7 @@ section.lead {
 section.lead h1, section.lead h2, section.lead p, section.lead a {
     color: white;
     padding: 0.5em;
-    background-color: rgba(17, 138, 207, 0.8);
+    background-color: var(--main-color);
     margin-bottom: 0;
 }
 section.lead footer, section.lead header, section.lead:after {
@@ -142,9 +142,11 @@ section.lead2 footer, section.lead2 header, section.lead2:after {
 Use: <!-- _class: first-slide --> */
 section.first-slide {
     text-align: center;
+    color: white;
+    background-color: var(--darker-color);
 }
 section.first-slide h1, section.first-slide h2, section.first-slide a {
-    color: var(--darker-color);
+    color: white;
 }
 section.first-slide footer, section.first-slide header, section.first-slide:after {
     /* hide header, footer and pagination */
@@ -179,21 +181,55 @@ section.center p, section.center h1, section.center h2 {
     text-align: center;
 }
 
-/******************* smaller-font and smallest-font *****************************/
+/******************* bigger, smaller and smallest-font *****************************/
 
-/* smaller-font class: texts are smaller than usual.
-Use: <!-- _class: smaller-font --> */
-section.smaller-font {
+/* smallest-font class: texts are smaller than usual.
+Use: <!-- _class: smallest-font --> */
+section.bigger-font p,
+section.bigger-font li, section.bigger-font ol {
     /* In the default theme, texts are bigger than normal */
     font-size: 150%
 }
 
+/* smaller-font class: texts are smaller than usual.
+Use: <!-- _class: smaller-font --> */
+section.smaller-font p,
+section.smaller-font li, section.smaller-font ol {
+    font-size: 0.9em;
+}
+section.smaller-font table th,
+section.smaller-font table td {
+    font-size: 0.7em !important;
+}
+section.smaller-font table th,
+section.smaller-font table td,
+section.smaller-font table table,
+section.smaller-font table tr:last-child {    
+    border: 0 !important;
+    border-top: 0 !important;
+    border-bottom: 0 !important;
+}
+
+
 /* smallest-font class: texts are smaller than usual.
 Use: <!-- _class: smallest-font --> */
-section.smallest-font {
-    /* In the default theme, texts are bigger than normal */
-    font-size: 120%
+section.smallest-font p,
+section.smallest-font li, section.smallest-font ol {
+    font-size: 0.7em;
 }
+section.smallest-font table th,
+section.smallest-font table td {
+    font-size: 0.55em !important;
+}
+section.smallest-font table th,
+section.smallest-font table td,
+section.smallest-font table table,
+section.smallest-font table tr:last-child {
+    border: 0 !important;
+    border-top: 0 !important;
+    border-bottom: 0 !important;
+}
+
 
 /******************* two-columns *****************************/
 
