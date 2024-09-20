@@ -2,7 +2,7 @@
 
 A project to document how to use Marp, and a repository of themes I use in my presentations.
 
-There is a little utility maketoc.py to create the TOC of a presentation. Use class *lead* to mark sections and *toc* to mark the slide with the toc. Warning: this script is a utility, do not assume it works correctly. It can delete your slides!
+There is a little utility `maketoc.py` to create the TOC of a presentation. Use class *lead* to mark sections and *toc* to mark the slide with the toc. Warning: this script is a utility, do not assume it works correctly. It can delete your slides!
 
 Live example: <https://juanvvc.github.io/markdown-slides/marp-tutorial.html>
 
@@ -32,5 +32,7 @@ git submodule update --remote --merge
 Configure VSCode to read themes from `slides-support/slides/themes`, preferably in the workspace. Check the .workspace file for an example.
 
 Check example: <https://github.com/Juanvvc/crypto>
+
+(C) 2022-2024 Juan Vera
 
 

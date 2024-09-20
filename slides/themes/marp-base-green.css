@@ -1,0 +1,12 @@
+/*
+@theme marp-base-green
+*/
+
+@import 'marp-base';
+
+:root {
+    --main-color: #30A060;
+    --darker-color: #226644;
+    --lighter-color: #87ebce;
+    --extra-back-color: rgb(175, 172, 172);
+}

@@ -7,14 +7,17 @@ description: Introducción a MARP y ejemplos de tema personalizado
 author: Juan Vera
 keywords: marp,tutorial
 # Configuration
-theme: marp-viu
+# Options for theme: marp-base marp-base-green marp-incide marp-viu marp-upc
+theme: marp-base
+# Add page number to the bottom
 paginate: true
+# Use ## to create a new slide
 headingDivider: 2
-# Example of additional configuration
+# Use this image as background for all slides
 #backgroundImage: url("themes/back-starline.jpg")
-#backgroundColor: #eef
+# Size ration
 #size: 4:3
-# slide transition is experimental in Marp 1.4.0 and only works in Chrome
+# Transition effects only work in HTML/Chrom
 # available effects: fade reveal cover implode explode
 transition: fade
 ---
@@ -45,10 +48,10 @@ También aparecen en el PDF como annotations. Algunos visores PDF como pympress 
 <!-- _class: cool-list toc -->
 
 1. [Introducción a MARP](#3)
-1. [Jugar con los estilos](#16)
-1. [Tema personalizado](#22)
-1. [En el día a día](#34)
-1. [Notas adicionales](#38)
+1. [Jugar con los estilos](#17)
+1. [Tema personalizado](#23)
+1. [En el día a día](#35)
+1. [Notas adicionales](#39)
 
 # Introducción a MARP
 <!-- _class: lead -->
@@ -62,17 +65,18 @@ Presentaciones HTML, PDF y PPTX en Markdown
 
 [![center width:20em](https://raw.githubusercontent.com/marp-team/marp/master/marp.png)](https://marp.app/)
 
-- *marpit*: mini núcleo del sistema y sintaxis: <https://marpit.marp.app/>
-- *marp-core*: API para Marpit: <https://github.com/marp-team/marp-core>
-- *marp-vscode*: plugin para VSCode
+- [marpit](https://marpit.marp.app/): mini núcleo del sistema y documentación
+- [marp-core](https://github.com/marp-team/marp-core): API para Marpit para programadores
+- [Marp for VS Code](https://marketplace.visualstudio.com/items?itemName=marp-team.marp-vscode):
+  plugin para VSCode
 
 <!--
 El Marp original era una aplicación con editor incluido.
-Marp Next uriliza VSCode con un plugin como editor.
+Marp Next utiliza VSCode con un plugin como editor.
 -->
 ```
 
-Mira el resultado en la siguiente transparencia
+Comprueba el resultado en la siguiente página
 
 <!--
 MARP utiliza Common Markdown, el dialecto con mayor compatibilidad y por tanto menos características de Markdown
@@ -97,7 +101,7 @@ Marp Next utiliza VSCode con un plugin como editor.
 
 ![width:27em center](images/vscode-marp.png)
 
-Plugin: "*Marp for VS Code*". Previsualización con `CMD+k+v`
+Plugin: "*Marp for VS Code*". Previsualización con `Ctrl+k+v` / `CMD+k+v`
 
 <!--
 El plugin permite:
@@ -108,54 +112,62 @@ El plugin permite:
 
 ## Compilación desde línea de comandos
 
-```makefile
-# This command only works if you have marp-cli: npm install -g @marp-team/marp-cli
-# You need chrome/chromium in your system for the PDF
-MARP=marp
-# This command needs "marp-cli" from docker: docker pull marpteam/marp-cli
-#MARP=docker run --rm --init -v "$(PWD)":/home/marp/app/ marpteam/marp-cli
+``` bash
+# PDF
+marp marp-tutorial.md -o marp-tutorial.pdf \
+   --no-config  --theme-set themes --theme marp-base \
+   --pdf --allow-local-files --pdf-notes
 
-# You can overwrite these from the command line
-# For example: make -e THEME=marp-upc
-THEME=marp-viu
-THEME_SET=themes
-THEME_OPTS=--theme $(THEME) --theme-set "$(THEME_SET)"
-
-# Convert all .md files in this directory
-SRCS=$(shell find . -name '*.md')
-OBJS=$(patsubst %.md,%.html,$(SRCS))
-
-all: $(OBJS)
-
-%.pdf: %.md
-	$(MARP) "$<" -o "$@" --no-config $(THEME_OPTS) --pdf --allow-local-files --html --pdf-notes
-
-%.html: %.md
-	$(MARP) "$<" -o "$@" --no-config $(THEME_OPTS) --bespoke.progress true --html
-	#--bespoke.transition
-
-clean:
-	/bin/rm -rf *.html *.pdf
-
-.PHONY: all clean
+# HTML
+marp marp-tutorial.md -o marp-tutorial.pdf \
+   --no-config --theme-set themes --theme marp-base \
+   --html --bespoke.progress true --bespoke.transition
 ```
+
+- `--theme-set`: directorio con los temas
+- `--theme` nombre del tema a aplicar
+- Observa que diferentes formatos de salida pueden tener opciones diferentes
 
 <!--
 Además, la opción -p abre una ventana de navegador, y la opción -s un servidor que se queda escuchando para cambios.
 -->
 
-## Separación entre transparencias
+## Separación entre páginas
+
 
 Por defecto, la separación se hace con una línea de tres guiones `---`
 
-`headingDivider: 2` en YAML: usa cabeceras para separar transparencias
+`headingDivider: 2` en YAML: usa cabeceras para separar páginas
 
-Si necesitas una transparencia sin título siempre puedes usar las tres líneas `---`
+Si necesitas una página sin título siempre puedes usar las tres líneas `---`
+
+Mira ejemplo en la página siguiente
+
+---
+
+```markdown
+---
+# Esto es configuración, aquí se pueden poner opciones adicionales
+headingDivider: 2
+---
+
+# Ejemplo de página con título
+
+Cuerpo
+
+## Nueva página
+
+Solo crea una nueva página con `##` si se han activado en la configuración
+
+---
+
+Nueva página, sin título
+```
 
 <!--
 Fíjate también: los textos se centran verticalmente en los temas por defecto
 
-En esta presentación de ejemplo se utilizan los títulos para separar transparencias porque me parece más cómodo. Fíjate en el headingDivider de la cabecera YAML de esta presentación
+En esta presentación de ejemplo se utilizan los títulos para separar páginas porque me parece más cómodo. Fíjate en el headingDivider de la cabecera YAML de esta presentación
 -->
 
 ## Listas
@@ -180,32 +192,32 @@ Puedes combinar - y * en la misma lista, y así algunos items aparecen siempre, 
 
 ## Modo speaker
 
-Pulsa `p` para entrar en el modo *speaker*: comentarios, hora, siguiente transparencia...
+Pulsa `p` para entrar en el modo *speaker*: comentarios, hora, siguiente página...
 
-![center w:22em](images/presentacion.png)
+![center w:30em](images/presentacion.png)
 
 
 <!--
 Esto es un comentario visible en el modo presentación
 
-Desde línea de comandos, `--bespoke.progress true` añade una barra de progreso. Mira en la parte de arriba de la transparencia
+Desde línea de comandos, `--bespoke.progress true` añade una barra de progreso. Mira en la parte de arriba de la página
 -->
 
 ## Imágenes en el interior
 
 ![center width:15em](https://raw.githubusercontent.com/marp-team/marp/master/marp.png)
-![width:50px](https://raw.githubusercontent.com/marp-team/marp/master/marp.png)
-![w:5em](https://raw.githubusercontent.com/marp-team/marp/master/marp.png)
+
+![width:100px](https://raw.githubusercontent.com/marp-team/marp/master/marp.png) ![w:10em](https://raw.githubusercontent.com/marp-team/marp/master/marp.png)
 
 ```markdown
 ![center width:15em](https://raw.githubusercontent.com/marp-team/marp/master/marp.png)
-![width:50px](https://raw.githubusercontent.com/marp-team/marp/master/marp.png)
-![w:5em](https://raw.githubusercontent.com/marp-team/marp/master/marp.png)
+![width:100px](https://raw.githubusercontent.com/marp-team/marp/master/marp.png)
+![w:10em](https://raw.githubusercontent.com/marp-team/marp/master/marp.png)
 ```
 
 Tamaños: pixeles y em, pero no porcentajes
 
-Hay muchos [atributos disponibles](https://github.com/marp-team/marpit/blob/main/docs/image-syntax.md)
+Hay muchos [atributos disponibles](https://github.com/marp-team/marpit/blob/main/docs/image-syntax.md) que se ponen entre corchetes `[]`
 
 <!--
 En Marp, la parte entre corchetes [] puede contener atributos adicionales: clases para aplicar sobre la imagen, tamaños, posiciones...
@@ -238,7 +250,7 @@ El orden de los filtros gráficos importa. No es lo mismo desaturar y después c
 ![bg left:30% w:80%](https://freepngimg.com/...)
 ```
 
-Si no se dice nada, la imagen ocupa **todo el alto**
+Si no se indica nada, la imagen ocupa **todo el alto**
 
 Puede limitarse el ancho con `w:VALOR%`
 
@@ -268,7 +280,7 @@ Fíjate que la última tiene **el total** que ocuparán todas
 
 GIFs, videos...
 
-Esta transparencia también es un ejemplo de nueva transparencia sin título
+Esta página solo se verá correctamente en un navegador, no en VSCode
 
 <iframe width="400" height="300" src="https://www.youtube.com/watch?v=dQw4w9WgXcQ">
 </iframe>
@@ -293,7 +305,7 @@ _backgroundImage: url('https://cdn.shopify.com/s/files/1/0200/7466/articles/shop
 _backgroundImage: url('themes/back-starline.jpg')
 -->
 
-Controla el estilo de una transparencia con [directivas](https://marpit.marp.app/directives) justo después del título
+Controla el estilo de una página con [directivas](https://marpit.marp.app/directives) justo después del título
 
 Por ejemplo, añadir imagen de fondo:
 
@@ -304,9 +316,9 @@ _backgroundImage: url('themes/back-starline.jpg')
 -->
 ```
 
-- En la cabecera YAML, activo para todas las transparencias
-- Sin guion bajo, activo **a partir de ahora** en todas las transparencias
-- Con guion bajo, solo activo en la transparencia actual
+- En la cabecera YAML, activo para todas las páginas
+- Sin guion bajo, activo **a partir de ahora** en todas las páginas
+- Con guion bajo, solo activo en la página actual
 
 
 > Background: [Designed by starline / Freepik](http://www.freepik.com).
@@ -420,28 +432,34 @@ _class: lead
 -->
 
 ## Tema personalizado
-<!-- _class: with-info -->
+<!-- _class: with-info smaller-font-->
 
-`theme: marp-XXX` en el preámbulo. Están disponibles:
+`theme: marp-XXX` en el preámbulo. Disponibles:
 
+- default
+- marp-base y marp-base-green
 - marp-viu
 - marp-upc
 - marp-incide
 
 En opciones de VSCode -> Marp, hay que incluir el *path* al tema. Fíjate en el [archivo workspace](https://github.com/Juanvvc/markdown-slides/blob/master/workspace.code-workspace)
 
-**Idea principal**: que todo sea Markdown, y solo cambiar "la clase" (el layout) de la transparencia
+**Idea principal**: que todo sea Markdown, y solo cambiar "la clase" (el layout) de la página
 
 ![bg right w:95%](themes/viu/logo-viu.png)
+
+<!--
+Nota: UPC, VIU, INCIDE son los nombres de las universidades y empresas para las que he trabajado estos años, y por eso tengo temas personalizados para ellas
+-->
 
 ## Clases / layouts especiales
 
 - *lead* / *lead2* / *first-slide* | *last-slide*: inicio de sección. Ya hemos visto ejemplos
 - *cool-list* / *cool-list2* para listas especiales
-- *two-columns* / *two-columns-33*: transparencia con dos columnas
+- *two-columns* / *two-columns-33*: página con dos columnas
 - *two-columns-list*: lista en dos o más columnas
-- *smaller-font* / *smallest-font*: transparencia con letra más pequeña
-- *center*: centra el contenido de texto en la transparencia
+- *bigger-font*, *smaller-font* / *smallest-font*: página con letra más grande o pequeña
+- *center*: centra el contenido de texto en la página
 - *with-info* / *with-success*  / *with-warning*: el último párrafo es una caja *info* / *success* / *warning*
 
 > Utiliza *blockquote* para "notas a pie de página"
@@ -496,7 +514,7 @@ Uno|Dos|Tres|Cuatro|Cinco
 - La columna de la izquierda tiene que ser una lista, código, tabla, párrafo o imagen. Es decir, un elemento único.
 - La columna de la derecha también
 
-El siguiente elemento único va después de todo y se extiende hasta el final de la transparencia.
+El siguiente elemento único va después de todo y se extiende hasta el final de la página
 
 
 <!--
@@ -516,7 +534,7 @@ _header: Header de ejemplo
 _footer: Footer de ejemplo, con [link](https://www.google.com)
 -->
 
-<style scoped>ul {list-style-type: none;}</style>
+<style scoped>li { list-style-type: none; }</style>
 
 ![](themes/viu/logo-viu.png)
 
@@ -534,11 +552,11 @@ Si tienes un header, añade la clase `with-header` como en este ejemplo
         list-style-type: disc; /* Discos en vez de números para la lista externa */
     }
     ol>* {
-        width: 5em; /* ancho de una columna */
+        width: 10em; /* ancho de una columna */
     }
 </style>
 
-Listas largas que se organizan en dos o más columnas. Mira el código de esta transparencia para configuración
+Listas largas que se organizan en dos o más columnas. Mira el código de esta página para configuración
 
 1. Uno, uno, uno y uno y uno y uno y uno y uno
     - Uno
@@ -562,6 +580,18 @@ Listas largas que se organizan en dos o más columnas. Mira el código de esta t
 1. Once
 1. Doce
 1. Trece
+    - Uno
+    - Dos
+1. Catorce
+    - Uno
+    - Dos
+1. Quince
+    - Uno
+    - Dos
+1. Dieciséis
+    - Uno
+    - Doce
+1. Diecisiete
     - Uno
     - Dos
 
@@ -594,7 +624,7 @@ En este caso no puedes usar listas *ol* internas
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce vel quam lobortis, egestas ex eu, dictum nisi. Nullam accumsan magna augue, vitae tempor arcu porttitor quis. Nam sit amet turpis sit amet tellus lacinia convallis. Nam suscipit sollicitudin orci, quis vehicula velit. Pellentesque viverra lacus nec velit fermentum suscipit sit amet eu erat. Mauris finibus massa eu eros luctus, nec congue velit lobortis. Quisque rhoncus velit porta tristique consectetur. Praesent sagittis facilisis ex in facilisis. Curabitur vel vulputate libero. Sed leo metus, maximus non lectus non, vestibulum scelerisque ipsum. Nunc convallis, felis vitae commodo iaculis, tellus nisl sollicitudin ligula, quis consectetur sem tellus vitae lorem. Duis rhoncus tristique volutpat. Nunc erat ante, pellentesque non ligula id, gravida vehicula lacus.
 
-Tambien está la clase `smaller-font`, que es un poco más grande.
+Tambien está la clase `smaller-font`, que es un poco más grande, y `bigger-font`, que es un tipo de letra más grande que el habitual
 
 ## Cajas: *success*
 <!-- _class: with-success -->
@@ -631,7 +661,7 @@ En la lista anterior he usado adrede símbolos que la fuente por defecto no tien
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce vel quam lobortis, egestas ex eu, dictum nisi. Nullam accumsan magna augue, vitae tempor arcu porttitor quis.
 
-⚠ Solo puede haber una caja *warning*, *info* o *success* por transparencia. Solo el último párrafo se mete en una caja.
+⚠ Solo puede haber una caja *warning*, *info* o *success* por página. Solo el último párrafo se mete en una caja.
 
 # En el día a día
 <!--
@@ -640,37 +670,22 @@ _backgroundImage: url('https://cdn.shopify.com/s/files/1/0200/7466/files/shopify
 header: En el día a día
  -->
 
- Sí, puedes añadir fondos personalizados a los inicios de secciones
+Observa: puedes añadir fondos personalizados a los inicios de secciones
 
 ## Comparando con RevealJS
 <!-- _class: with-info smaller-font -->
 
-- Marp no ofrece animaciones entre transparencias, RevealJS sí
-    - Esto puede cambiar cuanto se adopte la [Element Transition API](https://developer.chrome.com/blog/shared-element-transitions-for-spas/) en los navegadores. La versión 1.4.0 (2021) de Marp ya incluye animaciones pero solo en Chrome
-- HackMD no soporta directamente Marp, pero sí RevealJS
 - El plugin para VSCode de Marp es **muy** superior y eso convierte a Marp (**¡opinión!**) en más productivo: exportación a PDF perfecta, preview más rápido
 - RevealJS tiene ayudas espectaculares durante la presentación: alarmas, modo pizarra, movimiento en dos dimensiones...
-- RevealJS es mucho más flexible con el layout de una transparencia, a cambio de escribir más HTML
-- Los temas Marp los tengo mucho más desarrollados
+- RevealJS es mucho más flexible con el layout de una página, a cambio de escribir más HTML
 
 **Mi opinión**: es mucho más rápido **ESCRIBIR** una presentación tradicional en Marp, pero es más fácil y dinámico **PRESENTAR** con RevealJS.
 
 <!--
-Las animaciones entre transparencias las tiene que ofrecer "una librería de alto nivel" que use Marp: https://github.com/marp-team/marp-core/issues/110 
+Las animaciones entre páginas las tiene que ofrecer "una librería de alto nivel" que use Marp: https://github.com/marp-team/marp-core/issues/110 
 -->
 
-## Convertir de RevealJS a Marp y viceversa
-<!-- _class: two-columns with-header -->
-
-- Casi todas las transparencias podrán copiarse sin más
-- Sintaxis diferente, pero similar, en imágenes y clases especiales
-- Las transparencias que utilicen cosas específicas como animaciones tendrán que repensarse
-
-![width:15em](https://i.kym-cdn.com/photos/images/original/000/058/092/wololooooooooooooooooooooo20110724-22047-dccquj.gif)
-
-> Ejemplo de *two-columns* con imagen, alternativa a `bg right`
-
-## Ejemplos de conversiones
+## Comparativa de sistemas
 
 RevealJS:
 
@@ -690,6 +705,18 @@ Marp:
 ![width:20em](imagen.jpg){}
 ```
 
+
+## Convertir de RevealJS a Marp y viceversa
+<!-- _class: two-columns with-header -->
+
+- Casi todas las páginas podrán copiarse sin más
+- Sintaxis diferente, pero similar, en imágenes y clases especiales
+- Las páginas que utilicen cosas específicas como animaciones tendrán que repensarse
+
+![width:15em](https://i.kym-cdn.com/photos/images/original/000/058/092/wololooooooooooooooooooooo20110724-22047-dccquj.gif)
+
+> Ejemplo de *two-columns* con imagen, alternativa a `bg right`
+
 # Notas adicionales
 <!--
 _class: lead
@@ -698,14 +725,14 @@ header: Notas adicionales
 
 ---
 
-- En 2022, las transparencias son simples, sin sombras, sin animaciones...
+- En 2024, las páginas son simples, sin sombras, sin animaciones...
 - No luches contra el sistema de presentaciones: si no puedes hacer algo, no pierdas demasiado tiempo buscando cómo
-- Puedes usar `header: Título de sección` como directiva en las transparencias de sección y aparecerá a partir de ese momento. Mira el header de esta transparencia
+- Puedes usar `header: Título de sección` como directiva en las páginas de sección y aparecerá a partir de ese momento. Mira el *header* de esta página
 - <http://www.jilles.net/perma/2020/06/05/presentation-rules.html>
 
 ## Pizarra
 
-Puede añadirse JavaScript genérico en la última transparencia
+Puede añadirse JavaScript genérico en la última página
 
 ```html
 <script src="whiteboard.js"></script>

@@ -1,13 +1,12 @@
 
-from __future__ import annotations 
+from collections.abc import Iterator
 import sys
 import os
-import shutil
 import re
 import tempfile
 
 
-def get_sections(inputfilename: str, level: int = 2) -> dict:
+def get_sections(inputfilename: str, level: int = 2, encoding: str = 'utf8') -> dict:
     """
     Get the name of the sections in a file
 
@@ -20,22 +19,23 @@ def get_sections(inputfilename: str, level: int = 2) -> dict:
     sections = dict()
     first_line = True
     ignore_section = False
-    with open(inputfilename, 'r', encoding='utf-8') as f:
+    with open(inputfilename, 'r', encoding=encoding) as f:
         for line in f.readlines():
             line = line.strip()
-            # manage yaml
+            # manage yaml: ignore ---, but only in the first line
             if first_line:
-                if line == '---' or line == '~~~':
-                    ignore_section = True
+                if line.startswith('---') or line.startswith('~~~'):
+                    ignore_section = line[:3]
                 first_line = False
                 continue
-            # ignore sections yaml and ``` to count slides
+            # if you find the mark of the current section (in ignore_section), skip line
             if ignore_section:
-                if line == '---' or line == '~~~' or line == '```':
-                    ignore_section = False
+                if line.startswith(ignore_section):
+                    ignore_section = None
                 continue
-            if line.startswith('```'):
-                ignore_section = True
+            # ignore sections ~~~ and ``` in the rest of the body
+            if line.startswith('```') or line.startswith('~~~'):
+                ignore_section = line[:3]
                 continue
             
             if is_slide(line, level=level):
@@ -46,7 +46,7 @@ def get_sections(inputfilename: str, level: int = 2) -> dict:
     return sections
 
 
-def build_toc(sections: dict) -> list[str]:
+def build_toc(sections: dict) -> Iterator[str]:
     """
     Params:
         - sections: a dictionary, as returned by get_sections()
@@ -73,7 +73,7 @@ def is_slide(line: str, level: int = 2) -> bool:
     return line.startswith('---')
 
 
-def scan_file(inputfile: str, level: int = 2) -> str:
+def scan_file(inputfile: str, level: int = 2, encoding: str = 'utf8') -> str:
     """ Scans a file for a TOC slide, and create a new file with the right TOC
     
     Returns:
@@ -82,7 +82,7 @@ def scan_file(inputfile: str, level: int = 2) -> str:
     sections = get_sections(inputfile, level=level)
     outputfile = tempfile.NamedTemporaryFile(delete=False)
     ignoring = False
-    with open(inputfile, 'r', encoding='utf-8') as fin, open(outputfile.name, 'w', encoding='utf-8') as fout:
+    with open(inputfile, 'r', encoding=encoding) as fin, open(outputfile.name, 'w', encoding=encoding) as fout:
         lines = fin.readlines()
         for line in lines:
             if re.search(r'_class:.* toc ', line):
@@ -98,14 +98,15 @@ def scan_file(inputfile: str, level: int = 2) -> str:
     return outputfile.name
 
 
-def update_toc_in_file(infilename: str, outfilename: str | None, level: int = 2):
+def update_toc_in_file(infilename: str, outfilename: str | None, level: int = 2, encoding: str = 'utf8'):
     """ Updated the TOC slide in a file
     
     The TOC slide has the class toc
     
     If outfilename is None, overwrites the original file. Careful with errors!
     """
-    tempfilename = scan_file(infilename, level=level)
+    import shutil
+    tempfilename = scan_file(infilename, level=level, encoding=encoding)
     if outfilename is None:
         shutil.copyfile(tempfilename, infilename)
     else:
@@ -119,8 +120,9 @@ if __name__ == '__main__':
     parser.add_argument('--input', default=None, help='The input filename. Mandatory')
     parser.add_argument('--output', default=None, help='The output filename. If not present, edit inline')
     parser.add_argument('--level', default=2, type=int, help='The value of the marp headingDivider param')
+    parser.add_argument('--encoding', default='utf8', type=str, help='The encoding of the input file')
     args = parser.parse_args()
 
     if args.input is None:
         raise Exception('You must provide an input file')
-    update_toc_in_file(args.input, outfilename=args.output, level=args.level)
+    update_toc_in_file(args.input, outfilename=args.output, level=args.level, encoding=args.encoding)
