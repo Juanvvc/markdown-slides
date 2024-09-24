@@ -163,13 +163,18 @@ section.first-slide p{
 Use: <!-- _class: last-slide --> */
 section.last-slide {
     text-align: center;
+    color: white;
+    background-color: var(--darker-color);
 }
 section.last-slide h1, section.last-slide h2, section.last-slide a {
-    color: var(--darker-color);
+    color: white;
 }
 section.last-slide footer, section.last-slide header, section.last-slide:after {
     /* hide header, footer and pagination */
     display: none;
+}
+section.last-slide p{
+    margin-bottom: 1em;
 }
 
 
