@@ -10,6 +10,7 @@
 			"slides/themes/marp-viu.css",
 			"slides/themes/marp-upc.css",
 			"slides/themes/marp-base.css",
+			"slides/themes/marp-base-green.css",
 			"slides/themes/marp-incide.css"
 		],
 		"pasteImage.path": "${currentFileDir}/images",                                                                  
